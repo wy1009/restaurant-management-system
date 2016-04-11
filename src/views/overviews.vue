@@ -2,7 +2,7 @@
     <h2>test</h2>
 </template>
 <script>
-module.exports = {
-      
+export default {
+    
 };
 </script>

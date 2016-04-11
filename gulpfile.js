@@ -48,12 +48,20 @@ gulp.task('scripts', function () {
 				}, {
 					test: /\.scss$/,
 					loader: ExtractTextPlugin.extract("style-loader", 'css-loader?sourceMap!sass-loader!cssnext-loader')
-				}]
+				}, {
+                    test: /\.js$/,
+                    exclude: /node_modules/,
+                    loader: 'babel'
+                }]
 			},
 			vue: {
 		        css: ExtractTextPlugin.extract("css"),
 		        sass: ExtractTextPlugin.extract("css!sass-loader")
 		    },
+            babel: {
+                presets: ['es2015'],
+                plugins: ['transform-runtime']
+            },
 			plugins: [
 				new ExtractTextPlugin("style.css", {
 			        allChunks: true,

@@ -20,7 +20,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'dist')));
 
 // api urls
-require('app/api/urls')(app);
+require('./app/api/urls')(app);
 
 // get home page
 app.get('/', function(req, res, next) {

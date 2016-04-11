@@ -1,12 +1,14 @@
-module.exports = function (router) {
+import HomeView from './views/overviews.vue';
+
+export default function (router) {
 	router.map({
 		'/': {
 			name: 'home',
-			component: require('./views/overviews.vue')
+			component: HomeView
 		},
 		'/overviews': {
 			name: 'overviews',
-			component: require('./views/overviews.vue')
+			component: HomeView
 		}
 		// '/customers': {
 		// 	name: 'customers',

@@ -1,10 +1,10 @@
-// 会员管理信息
-
 var mongoose = require('mongoose');
+var ObjectId = mongoose.Schema.Types.ObjectId;
 
-var MemberSchema = new mongoose.Schema({
-    name: String, // 会员等级名称
-    discount: Number, // 会员等级折扣
+var MealSchema = new mongoose.Schema({
+    name: String, // 菜品名称
+    price: Number, // 菜品价格
+    sales: Number, // 菜品销售量
     meta: {
         createAt: {
             type: Date,
@@ -17,30 +17,29 @@ var MemberSchema = new mongoose.Schema({
     }
 });
 
-MemberSchema.pre('save', function (next) {
+MealSchema.pre('save', function (next) {
     if (this.isNew) {
         this.meta.createAt = this.meta.updateAt = Date.now();
     } else {
         this.meta.updateAt = Date.now();
     }
-    next();
 });
 
-MemberSchema.statics = {
+MealSchema.statics = {
     fetch: function (cb) {
         return this
             .find({})
-            .sort('meta.createAt')
+            .sort('meta.updateAt')
             .exec(cb);
     },
-    fetchById: function (id, cb) {
+    findById: function (id, cb) {
         return this
             .findOne({_id: id})
-            .sort('meta.createAt')
+            .sort('meta.updateAt')
             .exec(cb);
     }
 };
 
-var Member = mongoose.model('Member', MemberSchema); // 编译生成Member这个模型
-    
-module.exports = Member;
+var Meal = mongoose.model('Meal', MealSchema);
+
+module.exports = Meal;

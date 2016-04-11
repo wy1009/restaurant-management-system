@@ -1,10 +1,15 @@
-// 会员管理信息
+// 客人信息
 
 var mongoose = require('mongoose');
+var ObjectId = mongoose.Schema.Types.ObjectId;
 
-var MemberSchema = new mongoose.Schema({
-    name: String, // 会员等级名称
-    discount: Number, // 会员等级折扣
+var CustomerSchema = new mongoose.Schema({
+    name: String, // 客人姓名
+    phone: String, // 客人电话
+    member: { // 会员信息
+        type: ObjectId,
+        ref: 'Member'
+    },
     meta: {
         createAt: {
             type: Date,
@@ -17,30 +22,29 @@ var MemberSchema = new mongoose.Schema({
     }
 });
 
-MemberSchema.pre('save', function (next) {
+CustomerSchema.pre('save', function (next) {
     if (this.isNew) {
         this.meta.createAt = this.meta.updateAt = Date.now();
     } else {
         this.meta.updateAt = Date.now();
     }
-    next();
 });
 
-MemberSchema.statics = {
+CustomerSchema.statics = {
     fetch: function (cb) {
         return this
             .find({})
-            .sort('meta.createAt')
+            .sort('meta.updateAt')
             .exec(cb);
     },
-    fetchById: function (id, cb) {
+    findById: function (id, cb) {
         return this
             .findOne({_id: id})
-            .sort('meta.createAt')
+            .sort('meta.updateAt')
             .exec(cb);
     }
 };
 
-var Member = mongoose.model('Member', MemberSchema); // 编译生成Member这个模型
-    
-module.exports = Member;
+var Customer = mongoose.model('Customer', CustomerSchema);
+
+module.exports = Customer;

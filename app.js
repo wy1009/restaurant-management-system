@@ -19,7 +19,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'dist')));
 
-/* GET home page. */
+// api urls
+require('app/api/urls')(app);
+
+// get home page
 app.get('/', function(req, res, next) {
   res.render('index');
 });

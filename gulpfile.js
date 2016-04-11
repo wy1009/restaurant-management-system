@@ -4,9 +4,9 @@ var gulp = require('gulp'),
 	// concat = require('gulp-concat'),
 	notify = require('gulp-notify'),
 	webpack = require('gulp-webpack'),
-	// connect = require('gulp-connect'),
-	// autoprefixer = require('gulp-autoprefixer'),
-	// minifycss = require('gulp-minify-css'),
+	connect = require('gulp-connect'),
+	autoprefixer = require('gulp-autoprefixer'),
+	minifycss = require('gulp-minify-css'),
 	sass = require('gulp-sass'),
 	ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -75,7 +75,7 @@ gulp.task('scripts', function () {
 });
 
 gulp.task('styles', function () {
-	return gulp.src('src/assets/*.scss')
+	return gulp.src('src/public/stylesheets/*.scss')
 		.pipe(sass())
 		.pipe(autoprefixer('last 2 version', 'safari 5', 'ie10', 'ios 6', 'android 4'))
 		.pipe(rename({ suffix: '.min' }))
@@ -103,3 +103,4 @@ gulp.task('watch', function() {
 
 gulp.task('includebase', ['basejs', 'basecss', 'styles', 'scripts', 'server', 'watch']);
 gulp.task('default', ['scripts'/*, 'styles', 'server', 'watch'*/]);
+gulp.task('ser', ['scripts', 'styles', 'server', 'watch']);

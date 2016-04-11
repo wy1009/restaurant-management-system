@@ -15,7 +15,7 @@
                     <a href="/#!/meal/">菜肴</a>
                 </li>
                 <li>
-                    <a href="/#!/customer/">会员管理</a>
+                    <a href="/#!/customer/">会员</a>
                 </li>
                 <li>
                     <a href="/#!/user/">员工</a>
@@ -29,3 +29,30 @@ export default {
     
 };
 </script>
+<style lang="sass">
+header {
+    background: #333;
+    nav {
+        max-width: 980px;
+        margin: 0 auto;
+        text-align: center;
+        li {
+            display: inline-block;
+            line-height: 30px;
+            padding: 12px 0;
+            a {
+                text-decoration: none;
+                color: #999;
+                padding: 0 8px;
+                font-size: 14px;
+            }
+        }
+        li + li:before {
+            content: '|';
+            padding: 0 .3em 0 .1em;
+            color: #999;
+        }
+    }
+}
+
+</style>

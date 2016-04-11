@@ -1,7 +1,3 @@
-// var Vue = require('vue'),
-// 	VueRouter = require('vue-router'),
-// 	routerMap = require('./routers');
-    
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import routerMap from './routers'

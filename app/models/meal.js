@@ -3,6 +3,7 @@ var ObjectId = mongoose.Schema.Types.ObjectId;
 
 var MealSchema = new mongoose.Schema({
     name: String, // 菜品名称
+    type: String, // 菜品类别
     price: Number, // 菜品价格
     sales: Number, // 菜品销售量
     meta: {

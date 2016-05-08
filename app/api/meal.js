@@ -17,3 +17,7 @@ exports.save = function (req, res) {
     }
     res.send(req.body);
 }
+
+exports.search = function (req, res) {
+    
+}

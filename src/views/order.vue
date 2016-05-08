@@ -10,8 +10,8 @@ import MealList from '../components/MealList.vue';
 
 export default {
     components: {
-        topnav: Topnav,
-        mealList: MealList
+        Topnav,
+        MealList
     }
 };
 </script>

@@ -8,7 +8,7 @@ import Topnav from '../components/Topnav.vue';
 
 export default {
     components: {
-        topnav: Topnav
+        Topnav
     }
 };
 </script>

@@ -6,7 +6,7 @@ var ObjectId = mongoose.Types.ObjectId;
 var OrderSchema = new mongoose.Schema({
     customer: {
         type: ObjectId,
-        ref: 'Customer'
+        ref: 'Customer' // 建立Model时的名称
     },
     member: {
         type: ObjectId,

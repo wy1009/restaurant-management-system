@@ -47,14 +47,15 @@ export default {
         addMealData () {
             var _this = this;
             _this.$http.post('/api/meal/', _this.mealData).then(function (res) {
-                console.log('success');
-                console.log(res);
+                if (res.success) {
+                    _this.$dispatch('update-meal-list');
+                } else {
+                    console.log(res.reason);
+                }
             }, function (res) {
                 console.log('error');
-                console.log(res);
             });
         }
     }
 }
-    
 </script>

@@ -15,6 +15,7 @@
             </ul>
         </article>
         <dlg-add-put-meal :category-list="categoryList"></dlg-add-put-meal>
+        <dlg-add-put-category></dlg-add-put-category>
     </div>
 </template>
 <script>

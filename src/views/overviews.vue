@@ -4,11 +4,11 @@
     </div>   
 </template>
 <script>
-import TopNav from '../components/topnav.vue';
+import Topnav from '../components/Topnav.vue';
 
 export default {
     components: {
-        topnav: TopNav
+        topnav: Topnav
     }
 };
 </script>

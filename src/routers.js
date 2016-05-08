@@ -1,15 +1,15 @@
-import HomeView from './views/overviews.vue';
-import Order from './views/order.vue';
+import Overviews from './views/Overviews.vue';
+import Order from './views/Order.vue';
 
 export default function (router) {
 	router.map({
 		'/': {
 			name: 'home',
-			component: HomeView
+			component: Overviews
 		},
 		'/overviews': {
 			name: 'overviews',
-			component: HomeView
+			component: Overviews
 		},
 		'/order/add/': {
 			name: 'order',

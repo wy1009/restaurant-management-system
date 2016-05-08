@@ -5,12 +5,12 @@
     </div>   
 </template>
 <script>
-import TopNav from '../components/topnav.vue';
-import MealList from '../components/meal-list.vue';
+import Topnav from '../components/Topnav.vue';
+import MealList from '../components/MealList.vue';
 
 export default {
     components: {
-        topnav: TopNav,
+        topnav: Topnav,
         mealList: MealList
     }
 };

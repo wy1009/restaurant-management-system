@@ -3,7 +3,7 @@
 var mongoose = require('mongoose');
 var ObjectId = mongoose.Types.ObjectId;
 
-var OrderSchema = mongoose.Schema({
+var OrderSchema = new mongoose.Schema({
     customer: {
         type: ObjectId,
         ref: 'Customer'
@@ -34,6 +34,7 @@ OrderSchema.pre('save', function (next) {
     } else {
         this.meta.updateAt = Date.now();
     }
+    next();
 });
 
 OrderSchema.statics = {
@@ -45,7 +46,5 @@ OrderSchema.statics = {
     }
 };
 
-var Order = mongoose.model('Order', OrderSchema);
-
-module.exports = Order;
+module.exports = mongoose.model('Order', OrderSchema);
 

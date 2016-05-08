@@ -1,4 +1,5 @@
 import HomeView from './views/overviews.vue';
+import Order from './views/order.vue';
 
 export default function (router) {
 	router.map({
@@ -9,11 +10,11 @@ export default function (router) {
 		'/overviews': {
 			name: 'overviews',
 			component: HomeView
+		},
+		'/order/add/': {
+			name: 'order',
+			component: Order
 		}
-		// '/customers': {
-		// 	name: 'customers',
-		// 	component: require('./views/customers.vue')
-		// },
 		// '/customers/processed': {
 		// 	name: 'processed',
 		// 	component: require('./views/customers-processed.vue')

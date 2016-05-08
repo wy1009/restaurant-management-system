@@ -4,8 +4,11 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 
 var app = express();
+
+mongoose.connect('mongodb://localhost/restaurant');
 
 // view engine setup
 app.set('views', path.join(__dirname, './'));
@@ -20,6 +23,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'dist')));
 
 // api urls
+// app.use(require('./app/api/urls'));
 require('./app/api/urls')(app);
 
 // get home page

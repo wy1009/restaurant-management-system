@@ -28,6 +28,7 @@ CustomerSchema.pre('save', function (next) {
     } else {
         this.meta.updateAt = Date.now();
     }
+    next();
 });
 
 CustomerSchema.statics = {
@@ -45,6 +46,4 @@ CustomerSchema.statics = {
     }
 };
 
-var Customer = mongoose.model('Customer', CustomerSchema);
-
-module.exports = Customer;
+module.exports = mongoose.model('Customer', CustomerSchema);

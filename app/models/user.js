@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var UserSchema = mongoose.Schema({
+var UserSchema = new mongoose.Schema({
     name: String, // 员工姓名
     // 0: 普通员工
     // 50: 管理员
@@ -26,6 +26,7 @@ UserSchema.pre('save', function (next) {
     } else {
         this.meta.updateAt = Date.now();
     }
+    next();
 });
 
 UserSchema.statics = {
@@ -37,6 +38,4 @@ UserSchema.statics = {
     }
 };
 
-var User = mongoose.model('User', UserSchema);
-
-module.exports = User;
+module.exports = mongoose.model('User', UserSchema);

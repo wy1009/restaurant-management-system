@@ -41,6 +41,4 @@ MemberSchema.statics = {
     }
 };
 
-var Member = mongoose.model('Member', MemberSchema); // 编译生成Member这个模型
-    
-module.exports = Member;
+module.exports = mongoose.model('Member', MemberSchema); // 编译生成Member这个模型

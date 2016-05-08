@@ -1,8 +1,10 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import VueResource from 'vue-resource';
 import routerMap from './routers'
 
 Vue.use(VueRouter);
+Vue.use(VueResource);
 var router = new VueRouter();
 routerMap(router);
 // router.beforeEach(function (transition) {

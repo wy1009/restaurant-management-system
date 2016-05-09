@@ -1,7 +1,7 @@
 <template>
     <div class="dialog-box">
         <div class="add-meal-dialog">
-            <div class="header">添加菜肴</div>
+            <div class="header">菜肴信息</div>
             <div class="content">
                 <div>
                     <div class="input-wrapper">
@@ -41,7 +41,7 @@ export default {
                 type: '',
                 price: ''
             }
-        }
+        };
     },
     methods: {
         addMealData () {

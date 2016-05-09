@@ -24,11 +24,6 @@
         </nav>
     </header>
 </template>
-<script>
-export default {
-    
-};
-</script>
 <style lang="sass">
 header {
     background: #333;
@@ -54,5 +49,4 @@ header {
         }
     }
 }
-
 </style>

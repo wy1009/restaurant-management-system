@@ -13,10 +13,11 @@ exports.save = function (req, res) {
             if (err) {
                 console.log(err);
             }
+            console.log(meal);
         });
     }
     res.send(req.body);
-}
+};
 
 exports.search = function (req, res) {
     

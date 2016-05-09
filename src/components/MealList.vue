@@ -19,12 +19,15 @@
     </div>
 </template>
 <script>
+import DlgAddPutCategory from './DlgAddPutCategory.vue';
+import DlgAddPutMeal from './DlgAddPutMeal.vue';
+
 export default {
     data () {
         return {
             nowCategory: '',
             categoryList: []
-        }
+        };
     },
     ready () {
         this.getCategoryList();
@@ -39,6 +42,10 @@ export default {
                 console.log('error');
             });
         }
+    },
+    components: {
+        DlgAddPutCategory,
+        DlgAddPutMeal
     }
 };
 </script>

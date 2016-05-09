@@ -34,6 +34,7 @@
 </template>
 <script>
 export default {
+    props: ['categoryList'],
     data () {
         return {
             mealData: {

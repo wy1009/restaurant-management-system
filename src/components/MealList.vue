@@ -2,8 +2,8 @@
     <div class="container has-side-nav">
         <aside>
             <ul>
-                <li>
-                    <a href="javascript:;" @click="nowCategory = '川'">川</a>
+                <li v-for="category in categoryList">
+                    <a href="javascript:;" @click="">{{ category.name }}</a>
                 </li>
             </ul>
             <a href="javascript:;">添加菜肴类别</a>

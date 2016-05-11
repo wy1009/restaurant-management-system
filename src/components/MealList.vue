@@ -6,16 +6,16 @@
                     <a href="javascript:;" @click="">{{ category.name }}</a>
                 </li>
             </ul>
-            <a href="javascript:;">添加菜肴类别</a>
+            <a href="javascript:;" @click="dlgCategoryShow = !dlgCategoryShow">添加菜肴类别</a>
         </aside>
         <article>
-            <h1>{{ nowCategory.name }}</h1><a class="add-meal" href="javascript:;">添加菜肴</a>
+            <h1>{{ nowCategory.name }}</h1><a class="add-meal" href="javascript:;" @click="dlgMealShow = !dlgMealShow">添加菜肴</a>
             <ul>
                 <li></li>
             </ul>
         </article>
-        <dlg-add-put-meal :category-list="categoryList"></dlg-add-put-meal>
-        <dlg-add-put-category></dlg-add-put-category>
+        <dlg-add-put-meal v-show="dlgMealShow" :category-list="categoryList"></dlg-add-put-meal>
+        <dlg-add-put-category v-show="dlgCategoryShow"></dlg-add-put-category>
     </div>
 </template>
 <script>
@@ -26,7 +26,9 @@ export default {
     data () {
         return {
             nowCategory: {},
-            categoryList: []
+            categoryList: [],
+            dlgMealShow: false,
+            dlgCategoryShow: false
         };
     },
     ready () {

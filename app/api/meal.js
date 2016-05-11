@@ -25,10 +25,20 @@ exports.save = function (req, res) {
 };
 
 exports.search = function (req, res) {
-    var id = req.body.id;
-    if (id) {
-
-    } else {
-        
-    }
+    var filterCondition = req.body;
+    Meal.find(filterCondition)
+        .sort('meta.updateAt')
+        .exec(function (err, meals) {
+            if (err) {
+                res.send({
+                    success: false,
+                    reason: err
+                });
+            } else {
+                res.send({
+                    success: true,
+                    mealList: meals
+                });
+            }
+        });
 };

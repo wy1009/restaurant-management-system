@@ -25,5 +25,10 @@ exports.save = function (req, res) {
 };
 
 exports.search = function (req, res) {
-    
-}
+    var id = req.body.id;
+    if (id) {
+
+    } else {
+        
+    }
+};

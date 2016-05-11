@@ -3,7 +3,7 @@
         <aside>
             <ul>
                 <li v-for="category in categoryList">
-                    <a href="javascript:;" @click="">{{ category.name }}</a>
+                    <a href="javascript:;" @click="getMealList(category);">{{ category.name }}</a>
                 </li>
             </ul>
             <a href="javascript:;" @click="dlgCategoryShow = !dlgCategoryShow">添加菜肴类别</a>
@@ -27,6 +27,7 @@ export default {
         return {
             nowCategory: {},
             categoryList: [],
+            mealList: [],
             dlgMealShow: false,
             dlgCategoryShow: false
         };
@@ -41,6 +42,22 @@ export default {
                 var data = res.data;
                 if (data.success) {
                     _this.categoryList = data.categoryList;
+                } else {
+                    console.log(data.reason);
+                }
+            });
+        },
+        getMealList (category) {
+            var _this = this;
+            _this.nowCategory = category;
+            var filterCondition = {
+                category: category._id
+            };
+            _this.$http.get('/api/meal/', _this.filterCondition).then(function (res) {
+                var data = res.data;
+                if (data.success) {
+                    _this.mealList = data.mealList;
+                    console.log(_this.mealList);
                 } else {
                     console.log(data.reason);
                 }

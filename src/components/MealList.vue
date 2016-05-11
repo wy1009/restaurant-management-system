@@ -9,7 +9,7 @@
             <a href="javascript:;">添加菜肴类别</a>
         </aside>
         <article>
-            <h1>{{ nowCategory }}</h1><a class="add-meal" href="javascript:;">添加菜肴</a>
+            <h1>{{ nowCategory.name }}</h1><a class="add-meal" href="javascript:;">添加菜肴</a>
             <ul>
                 <li></li>
             </ul>
@@ -25,7 +25,7 @@ import DlgAddPutMeal from './DlgAddPutMeal.vue';
 export default {
     data () {
         return {
-            nowCategory: '',
+            nowCategory: {},
             categoryList: []
         };
     },
@@ -36,10 +36,12 @@ export default {
         getCategoryList () {
             var _this = this;
             _this.$http.get('/api/category/').then(function (res) {
-                console.log('success');
-                console.log(res);
-            }, function (res) {
-                console.log('error');
+                var data = res.data;
+                if (data.success) {
+                    _this.categoryList = data.categoryList;
+                } else {
+                    console.log(data.reason);
+                }
             });
         }
     },

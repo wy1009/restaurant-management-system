@@ -11,12 +11,17 @@ exports.save = function (req, res) {
         _meal = new Meal(mealObj);
         _meal.save(function (err, meal) {
             if (err) {
-                console.log(err);
+                res.send({
+                    success: false,
+                    reason: err
+                });
+            } else {
+                res.send({
+                    success: true
+                });
             }
-            console.log(meal);
         });
     }
-    res.send(req.body);
 };
 
 exports.search = function (req, res) {

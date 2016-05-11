@@ -8,16 +8,11 @@
                         <input type="text" placeholder="名称" v-model="mealData.name">
                     </div>
                     <div class="input-wrapper">
-                        <select v-model="mealData['type']">
-                            <option value="">菜系</option>
-                            <option value="川">川</option>
-                            <option value="鲁">鲁</option>
-                            <option value="粤">粤</option>
-                            <option value="苏">苏</option>
-                            <option value="浙">浙</option>
-                            <option value="闽">闽</option>
-                            <option value="湘">湘</option>
-                            <option value="徽">徽</option>
+                        <select v-model="mealData['category']">
+                            <option value="">请选择</option>
+                            <template v-for="category in categoryList">
+                                <option value="{{ category._id }}">{{ category.name }}</option>
+                            </template>
                         </select>
                     </div>
                     <div class="input-wrapper">
@@ -39,7 +34,7 @@ export default {
         return {
             mealData: {
                 name: '',
-                type: '',
+                category: '',
                 price: ''
             }
         };
@@ -53,8 +48,6 @@ export default {
                 } else {
                     console.log(res.reason);
                 }
-            }, function (res) {
-                console.log('error');
             });
         }
     }

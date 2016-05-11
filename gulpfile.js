@@ -101,6 +101,10 @@ gulp.task('watch', function() {
 	gulp.watch('src/**/*.*', ['reload-dev']);
 });
 
+gulp.task('watchWithoutServer', function () {
+	gulp.watch('src/**/*.*', ['scripts']);
+})
+
 gulp.task('includebase', ['basejs', 'basecss', 'styles', 'scripts', 'server', 'watch']);
-gulp.task('default', ['scripts'/*, 'styles', 'server', 'watch'*/]);
+gulp.task('default', ['scripts', 'watchWithoutServer'/*, 'styles', 'server', 'watch'*/]);
 gulp.task('ser', ['scripts', 'styles', 'server', 'watch']);

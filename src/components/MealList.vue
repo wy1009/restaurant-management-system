@@ -53,11 +53,10 @@ export default {
             var filterCondition = {
                 category: category._id
             };
-            _this.$http.get('/api/meal/', _this.filterCondition).then(function (res) {
+            _this.$http.get('/api/meal/', filterCondition).then(function (res) {
                 var data = res.data;
                 if (data.success) {
                     _this.mealList = data.mealList;
-                    console.log(_this.mealList);
                 } else {
                     console.log(data.reason);
                 }

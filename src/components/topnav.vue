@@ -41,11 +41,14 @@ header {
                 padding: 0 8px;
                 font-size: 14px;
             }
-        }
-        li + li:before {
-            content: '|';
-            padding: 0 .3em 0 .1em;
-            color: #999;
+            +li:before {
+                content: '|';
+                padding: 0 .3em 0 .1em;
+                color: #999;
+            }
+            &.active:after {
+
+            }
         }
     }
 }

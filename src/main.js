@@ -1,7 +1,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import VueResource from 'vue-resource';
-import routerMap from './routers'
+import routerMap from './routers';
+import App from './components/App.vue';
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
@@ -18,4 +19,4 @@ routerMap(router);
 // 		// succ_callback中，如仍旧没有role，则跳转登录页面
 // 	}
 // });
-router.start(Vue.extend({}), 'body');
+router.start(App, '#app');

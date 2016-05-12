@@ -1,8 +1,9 @@
 <template>
-    <topnav :active="0"></topnav>
+    <topnav active="0"></topnav>
     <div id="main">
     </div>   
 </template>
+
 <script>
 import Topnav from '../components/Topnav.vue';
 

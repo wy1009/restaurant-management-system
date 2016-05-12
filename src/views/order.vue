@@ -1,5 +1,5 @@
 <template>
-    <topnav></topnav>
+    <topnav :active="1"></topnav>
     <div id="main">
         <meal-list></meal-list>
     </div>   

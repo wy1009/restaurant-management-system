@@ -1,5 +1,5 @@
 <template>
-    <topnav></topnav>
+    <topnav :active="0"></topnav>
     <div id="main">
     </div>   
 </template>

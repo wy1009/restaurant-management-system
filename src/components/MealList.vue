@@ -70,7 +70,44 @@ export default {
 };
 </script>
 <style lang="sass">
-    .add-meal {
-        float: right;
+#main {
+    .container {
+        padding: 0 20px;
+        max-width: 980px;
+        margin: 0 auto;
+        &.has-side-nav {
+            aside {
+                width: 200px;
+                margin-top: 1.5em;
+                float: left;
+                ul {
+                    list-style-type: none;
+                    li {
+                        padding: .1em .5em;
+                        a {
+                            padding: 5px 10px;
+                            color: #43853d;
+                            text-decoration: none;
+                            border-radius: 2px;
+                        }
+                        &.active {
+                            a {
+                                color: #fff;
+                                background-color: #026e00;
+                            }
+                        }
+                    }
+                }
+            }
+            article {
+                margin-left: 220px;
+            }
+        }
+        .add-meal {
+            float: right;
+        }
     }
+}
+
+    
 </style>

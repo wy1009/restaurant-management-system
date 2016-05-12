@@ -1,6 +1,6 @@
 <template>
     <topnav></topnav>
-    <div class="main">
+    <div id="main">
         <meal-list></meal-list>
     </div>   
 </template>

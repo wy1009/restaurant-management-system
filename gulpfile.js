@@ -8,7 +8,7 @@ var gulp = require('gulp'),
 	autoprefixer = require('gulp-autoprefixer'),
 	minifycss = require('gulp-minify-css'),
 	sass = require('gulp-sass'),
-	ExtractTextPlugin = require('extract-text-webpack-plugin');
+	ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 // gulp.task('basejs', function () {
 // 	return gulp.src(['src/libs/jquery.min.js',
@@ -71,8 +71,8 @@ gulp.task('scripts', function () {
 		}))
 		.pipe(rename({ suffix: '.min' }))
 		.pipe(gulp.dest('./dist'))
-		.pipe(notify({ message: 'scripts task complete' }));
-});
+		.pipe(notify({ message: 'scripts task complete' }))
+})
 
 gulp.task('styles', function () {
 	return gulp.src('src/public/stylesheets/*.scss')
@@ -81,30 +81,30 @@ gulp.task('styles', function () {
 		.pipe(rename({ suffix: '.min' }))
 		.pipe(minifycss())
 		.pipe(gulp.dest('dist/'))
-		.pipe(notify({ message: 'styles task complete' }));
-});
+		.pipe(notify({ message: 'styles task complete' }))
+})
 
 // 使用connect启动一个web服务器
 gulp.task('server', function() {
 	connect.server({
 		livereload : true
-	});
-});
+	})
+})
 // reload server
 gulp.task('reload-dev', ['scripts'], function() {
 	gulp.src('src/**/*.*')
-		.pipe(connect.reload());
-});
+		.pipe(connect.reload())
+})
 // watch
 gulp.task('watch', function() {
 	// 监听生产环境目录变化
-	gulp.watch('src/**/*.*', ['reload-dev']);
-});
-
-gulp.task('watchWithoutServer', function () {
-	gulp.watch('src/**/*.*', ['scripts']);
+	gulp.watch('src/**/*.*', ['reload-dev'])
 })
 
-gulp.task('includebase', ['basejs', 'basecss', 'styles', 'scripts', 'server', 'watch']);
-gulp.task('default', ['scripts', 'watchWithoutServer'/*, 'styles', 'server', 'watch'*/]);
-gulp.task('ser', ['scripts', 'styles', 'server', 'watch']);
+gulp.task('watchWithoutServer', function () {
+	gulp.watch('src/**/*.*', ['scripts'])
+})
+
+gulp.task('includebase', ['basejs', 'basecss', 'styles', 'scripts', 'server', 'watch'])
+gulp.task('default', ['scripts', 'watchWithoutServer'/*, 'styles', 'server', 'watch'*/])
+gulp.task('ser', ['scripts', 'styles', 'server', 'watch'])

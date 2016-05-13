@@ -24,18 +24,18 @@ export default {
             categoryData: {
                 name: ''
             }
-        };
+        }
     },
     methods: {
         addCategoryData () {
-            var _this = this;
+            var _this = this
             _this.$http.post('/api/category/', _this.categoryData).then(function (res) {
-                console.log('success');
-                console.log(res);
+                console.log('success')
+                console.log(res)
             }, function (res) {
-                console.log('error');
-                console.log(res);
-            });
+                console.log('error')
+                console.log(res)
+            })
         }
     }
 }

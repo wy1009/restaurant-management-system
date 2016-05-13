@@ -37,18 +37,18 @@ export default {
                 category: '',
                 price: ''
             }
-        };
+        }
     },
     methods: {
         addMealData () {
-            var _this = this;
+            var _this = this
             _this.$http.post('/api/meal/', _this.mealData).then(function (res) {
                 if (res.success) {
-                    _this.$dispatch('update-meal-list');
+                    _this.$dispatch('update-meal-list')
                 } else {
-                    console.log(res.reason);
+                    console.log(res.reason)
                 }
-            });
+            })
         }
     }
 }

@@ -11,19 +11,13 @@
             </ul>
         </div>
         <div class="list-wrap">
-            <h3>
+            <h3 class="meal-title">
                 {{ nowCategory.name }}
-                <a class="add-meal" href="javascript:;" @click="dlgMealShow = !dlgMealShow">添加菜肴</a>
+                <a class="add-meal-link" href="javascript:;" @click="dlgMealShow = !dlgMealShow">添加菜肴</a>
             </h3>
             <ul class="meal-list">
                 <li v-for="meal in mealList">
-                    <div class="info">
-                        <h4 class="title">{{ meal.name }}</h4>
-                        <div class="sales">已售{{ meal.sales }}份</div>
-                        <div class="add"><a href="javascript:;"></a></div>
-                        <div class="price">{{ meal.price }}</div>
-                        <div class="num"></div>
-                    </div>
+                    <meal-list-item-in-order-page :meal="meal"></meal-list-item-in-order-page>
                 </li>
             </ul>
         </div>
@@ -33,8 +27,9 @@
 </template>
 
 <script>
-import DlgAddPutCategory from './DlgAddPutCategory.vue';
-import DlgAddPutMeal from './DlgAddPutMeal.vue';
+import DlgAddPutCategory from './DlgAddPutCategory.vue'
+import DlgAddPutMeal from './DlgAddPutMeal.vue'
+import MealListItemInOrderPage from './MealListItemInOrderPage.vue'
 
 export default {
     data () {
@@ -44,52 +39,95 @@ export default {
             mealList: [],
             dlgMealShow: false,
             dlgCategoryShow: false
-        };
+        }
     },
     ready () {
-        this.getCategoryList();
+        this.getCategoryList()
     },
     methods: {
         getCategoryList () {
-            var _this = this;
+            var _this = this
             _this.$http.get('/api/category/').then(function (res) {
-                var data = res.data;
+                var data = res.data
                 if (data.success) {
-                    _this.categoryList = data.categoryList;
-                    _this.nowCategory = _this.categoryList[0];
-                    _this.nowCategory.index = 0;
+                    _this.categoryList = data.categoryList
+                    _this.getMealList(_this.categoryList[0], 0)
                 } else {
-                    console.log(data.reason);
+                    console.log(data.reason)
                 }
-            });
+            })
         },
         getMealList (category, index) {
-            var _this = this;
-            _this.nowCategory = category;
-            _this.nowCategory.index = index;
+            var _this = this
+            _this.nowCategory = category
+            _this.nowCategory.index = index
             var filterCondition = {
                 category: category._id
-            };
+            }
             _this.$http.get('/api/meal/', filterCondition).then(function (res) {
-                var data = res.data;
+                var data = res.data
                 if (data.success) {
-                    _this.mealList = data.mealList;
+                    _this.mealList = data.mealList
                 } else {
-                    console.log(data.reason);
+                    console.log(data.reason)
                 }
-            });
+            })
         }
     },
     components: {
         DlgAddPutCategory,
-        DlgAddPutMeal
+        DlgAddPutMeal,
+        MealListItemInOrderPage
     }
-};
+}
 </script>
 
 <style lang="sass">
 .meal-list-box {
     margin-top: 10px;
     width: 720px;
+    .category-wrap {
+        background-color: #fff;
+        border: 1px solid #ebebeb;
+        padding: 21px 20px;
+        ul {
+            overflow: auto;
+            li {
+                width: 130px;
+                height: 24px;
+                line-height: 24px;
+                margin-right: 5px;
+                margin-bottom: 4px;
+                float: left;
+                a {
+                    padding: 5px;
+                    color: #535353;
+                    height: 14px;
+                    font-size: 14px;
+                    line-height: 14px;
+                }
+                &.active a {
+                    color: #fa9700;
+                }
+            }
+        }
+    }
+    .list-wrap {
+        background-color: #fff;
+        border: 1px solid #ebebeb;
+        margin-top: 10px;
+        .add-meal-link {
+            float: right;
+            font-weight: normal;
+            font-size: 16px;
+        }
+        .meal-title {
+            height: 35px;
+            font-size: 16px;
+            padding: 15px 19px 0;
+            background-color: #fafafa;
+            border-bottom: 1px solid #ebebeb;
+        }
+    }
 }
 </style>

@@ -1,7 +1,7 @@
 // 客人信息
 
-var mongoose = require('mongoose');
-var ObjectId = mongoose.Schema.Types.ObjectId;
+var mongoose = require('mongoose')
+var ObjectId = mongoose.Schema.Types.ObjectId
 
 var CustomerSchema = new mongoose.Schema({
     name: String, // 客人姓名
@@ -20,30 +20,30 @@ var CustomerSchema = new mongoose.Schema({
             default: Date.now()
         }
     }
-});
+})
 
 CustomerSchema.pre('save', function (next) {
     if (this.isNew) {
-        this.meta.createAt = this.meta.updateAt = Date.now();
+        this.meta.createAt = this.meta.updateAt = Date.now()
     } else {
-        this.meta.updateAt = Date.now();
+        this.meta.updateAt = Date.now()
     }
-    next();
-});
+    next()
+})
 
 CustomerSchema.statics = {
     fetch: function (cb) {
         return this
             .find({})
             .sort('meta.updateAt')
-            .exec(cb);
+            .exec(cb)
     },
     findById: function (id, cb) {
         return this
             .findOne({_id: id})
             .sort('meta.updateAt')
-            .exec(cb);
+            .exec(cb)
     }
-};
+}
 
-module.exports = mongoose.model('Customer', CustomerSchema);
+module.exports = mongoose.model('Customer', CustomerSchema)

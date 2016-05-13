@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import Topnav from './Topnav.vue';
+import Topnav from './Topnav.vue'
 export default {
     components: {
         Topnav
@@ -19,15 +19,21 @@ export default {
 </script>
 
 <style lang="sass">
-#wrapper {
-    ul {
-        list-style-type: none;
-    }
-    #page-wrap {
-        .inner-wrap {
-            padding: 0 20px;
-            max-width: 980px;
-            margin: 24px auto 0;
+body {
+    background-color: #f5f5f5;
+    #wrapper {
+        ul {
+            list-style-type: none;
+        }
+        a {
+            text-decoration: none;
+        }
+        #page-wrap {
+            .inner-wrap {
+                padding: 0 20px;
+                max-width: 980px;
+                margin: 24px auto 0;
+            }
         }
     }
 }

@@ -1,4 +1,4 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose')
 
 var UserSchema = new mongoose.Schema({
     name: String, // 员工姓名
@@ -18,24 +18,24 @@ var UserSchema = new mongoose.Schema({
             default: Date.now()
         }
     }
-});
+})
 
 UserSchema.pre('save', function (next) {
     if (this.isNew) {
-        this.meta.createAt = this.meta.updateAt = Date.now();
+        this.meta.createAt = this.meta.updateAt = Date.now()
     } else {
-        this.meta.updateAt = Date.now();
+        this.meta.updateAt = Date.now()
     }
-    next();
-});
+    next()
+})
 
 UserSchema.statics = {
     fetch: function (cb) {
         return this
             .find({})
             .sort('meta.update')
-            .exec(cb);
+            .exec(cb)
     }
-};
+}
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('User', UserSchema)

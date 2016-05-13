@@ -1,7 +1,7 @@
 // 订单信息
 
-var mongoose = require('mongoose');
-var ObjectId = mongoose.Types.ObjectId;
+var mongoose = require('mongoose')
+var ObjectId = mongoose.Types.ObjectId
 
 var OrderSchema = new mongoose.Schema({
     customer: {
@@ -26,25 +26,25 @@ var OrderSchema = new mongoose.Schema({
             default: Date.now()
         }
     }
-});
+})
 
 OrderSchema.pre('save', function (next) {
     if (this.isNew) {
-        this.meta.createAt = this.meta.updateAt = Date.now();
+        this.meta.createAt = this.meta.updateAt = Date.now()
     } else {
-        this.meta.updateAt = Date.now();
+        this.meta.updateAt = Date.now()
     }
-    next();
-});
+    next()
+})
 
 OrderSchema.statics = {
     fetch: function (cb) {
         return this
             .find({})
             .sort('meta.update')
-            .exec(cb);
+            .exec(cb)
     }
-};
+}
 
-module.exports = mongoose.model('Order', OrderSchema);
+module.exports = mongoose.model('Order', OrderSchema)
 

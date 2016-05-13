@@ -1,5 +1,5 @@
-import Overviews from './views/Overviews.vue';
-import Order from './views/Order.vue';
+import Overviews from './views/Overviews.vue'
+import Order from './views/Order.vue'
 
 export default function (router) {
 	router.map({
@@ -27,5 +27,5 @@ export default function (router) {
 		// 	name: 'search',
 		// 	component: require('./views/customers-search.vue')
 		// }
-	});
+	})
 }

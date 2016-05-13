@@ -26,19 +26,19 @@
 </template>
 
 <script>
-import Vue from 'vue';
+import Vue from 'vue'
 export default {
     props: ['active'],
     data () {
         return {
             isActive: {},
-        };
+        }
     },
     ready () {
-        var _this = this;
-        Vue.set(_this.isActive, _this.active, 'active');
+        var _this = this
+        Vue.set(_this.isActive, _this.active, 'active')
     }
-};
+}
 </script>
 
 <style lang="sass">

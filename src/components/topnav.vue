@@ -1,5 +1,5 @@
 <template>
-    <header>
+    <header id="page-header">
         <nav>
             <ul>
                 <li :class="isActive['0']">

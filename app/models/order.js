@@ -8,14 +8,10 @@ var OrderSchema = new mongoose.Schema({
         type: ObjectId,
         ref: 'Customer' // 建立Model时的名称
     },
-    member: {
-        type: ObjectId,
-        ref: 'Member'
-    },
-    meal: {
+    meal: [{
         type: ObjectId,
         ref: 'Meal'
-    },
+    }],
     meta: {
         createAt: {
             type: Date,

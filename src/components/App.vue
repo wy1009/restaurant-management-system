@@ -28,6 +28,12 @@ body {
         a {
             text-decoration: none;
         }
+        fl {
+            float: left;
+        }
+        fr {
+            float: right;
+        }
         #page-wrap {
             .inner-wrap {
                 padding: 0 20px;

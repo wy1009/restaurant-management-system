@@ -15,11 +15,7 @@
                 {{ nowCategory.name }}
                 <a class="add-meal-link" href="javascript:;" @click="dlgMealShow = !dlgMealShow">添加菜肴</a>
             </h3>
-            <ul class="meal-list">
-                <li v-for="meal in mealList">
-                    <meal-list-item-in-order-page :meal="meal"></meal-list-item-in-order-page>
-                </li>
-            </ul>
+            <meal-list-in-order-page :meal-list="mealList"></meal-list-in-order-page>
         </div>
         <dlg-add-put-meal v-show="dlgMealShow" :category-list="categoryList"></dlg-add-put-meal>
         <dlg-add-put-category v-show="dlgCategoryShow"></dlg-add-put-category>
@@ -29,7 +25,7 @@
 <script>
 import DlgAddPutCategory from './DlgAddPutCategory.vue'
 import DlgAddPutMeal from './DlgAddPutMeal.vue'
-import MealListItemInOrderPage from './MealListItemInOrderPage.vue'
+import MealListInOrderPage from './MealListInOrderPage.vue'
 
 export default {
     data () {
@@ -77,7 +73,7 @@ export default {
     components: {
         DlgAddPutCategory,
         DlgAddPutMeal,
-        MealListItemInOrderPage
+        MealListInOrderPage
     }
 }
 </script>
@@ -126,7 +122,20 @@ export default {
             font-size: 16px;
             padding: 15px 19px 0;
             background-color: #fafafa;
-            border-bottom: 1px solid #ebebeb;
+        }
+        .meal-list {
+            .info {
+                height: 69px;
+                cursor: pointer;
+                border-top: 1px solid #ebebeb;
+                .title {
+                    font-size: 14px;
+                    color: #313131;
+                    font-weight: normal;
+                    padding-left: 30px;
+                    padding-top: 25px;
+                }
+            }
         }
     }
 }

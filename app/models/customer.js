@@ -6,7 +6,7 @@ var ObjectId = mongoose.Schema.Types.ObjectId
 var CustomerSchema = new mongoose.Schema({
     name: String, // 客人姓名
     phone: String, // 客人电话
-    member: { // 会员信息
+    member: { // 会员等级
         type: ObjectId,
         ref: 'Member'
     },

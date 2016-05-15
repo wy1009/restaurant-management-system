@@ -1,8 +1,5 @@
 <template>
-    <div class="main-l">
-        <meal-list></meal-list>
-    </div>
-    <div class="side"></div>
+    <meal-list></meal-list>
 </template>
 
 <script>

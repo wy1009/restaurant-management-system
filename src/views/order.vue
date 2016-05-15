@@ -1,13 +1,15 @@
 <template>
-    <meal-list></meal-list>
+    <meal>
+        <meal-list-in-order-page slot="meal-list" :meal-list="mealList"></meal-list-in-order-page>
+    </meal>
 </template>
 
 <script>
-import MealList from '../components/MealList.vue';
+import Meal from '../components/Meal.vue';
 
 export default {
     components: {
-        MealList
+        Meal
     }
 };
 </script>

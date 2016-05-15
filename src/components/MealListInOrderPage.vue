@@ -4,9 +4,12 @@
             <div class="info">
                 <h4 class="title">{{ meal.name }}</h4>
                 <div class="sales">已售{{ meal.sales }}份</div>
-                <div class="add"><a href="javascript:;"></a></div>
+                <div class="operation">
+                    <i class="minusfrcart"></i>
+                    <i class="select-count"></i>
+                    <i class="addtocart"></i>
+                </div>
                 <div class="price">{{ meal.price }}</div>
-                <div class="num"></div>
             </div>
         </li>
     </ul>

@@ -15,7 +15,7 @@
                 {{ nowCategory.name }}
                 <a class="add-meal-link" href="javascript:;" @click="dlgMealShow = !dlgMealShow">添加菜肴</a>
             </h3>
-            <slot name="meal-list"></slot>
+            <meal-list-in-order-page :meal-list="mealList"></meal-list-in-order-page>
         </div>
         <dlg-add-put-meal v-show="dlgMealShow" :category-list="categoryList"></dlg-add-put-meal>
         <dlg-add-put-category v-show="dlgCategoryShow"></dlg-add-put-category>

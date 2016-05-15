@@ -3,7 +3,8 @@ var mongoose = require('mongoose')
 var UserSchema = new mongoose.Schema({
     name: String, // 员工姓名
     // 0: 普通员工
-    // 50: 管理员
+    // 1: 管理员
+    // 50: 超级管理员
     role: { // 员工权限
         type: Number,
         default: 0

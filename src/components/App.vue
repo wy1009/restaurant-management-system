@@ -28,10 +28,10 @@ body {
         a {
             text-decoration: none;
         }
-        fl {
+        .fl {
             float: left;
         }
-        fr {
+        .fr {
             float: right;
         }
         #page-wrap {

@@ -1,7 +1,5 @@
 <template>
-    <meal>
-        <meal-list-in-order-page slot="meal-list" :meal-list="mealList"></meal-list-in-order-page>
-    </meal>
+    <meal></meal>
 </template>
 
 <script>

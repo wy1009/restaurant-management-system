@@ -21,6 +21,7 @@ export default {
 <style lang="sass">
 body {
     background-color: #f5f5f5;
+    font: 12px/1.4 Helvetica,宋体,Arial,sans-serif;
     #wrapper {
         ul {
             list-style-type: none;

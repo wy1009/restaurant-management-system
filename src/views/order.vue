@@ -200,17 +200,17 @@ export default {
                         box-sizing: border-box;
                     }
                 }
-                .button-wrapper {
-                    margin-top: 18px;
-                    button {
-                        border: 0;
-                        background: #ff2d4b;
-                        width: 100%;
-                        line-height: 41px;
-                        color: #fff;
-                        font-size: 15px;
-                        border-radius: 3px;
-                    }
+            }
+            .button-wrapper {
+                margin-top: 18px;
+                button {
+                    border: 0;
+                    background: #ff2d4b;
+                    width: 100%;
+                    line-height: 41px;
+                    color: #fff;
+                    font-size: 15px;
+                    border-radius: 3px;
                 }
             }
         }

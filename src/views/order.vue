@@ -1,5 +1,5 @@
 <template>
-    <meal></meal>
+    <meal type="orderpage"></meal>
 </template>
 
 <script>

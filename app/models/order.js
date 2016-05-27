@@ -9,9 +9,13 @@ var OrderSchema = new mongoose.Schema({
         ref: 'Customer' // 建立Model时的名称
     },
     meal: [{
-        type: ObjectId,
-        ref: 'Meal'
+        mealId: {
+            type: ObjectId,
+            ref: 'Meal'
+        },
+        count: Number
     }],
+    note: String,
     meta: {
         createAt: {
             type: Date,

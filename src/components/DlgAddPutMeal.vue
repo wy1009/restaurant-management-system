@@ -1,9 +1,9 @@
 <template>
     <div class="dialog-box">
-        <div class="add-meal-dialog">
+        <div class="add-put-meal-dialog">
             <div class="header">菜肴信息</div>
             <div class="content">
-                <div>
+                <div class="group-inputs">
                     <div class="input-wrapper">
                         <input type="text" placeholder="名称" v-model="mealData.name">
                     </div>

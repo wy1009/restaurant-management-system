@@ -7,18 +7,23 @@
                         <h4 class="title fl">{{ meal.name }}</h4>
                         <div class="sales fr">已售{{ meal.sales }}份</div>
                         <div class="operation fr">
-                            <i class="minusfrcart">-</i>
-                            <i class="select-count"></i>
-                            <i class="addtocart">+</i>
+                            <!-- <template v-show="orderObj.meal[meal._id]"> -->
+                                <i class="minusfrcart" @click="minusFromCart(meal._id)">-</i>
+                                <i class="select-count"></i>
+                            <!-- </template> -->
+                            <i class="addtocart" @click="addToCart(meal._id)">+</i>
                         </div>
-                        <div class="price fr">{{ meal.price }}</div>
+                        <div class="price fr">¥{{ meal.price }}/份</div>
                     </div>
                 </li>
             </ul>
         </div>
         <div class="menu-cart">
             <div class="cc-warp">
-                <div class="title">点单列表</div>
+                <div class="title">
+                    <span class="txt">点单列表</span>
+                    <span class="customer-info fr">添加顾客信息</span>
+                </div>
                 <div class="cart-panel">
                     <table>
                         <thead>
@@ -29,10 +34,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="item-name"></td>
-                                <td class="item-count"></td>
-                                <td class="item-price"></td>
+                            <tr v-for="meal of orderObj.meal">
+                                <td class="item-name">{{ meal.name }}</td>
+                                <td class="item-count">{{ meal.count }}</td>
+                                <td class="item-price">{{ meal.price }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -40,19 +45,43 @@
             </div>
             <div class="cart-bar"></div>
         </div>
+        <dlg-add-select-customer v-show="dlgCustomerShow" @get-customer-info=""></dlg-add-select-customer>
     </div>
 </template>
 
 <script>
+import DlgAddSelectCustomer from './DlgAddSelectCustomer.vue'
+
 export default {
     props: ['mealList'],
     data () {
         return {
             orderObj: {
                 customer: null,
-                meal: []
-            }
+                meal: {}
+            },
+            dlgCustomerShow: false
         }
+    },
+    methods: {
+        addToCart (mealId) {
+            var _this = this
+            if (_this.orderObj.meal[mealId]) {
+                _this.orderObj.meal[mealId].count ++
+            } else {
+                _this.orderObj.meal[mealId] = {
+                    mealId: mealId,
+                    count: 1
+                }
+            }
+            console.log(_this.orderObj.meal)
+        },
+        minusFromCart (mealId) {
+            var _this = this
+        }
+    },
+    components: {
+        DlgAddSelectCustomer
     }
 }
 </script>
@@ -83,14 +112,22 @@ export default {
                 text-align: center;
                 color: #ff2d4b;
                 font-size: 26px;
+                cursor: pointer;
             }
+        }
+        .price {
+            line-height: 69px;
+            margin-right: 15px;
+            font-size: 14px;
+            color: #313131;
+            font-weight: bold;
         }
     }
     .menu-cart {
         position: fixed;
         width: 280px;
         bottom: 0px;
-        margin-left: 720px;
+        margin-left: 736px;
         box-shadow: 0 -1px 10px 2px #e4e4e4;
         .cc-warp {
             .title {
@@ -129,7 +166,7 @@ export default {
                     .item-price {
                         width: 50px;
                         text-align: right;
-                        padding-right: 10px;
+                        padding-right: 12px;
                     }
                 }
             }

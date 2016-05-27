@@ -43,7 +43,7 @@ export default {
 
 <style lang="sass">
 header {
-    background: #333;
+    background: #ff2d4b;
     nav {
         max-width: 980px;
         margin: 0 auto;
@@ -55,14 +55,14 @@ header {
             position: relative;
             a {
                 text-decoration: none;
-                color: #999;
+                color: #fff;
                 padding: 0 8px;
                 font-size: 14px;
             }
             +li:before {
                 content: '|';
                 padding: 0 .3em 0 .1em;
-                color: #999;
+                color: #fff;
             }
             &.active {
                 &:after {

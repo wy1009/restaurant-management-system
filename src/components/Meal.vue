@@ -5,7 +5,7 @@
                 <li v-for="category in categoryList" :class="nowCategory.index === $index ? 'active' : ''">
                     <a href="javascript:;" @click="getMealList(category, $index);">{{ category.name }}</a>
                 </li>
-                <li>
+                <li v-if="type == 'mealpage'">
                     <a href="javascript:;" @click="dlgCategoryShow = !dlgCategoryShow">添加菜肴类别</a>
                 </li>
             </ul>
@@ -13,9 +13,10 @@
         <div class="list-wrap">
             <h3 class="meal-title">
                 {{ nowCategory.name }}
-                <a class="add-meal-link" href="javascript:;" @click="dlgMealShow = !dlgMealShow">添加菜肴</a>
+                <a v-if="type == 'mealpage'" class="add-meal-link" href="javascript:;" @click="dlgMealShow = !dlgMealShow">添加菜肴</a>
             </h3>
-            <meal-list-in-order-page :meal-list="mealList"></meal-list-in-order-page>
+            <meal-list-in-order-page v-if="type == 'orderpage'" :meal-list="mealList"></meal-list-in-order-page>
+            <meal-list-in-meal-page v-if="type == 'mealpage'" :meal-list="mealList"></meal-list-in-order-page>
         </div>
         <dlg-add-put-meal v-show="dlgMealShow" :category-list="categoryList"></dlg-add-put-meal>
         <dlg-add-put-category v-show="dlgCategoryShow"></dlg-add-put-category>
@@ -28,6 +29,7 @@ import DlgAddPutMeal from './DlgAddPutMeal.vue'
 import MealListInOrderPage from './MealListInOrderPage.vue'
 
 export default {
+    props: ['type'],
     data () {
         return {
             nowCategory: {},

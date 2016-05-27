@@ -18,6 +18,40 @@
                 </li>
             </ul>
         </div>
+        <div class="customer-info-box">
+            <div class="header">顾客信息</div>
+            <div class="main-body">
+                <div class="tab-navs">
+                    <div class="navs-slider">
+                        <a href="javascript:;">新顾客</a>
+                        <a href="javascript:;">老顾客</a>
+                    </div>
+                </div>
+                <div class="add-customer-box">
+                    <div class="group-inputs">
+                        <div class="input-wrapper">
+                            <input type="text" placeholder="姓名" v-model="customer.name">
+                        </div>
+                        <div class="input-wrapper">
+                            <input type="text" placeholder="电话" v-model="customer.phone">
+                        </div>
+                    </div>
+                    <div class="button-wrapper">
+                        <button>确定</button>
+                    </div>
+                </div>
+                <div class="select-customer-box">
+                    <div class="group-inputs">
+                        <div class="input-wrapper">
+                            <input type="text" placeholder="请输入姓名或电话进行查找">
+                        </div>
+                    </div>
+                    <div class="button-wrapper">
+                        <button>确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="menu-cart">
             <div class="cc-warp">
                 <div class="title">
@@ -45,7 +79,7 @@
             </div>
             <div class="cart-bar"></div>
         </div>
-        <dlg-add-select-customer v-show="dlgCustomerShow" @get-customer-info=""></dlg-add-select-customer>
+        <!-- <dlg-add-select-customer v-show="dlgCustomerShow" @get-customer-info=""></dlg-add-select-customer> -->
     </div>
 </template>
 

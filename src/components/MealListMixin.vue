@@ -58,7 +58,7 @@ export default {
 <style lang="sass">
 .meal-list-box {
     margin-top: 10px;
-    width: 720px;
+    width: 690px;
     float: left;
     .category-wrap {
         background-color: #fff;
@@ -67,7 +67,7 @@ export default {
         ul {
             overflow: auto;
             li {
-                width: 130px;
+                width: 124px;
                 height: 24px;
                 line-height: 24px;
                 margin-right: 5px;
@@ -95,12 +95,6 @@ export default {
             font-weight: normal;
             font-size: 16px;
         }
-        .meal-title {
-            height: 35px;
-            font-size: 16px;
-            padding: 15px 19px 0;
-            background-color: #fafafa;
-        }
         .meal-list {
             .info {
                 height: 69px;
@@ -116,5 +110,11 @@ export default {
             }
         }
     }
+}
+h3.title {
+    height: 35px;
+    font-size: 16px;
+    padding: 15px 19px 0;
+    background-color: #fafafa;
 }
 </style>

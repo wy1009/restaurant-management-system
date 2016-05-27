@@ -4,7 +4,6 @@ import DlgAddPutMeal from './DlgAddPutMeal.vue'
 import MealListInOrderPage from './MealListInOrderPage.vue'
 
 export default {
-    template: 'dagdsga',
     props: ['type'],
     data () {
         return {
@@ -60,6 +59,7 @@ export default {
 .meal-list-box {
     margin-top: 10px;
     width: 720px;
+    float: left;
     .category-wrap {
         background-color: #fff;
         border: 1px solid #ebebeb;

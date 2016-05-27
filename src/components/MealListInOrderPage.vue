@@ -1,86 +1,106 @@
 <template>
-    <div class="meal-list-in-order-page">
-        <div class="meal-list">
+<div class="order-wrapper">
+    <div class="meal-list-box">
+        <div class="category-wrap">
             <ul>
-                <li v-for="meal in mealList">
-                    <div class="info">
-                        <h4 class="title fl">{{ meal.name }}</h4>
-                        <div class="sales fr">已售{{ meal.sales }}份</div>
-                        <div class="operation fr">
-                            <!-- <template v-show="orderObj.meal[meal._id]"> -->
-                                <i class="minusfrcart" @click="minusFromCart(meal._id)">-</i>
-                                <i class="select-count"></i>
-                            <!-- </template> -->
-                            <i class="addtocart" @click="addToCart(meal._id)">+</i>
-                        </div>
-                        <div class="price fr">¥{{ meal.price }}/份</div>
-                    </div>
+                <li v-for="category in categoryList" :class="nowCategory.index === $index ? 'active' : ''">
+                    <a href="javascript:;" @click="getMealList(category, $index);">{{ category.name }}</a>
+                </li>
+                <li v-if="type == 'mealpage'">
+                    <a href="javascript:;" @click="dlgCategoryShow = !dlgCategoryShow">添加菜肴类别</a>
                 </li>
             </ul>
         </div>
-        <div class="customer-info-box">
-            <div class="header">顾客信息</div>
-            <div class="main-body">
-                <div class="tab-navs">
-                    <div class="navs-slider">
-                        <a href="javascript:;">新顾客</a>
-                        <a href="javascript:;">老顾客</a>
-                    </div>
-                </div>
-                <div class="add-customer-box">
-                    <div class="group-inputs">
-                        <div class="input-wrapper">
-                            <input type="text" placeholder="姓名" v-model="customer.name">
+        <div class="list-wrap">
+            <h3 class="meal-title">
+                {{ nowCategory.name }}
+                <a v-if="type == 'mealpage'" class="add-meal-link" href="javascript:;" @click="dlgMealShow = !dlgMealShow">添加菜肴</a>
+            </h3>
+            <div class="meal-list">
+                <ul>
+                    <li v-for="meal in mealList">
+                        <div class="info">
+                            <h4 class="title fl">{{ meal.name }}</h4>
+                            <div class="sales fr">已售{{ meal.sales }}份</div>
+                            <div class="operation fr">
+                                <!-- <template v-show="orderObj.meal[meal._id]"> -->
+                                    <i class="minusfrcart" @click="minusFromCart(meal._id)">-</i>
+                                    <i class="select-count"></i>
+                                <!-- </template> -->
+                                <i class="addtocart" @click="addToCart(meal._id)">+</i>
+                            </div>
+                            <div class="price fr">¥{{ meal.price }}/份</div>
                         </div>
-                        <div class="input-wrapper">
-                            <input type="text" placeholder="电话" v-model="customer.phone">
-                        </div>
-                    </div>
-                    <div class="button-wrapper">
-                        <button>确定</button>
-                    </div>
-                </div>
-                <div class="select-customer-box">
-                    <div class="group-inputs">
-                        <div class="input-wrapper">
-                            <input type="text" placeholder="请输入姓名或电话进行查找">
-                        </div>
-                    </div>
-                    <div class="button-wrapper">
-                        <button>确定</button>
-                    </div>
-                </div>
+                    </li>
+                </ul>
             </div>
+            <!-- <dlg-add-select-customer v-show="dlgCustomerShow" @get-customer-info=""></dlg-add-select-customer> -->
         </div>
-        <div class="menu-cart">
-            <div class="cc-warp">
-                <div class="title">
-                    <span class="txt">点单列表</span>
-                    <span class="customer-info fr">添加顾客信息</span>
-                </div>
-                <div class="cart-panel">
-                    <table>
-                        <thead>
-                            <tr>
-                                <td class="item-name">菜品</td>
-                                <td class="item-count">份数</td>
-                                <td class="item-price">单价</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="meal of orderObj.meal">
-                                <td class="item-name">{{ meal.name }}</td>
-                                <td class="item-count">{{ meal.count }}</td>
-                                <td class="item-price">{{ meal.price }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="cart-bar"></div>
-        </div>
-        <!-- <dlg-add-select-customer v-show="dlgCustomerShow" @get-customer-info=""></dlg-add-select-customer> -->
+        <!-- <dlg-add-put-meal v-show="dlgMealShow" :category-list="categoryList"></dlg-add-put-meal> -->
+        <!-- <dlg-add-put-category v-show="dlgCategoryShow"></dlg-add-put-category> -->
     </div>
+    <div class="customer-info-box">
+        <div class="header">顾客信息</div>
+        <div class="main-body">
+            <div class="tab-navs">
+                <div class="navs-slider">
+                    <a href="javascript:;">新顾客</a>
+                    <a href="javascript:;">老顾客</a>
+                </div>
+            </div>
+            <div class="add-customer-box">
+                <div class="group-inputs">
+                    <div class="input-wrapper">
+                        <input type="text" placeholder="姓名" v-model="customer.name">
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="text" placeholder="电话" v-model="customer.phone">
+                    </div>
+                </div>
+                <div class="button-wrapper">
+                    <button>确定</button>
+                </div>
+            </div>
+            <div class="select-customer-box">
+                <div class="group-inputs">
+                    <div class="input-wrapper">
+                        <input type="text" placeholder="请输入姓名或电话进行查找">
+                    </div>
+                </div>
+                <div class="button-wrapper">
+                    <button>确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="menu-cart">
+        <div class="cc-warp">
+            <div class="title">
+                <span class="txt">点单列表</span>
+                <span class="customer-info fr">添加顾客信息</span>
+            </div>
+            <div class="cart-panel">
+                <table>
+                    <thead>
+                        <tr>
+                            <td class="item-name">菜品</td>
+                            <td class="item-count">份数</td>
+                            <td class="item-price">单价</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="meal of orderObj.meal">
+                            <td class="item-name">{{ meal.name }}</td>
+                            <td class="item-count">{{ meal.count }}</td>
+                            <td class="item-price">{{ meal.price }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="cart-bar"></div>
+    </div>
+</div>
 </template>
 
 <script>

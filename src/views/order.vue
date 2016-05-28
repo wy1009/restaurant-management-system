@@ -40,34 +40,11 @@
             <h3 class="title">顾客信息</h3>
             <div class="main-body">
                 <div class="tab-navs">
-                    <div class="navs-slider">
-                        <a href="javascript:;">新顾客</a>
-                        <a href="javascript:;">老顾客</a>
-                    </div>
+                    <a href="javascript:;">新顾客</a>
+                    <a href="javascript:;">老顾客</a>
                 </div>
-                <div class="add-customer-box">
-                    <div class="group-inputs">
-                        <div class="input-wrapper">
-                            <input type="text" placeholder="姓名" v-model="orderObj.customer.name">
-                        </div>
-                        <div class="input-wrapper">
-                            <input type="text" placeholder="电话" v-model="orderObj.customer.phone">
-                        </div>
-                    </div>
-                    <div class="button-wrapper">
-                        <button>确定</button>
-                    </div>
-                </div>
-                <!-- <div class="select-customer-box">
-                    <div class="group-inputs">
-                        <div class="input-wrapper">
-                            <input type="text" placeholder="请输入姓名或电话进行查找">
-                        </div>
-                    </div>
-                    <div class="button-wrapper">
-                        <button>确定</button>
-                    </div>
-                </div> -->
+                <customer-add></customer-add>
+                <!-- <customer-select></customer-select> -->
             </div>
         </div>
         <div class="menu-cart">
@@ -102,6 +79,7 @@
 
 <script>
 import MealListMixin from '../components/MealListMixin.vue'
+import CustomerAdd from '../components/CustomerAdd.vue'
 
 export default {
     mixins: [MealListMixin],
@@ -109,7 +87,7 @@ export default {
         return {
             mealList: [],
             orderObj: {
-                customer: {},
+                customer: null,
                 meal: {}
             },
             dlgCustomerShow: false
@@ -131,6 +109,9 @@ export default {
         minusFromCart (mealId) {
             var _this = this
         }
+    },
+    components: {
+        CustomerAdd
     }
 }
 </script>
@@ -177,33 +158,33 @@ export default {
         width: 280px;
         margin-top: 10px;
         background: #fff;
-        text-align: center;
-        .tab-navs {
-            margin-bottom: 10px;
-            display: inline-block;
-            font-size: 18px;
-            a {
-                width: 4em;
-                height: 35px;
-                float: left;
-            }
-        }
-        .add-customer-box {
-            .group-inputs {
-                border-top: 1px solid #ebebeb;
-                .input-wrapper {
-                    border-bottom: 1px solid #ebebeb;
-                    input {
-                        border: 0;
-                        padding: 14px 10px;
-                        width: 100%;
-                        box-sizing: border-box;
-                    }
+        .main-body {
+            text-align: center;
+            .tab-navs {
+                margin: 6px 0;
+                display: inline-block;
+                font-size: 18px;
+                a {
+                    width: 4em;
+                    height: 35px;
+                    float: left;
+                    color: #ff2d4b;
+                    line-height: 35px;
                 }
             }
-            .button-wrapper {
-                margin-top: 18px;
-                button {
+            .add-customer-box {
+                .group-inputs {
+                    .input-wrapper {
+                        border-top: 1px solid #ebebeb;
+                        input {
+                            border: 0;
+                            padding: 14px 10px;
+                            width: 100%;
+                            box-sizing: border-box;
+                        }
+                    }
+                }
+                .button-wrapper button {
                     border: 0;
                     background: #ff2d4b;
                     width: 100%;

@@ -29,6 +29,9 @@ body {
         a {
             text-decoration: none;
         }
+        input {
+            outline: none;
+        }
         .fl {
             float: left;
         }

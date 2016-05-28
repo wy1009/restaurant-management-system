@@ -81,7 +81,7 @@ export default {
                     line-height: 14px;
                 }
                 &.active a {
-                    color: #fa9700;
+                    color: #ff2d4b;
                 }
             }
         }

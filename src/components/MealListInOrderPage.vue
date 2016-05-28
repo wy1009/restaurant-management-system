@@ -104,7 +104,7 @@
 </template>
 
 <script>
-import DlgAddSelectCustomer from './DlgAddSelectCustomer.vue'
+import DlgCustomerAddSelect from './DlgCustomerAddSelect.vue'
 
 export default {
     props: ['mealList'],
@@ -135,7 +135,7 @@ export default {
         }
     },
     components: {
-        DlgAddSelectCustomer
+        DlgCustomerAddSelect
     }
 }
 </script>

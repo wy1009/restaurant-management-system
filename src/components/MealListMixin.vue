@@ -1,6 +1,6 @@
 <script>
-import DlgAddPutCategory from './DlgAddPutCategory.vue'
-import DlgAddPutMeal from './DlgAddPutMeal.vue'
+import DlgCategoryAddPut from './DlgCategoryAddPut.vue'
+import DlgMealAddPut from './DlgMealAddPut.vue'
 import MealListInOrderPage from './MealListInOrderPage.vue'
 
 export default {
@@ -48,8 +48,8 @@ export default {
         }
     },
     components: {
-        DlgAddPutCategory,
-        DlgAddPutMeal,
+        DlgCategoryAddPut,
+        DlgMealAddPut,
         MealListInOrderPage
     }
 }

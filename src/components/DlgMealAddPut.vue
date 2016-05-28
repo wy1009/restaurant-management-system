@@ -5,10 +5,10 @@
             <div class="content">
                 <div class="group-inputs">
                     <div class="input-wrapper">
-                        <input type="text" placeholder="名称" v-model="mealData.name">
+                        <input type="text" placeholder="名称" v-model="mealObj.name">
                     </div>
                     <div class="input-wrapper">
-                        <select v-model="mealData['category']">
+                        <select v-model="mealObj['category']">
                             <option value="">请选择</option>
                             <template v-for="category in categoryList">
                                 <option value="{{ category._id }}">{{ category.name }}</option>
@@ -16,13 +16,13 @@
                         </select>
                     </div>
                     <div class="input-wrapper">
-                        <input type="text" placeholder="价格" v-model="mealData['price']">
+                        <input type="text" placeholder="价格" v-model="mealObj['price']">
                     </div>
                 </div>
             </div>
             <div class="footer">
                 <input type="button" value="取消">
-                <input type="button" value="确定" @click="addMealData">
+                <input type="button" value="确定" @click="addMeal">
             </div>
         </div>
     </div>
@@ -32,7 +32,7 @@ export default {
     props: ['categoryList'],
     data () {
         return {
-            mealData: {
+            mealObj: {
                 name: '',
                 category: '',
                 price: ''
@@ -40,9 +40,9 @@ export default {
         }
     },
     methods: {
-        addMealData () {
+        addMeal () {
             var _this = this
-            _this.$http.post('/api/meal/', _this.mealData).then(function (res) {
+            _this.$http.post('/api/meal/', _this.mealObj).then(function (res) {
                 if (res.success) {
                     _this.$dispatch('update-meal-list')
                 } else {

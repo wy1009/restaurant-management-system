@@ -36,7 +36,7 @@
                 </div>
             </div>
         </div>
-        <div class="customer-info-box">
+        <div class="customer-info-box list-wrap">
             <h3 class="title">顾客信息</h3>
             <div class="main-body">
                 <div class="tab-navs">
@@ -157,7 +157,6 @@ export default {
         float: right;
         width: 280px;
         margin-top: 10px;
-        background: #fff;
         .main-body {
             text-align: center;
             .tab-navs {

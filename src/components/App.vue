@@ -38,6 +38,16 @@ body {
         .fr {
             float: right;
         }
+        h3.title {
+            height: 35px;
+            font-size: 16px;
+            padding: 15px 19px 0;
+            background-color: #fafafa;
+        }
+        .list-wrap {
+            background-color: #fff;
+            border: 1px solid #ebebeb;
+        }
         #page-wrap {
             .inner-wrap {
                 padding: 0 20px;

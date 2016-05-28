@@ -13,10 +13,10 @@
                     <div class="add-customer-box">
                         <div class="group-inputs">
                             <div class="input-wrapper">
-                                <input type="text" placeholder="姓名" v-model="customer.name">
+                                <input type="text" placeholder="姓名" v-model="customerObj.name">
                             </div>
                             <div class="input-wrapper">
-                                <input type="text" placeholder="电话" v-model="customer.phone">
+                                <input type="text" placeholder="电话" v-model="customerObj.phone">
                             </div>
                         </div>
                     </div>
@@ -41,13 +41,13 @@
     export default {
         data () {
             return {
-                customer: {}
+                customerObj: {}
             }
         },
         methods: {
             dispatchCustomerInfo () {
-                this.$dispatch('get-customer-info', this.customer)
-                this.customer = {}
+                this.$dispatch('get-customer-info', this.customerObj)
+                this.customerObj = {}
             }
         }
     }

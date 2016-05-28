@@ -2,10 +2,8 @@ var Meal = require('../models/meal')
 
 exports.save = function (req, res) {
     var mealObj = req.body
-    var id = req.body.id
-    
     var _meal
-    if (id) {
+    if (mealObj.id) {
 
     } else {
         _meal = new Meal(mealObj)

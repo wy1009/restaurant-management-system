@@ -87,8 +87,6 @@ export default {
         }
     }
     .list-wrap {
-        background-color: #fff;
-        border: 1px solid #ebebeb;
         margin-top: 10px;
         .add-meal-link {
             float: right;
@@ -110,11 +108,5 @@ export default {
             }
         }
     }
-}
-h3.title {
-    height: 35px;
-    font-size: 16px;
-    padding: 15px 19px 0;
-    background-color: #fafafa;
 }
 </style>

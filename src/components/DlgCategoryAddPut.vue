@@ -5,13 +5,13 @@
             <div class="content">
                 <div class="group-inputs">
                     <div class="input-wrapper">
-                        <input type="text" placeholder="名称" v-model="categoryData.name">
+                        <input type="text" placeholder="名称" v-model="categoryObj.name">
                     </div>
                 </div>
             </div>
             <div class="footer">
                 <input type="button" value="取消">
-                <input type="button" value="确定" @click="addCategoryData">
+                <input type="button" value="确定" @click="addCategory">
             </div>
         </div>
     </div>
@@ -21,15 +21,15 @@
 export default {
     data () {
         return {
-            categoryData: {
+            categoryObj: {
                 name: ''
             }
         }
     },
     methods: {
-        addCategoryData () {
+        addCategory () {
             var _this = this
-            _this.$http.post('/api/category/', _this.categoryData).then(function (res) {
+            _this.$http.post('/api/category/', _this.categoryObj).then(function (res) {
                 console.log('success')
                 console.log(res)
             }, function (res) {

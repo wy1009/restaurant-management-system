@@ -1,7 +1,7 @@
 <template>
     <div class="dialog-box">
-        <div class="add-put-member-dialog ui list-wrap">
-            <div class="header"><slot></slot>会员等级<i class="close-btn"></i></div>
+        <div class="add-put-member-dialog">
+            <div class="header"><slot></slot>会员等级<i class="close-btn">+</i></div>
             <div class="content">
                 <div class="group-inputs">
                     <div class="input-wrapper">
@@ -48,17 +48,25 @@ export default {
         left: 50%;
         margin-top: -90px;
         margin-left: -140px;
+        background: #fff;
         .header {
-            height: 18px;
+            height: 50px;
             font-size: 16px;
-            padding: 15px 0 13px 14px;
+            padding-left: 14px;
             background: #ebebeb;
             font-weight: bold;
+            line-height: 50px;
             color: #313131;
             .close-btn {
-                background: url(../public/images/close.png);
-                width: 16px;
-                height: 16px;
+                display: inline-block;
+                float: right;
+                width: 26px;
+                height: 26px;
+                font-size: 26px;
+                color: #ff2d4b;
+                transform: rotate(45deg);
+                font-style: normal;
+                cursor: pointer;
             }
         }
         .content {

@@ -50,6 +50,13 @@ body {
                 font-size: 16px;
                 padding: 15px 19px 0;
                 background-color: #fafafa;
+                span {
+                    font-size: 14px;
+                    font-weight: normal;
+                    color: #ff2d4b;
+                    cursor: pointer;
+                    float: right;
+                }
             }
             &.list-wrap {
                 background-color: #fff;

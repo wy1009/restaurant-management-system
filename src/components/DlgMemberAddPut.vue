@@ -11,9 +11,9 @@
                         <input type="text" placeholder="折扣（输入整数或小数）" v-model="memberObj.discount">
                     </div>
                 </div>
-            </div>
-            <div class="footer">
-                <button class="ui button" @click="addMember">确定</button>
+                <div class="button-wrapper">
+                    <button class="ui button" @click="addMember">确定</button>
+                </div>
             </div>
         </div>
     </div>
@@ -35,7 +35,7 @@ export default {
             })
         },
         dispatchCloseDlgMsg () {
-            this.$dispatch('close-dlg', false)
+            this.$dispatch('close-member-dlg', false)
         }
     }
 }

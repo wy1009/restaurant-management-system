@@ -6,7 +6,7 @@
         <div class="member-box ui list-wrap">
             <h3 class="ui title">会员等级列表<span @click="toggleMemberDlg">添加会员等级</span></h3>
         </div>
-        <dlg-member-add-put @close-dlg="toggleMemberDlg" v-show="dlgMemberShow" transition="expand">添加</dlg-member-add-put>
+        <dlg-member-add-put @close-member-dlg="toggleMemberDlg" v-show="dlgMemberShow" transition="expand">添加</dlg-member-add-put>
     </div>
 </template>
 
@@ -16,12 +16,16 @@ import DlgMemberAddPut from '../components/DlgMemberAddPut.vue'
 export default {
     data () {
         return {
-            dlgMemberShow: false
+            dlgMemberShow: false,
+            dlgCustomerShow: false
         }
     },
     methods: {
         toggleMemberDlg () {
             this.dlgMemberShow = !this.dlgMemberShow
+        },
+        toggleCustomerDlg () {
+            this.dlgCustomerShow = !this.dlgCustomerShow
         }
     },
     components: {

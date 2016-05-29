@@ -15,4 +15,5 @@ module.exports = function (app) {
     app.post('/api/customer/', Customer.save)
     // member
     app.get('/api/member/', Member.fetch)
+    app.post('/api/member', Member.save)
 }

@@ -32,6 +32,12 @@ body {
         input {
             outline: none;
         }
+        .expand-transition {
+            transition: all .3s ease;
+        }
+        .expand-enter, .expand-leave {
+            opacity: 0;
+        }
         .fl {
             float: left;
         }
@@ -73,6 +79,42 @@ body {
             top: 0;
             bottom: 0;
             background-color: rgba(56,62,68,.9);
+            .dialog {
+                background: #fff;
+                border-radius: 3px;
+                .header {
+                    height: 50px;
+                    font-size: 16px;
+                    padding-left: 14px;
+                    background: #ebebeb;
+                    font-weight: bold;
+                    line-height: 50px;
+                    color: #313131;
+                    border-radius: 3px;
+                    .close-btn {
+                        display: inline-block;
+                        float: right;
+                        width: 26px;
+                        height: 26px;
+                        font-size: 26px;
+                        color: #ff2d4b;
+                        transform: rotate(45deg);
+                        font-style: normal;
+                        cursor: pointer;
+                    }
+                }
+                .content {
+                    .input-wrapper {
+                        border-top: 1px solid #ebebeb;
+                        input {
+                            border: 0;
+                            padding: 14px 10px;
+                            width: 100%;
+                            box-sizing: border-box;
+                        }
+                    }
+                }
+            }
         }
     }
 }

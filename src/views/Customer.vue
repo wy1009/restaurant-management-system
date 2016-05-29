@@ -1,12 +1,12 @@
 <template>
     <div class="customer-wrapper">
-        <div class="customer-list-box list-wrap">
+        <div class="customer-list-box ui list-wrap">
             <h3 class="ui title">会员列表</h3>
         </div>
-        <div class="member-box list-wrap">
-            <h3 class="title">会员等级列表<span class="fr">添加会员等级</span></h3>
+        <div class="member-box ui list-wrap">
+            <h3 class="ui title">会员等级列表<span class="fr" @click="toggleDlg">添加会员等级</span></h3>
         </div>
-        <dlg-member-add-put>添加</dlg-member-add-put>
+        <dlg-member-add-put @close-dlg="toggleDlg" v-show="dlgShow" transition="expand">添加</dlg-member-add-put>
     </div>
 </template>
 
@@ -14,6 +14,16 @@
 import DlgMemberAddPut from '../components/DlgMemberAddPut.vue'
 
 export default {
+    data () {
+        return {
+            dlgShow: false
+        }
+    },
+    methods: {
+        toggleDlg () {
+            this.dlgShow = !this.dlgShow
+        }
+    },
     components: {
         DlgMemberAddPut
     }

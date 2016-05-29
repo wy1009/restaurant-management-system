@@ -1,12 +1,12 @@
 <template>
     <div class="customer-wrapper">
         <div class="customer-list-box ui list-wrap">
-            <h3 class="ui title">会员列表<span @click="toggleDlg">添加会员</span></h3>
+            <h3 class="ui title">会员列表<span @click="toggleCustomerDlg">添加会员</span></h3>
         </div>
         <div class="member-box ui list-wrap">
-            <h3 class="ui title">会员等级列表<span @click="toggleDlg">添加会员等级</span></h3>
+            <h3 class="ui title">会员等级列表<span @click="toggleMemberDlg">添加会员等级</span></h3>
         </div>
-        <dlg-member-add-put @close-dlg="toggleDlg" v-show="dlgShow" transition="expand">添加</dlg-member-add-put>
+        <dlg-member-add-put @close-dlg="toggleMemberDlg" v-show="dlgShow" transition="expand">添加</dlg-member-add-put>
     </div>
 </template>
 
@@ -20,7 +20,7 @@ export default {
         }
     },
     methods: {
-        toggleDlg () {
+        toggleMemberDlg () {
             this.dlgShow = !this.dlgShow
         }
     },

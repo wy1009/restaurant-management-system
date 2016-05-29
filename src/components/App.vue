@@ -63,6 +63,7 @@ body {
                 color: #fff;
                 font-size: 15px;
                 border-radius: 3px;
+                cursor: pointer;
             }
         }
         #page-wrap {

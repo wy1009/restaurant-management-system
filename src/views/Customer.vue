@@ -1,13 +1,24 @@
 <template>
     <div class="customer-wrapper">
         <div class="customer-list-box list-wrap">
-            <h3 class="title">会员列表</h3>
+            <h3 class="ui title">会员列表</h3>
         </div>
         <div class="member-box list-wrap">
             <h3 class="title">会员等级列表<span class="fr">添加会员等级</span></h3>
         </div>
+        <dlg-member-add-put>添加</dlg-member-add-put>
     </div>
 </template>
+
+<script>
+import DlgMemberAddPut from '../components/DlgMemberAddPut.vue'
+
+export default {
+    components: {
+        DlgMemberAddPut
+    }
+}
+</script>
 
 <style lang="sass">
     .customer-wrapper {

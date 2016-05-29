@@ -38,15 +38,26 @@ body {
         .fr {
             float: right;
         }
-        h3.title {
-            height: 35px;
-            font-size: 16px;
-            padding: 15px 19px 0;
-            background-color: #fafafa;
-        }
-        .list-wrap {
-            background-color: #fff;
-            border: 1px solid #ebebeb;
+        .ui {
+            &.title {
+                height: 35px;
+                font-size: 16px;
+                padding: 15px 19px 0;
+                background-color: #fafafa;
+            }
+            &.list-wrap {
+                background-color: #fff;
+                border: 1px solid #ebebeb;
+            }
+            &.button {
+                border: 0;
+                background: #ff2d4b;
+                width: 100%;
+                line-height: 41px;
+                color: #fff;
+                font-size: 15px;
+                border-radius: 3px;
+            }
         }
         #page-wrap {
             .inner-wrap {
@@ -54,6 +65,14 @@ body {
                 max-width: 980px;
                 margin: 24px auto 0;
             }
+        }
+        .dialog-box {
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background-color: rgba(56,62,68,.9);
         }
     }
 }

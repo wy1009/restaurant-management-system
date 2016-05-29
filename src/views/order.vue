@@ -11,8 +11,8 @@
                     </li>
                 </ul>
             </div>
-            <div class="list-wrap">
-                <h3 class="title">
+            <div class="ui list-wrap">
+                <h3 class="ui title">
                     {{ nowCategory.name }}
                     <a v-if="type == 'mealpage'" class="add-meal-link" href="javascript:;" @click="dlgMealShow = !dlgMealShow">添加菜肴</a>
                 </h3>
@@ -36,8 +36,8 @@
                 </div>
             </div>
         </div>
-        <div class="customer-info-box list-wrap">
-            <h3 class="title">顾客信息</h3>
+        <div class="customer-info-box ui list-wrap">
+            <h3 class="ui title">顾客信息</h3>
             <div class="main-body">
                 <div class="tab-navs">
                     <a href="javascript:;">新顾客</a>

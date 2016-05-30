@@ -23,9 +23,9 @@
                                 <h4 class="title fl">{{ meal.name }}</h4>
                                 <div class="sales fr">已售{{ meal.sales }}份</div>
                                 <div class="operation fr">
-                                    <i class="minusfrcart" :class="orderObj.meal[meal._id] ? '' : 'visibility-hidden'" @click="minusFromCart(meal._id)">-</i>
-                                    <i class="select-count" :class="orderObj.meal[meal._id] ? '' : 'visibility-hidden'">{{ orderObj.meal[meal._id] ? orderObj.meal[meal._id].count : 0 }}</i>
-                                    <i class="addtocart" @click="addToCart(meal._id)">+</i>
+                                    <i class="minusfrcart" :class="orderMealList[meal._id] ? '' : 'visibility-hidden'" @click="minusFromCart(meal)">-</i>
+                                    <i class="select-count" :class="orderMealList[meal._id] ? '' : 'visibility-hidden'">{{ orderMealList[meal._id] ? orderMealList[meal._id].count : 0 }}</i>
+                                    <i class="addtocart" @click="addToCart(meal)">+</i>
                                 </div>
                                 <div class="price fr">¥{{ meal.price }}/份</div>
                             </div>
@@ -49,7 +49,7 @@
             <div class="cc-warp">
                 <div class="title">
                     <span class="txt">点单列表</span>
-                    <span class="customer-info fr">添加顾客信息</span>
+                    <span class="customer-info fr">{{ orderObj.customer }}</span>
                 </div>
                 <div class="cart-panel">
                     <table>
@@ -61,7 +61,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="meal of orderObj.meal">
+                            <tr v-for="meal of orderMealList">
                                 <td class="item-name">{{ meal.name }}</td>
                                 <td class="item-count">{{ meal.count }}</td>
                                 <td class="item-price">{{ meal.price }}</td>
@@ -87,25 +87,32 @@ export default {
             mealList: [],
             orderObj: {
                 customer: null,
-                meal: {}
+                meal: {},
             },
+            customer: {},
+            orderMealList: {},
             dlgCustomerShow: false
         }
     },
     methods: {
-        addToCart (mealId) {
-            if (this.orderObj.meal[mealId]) {
-                this.orderObj.meal[mealId].count ++
+        addToCart (meal) {
+            if (this.orderMealList[meal._id]) {
+                this.orderMealList[meal._id].count ++
             } else {
-                Vue.set(this.orderObj.meal, mealId, {
-                    mealId: mealId,
+                Vue.set(this.orderMealList, meal._id, {
+                    _id: meal._id,
+                    name: meal.name,
+                    price: meal.price,
                     count: 1
                 })
             }
-            console.log(this.orderObj.meal)
         },
-        minusFromCart (mealId) {
-            delete this.orderObj.meal['5732eec538c7b80009023955']
+        minusFromCart (meal) {
+            if (this.orderMealList[meal._id].count > 1) {
+                this.orderMealList[meal._id].count --
+            } else {
+                Vue.delete(this.orderMealList, meal._id)
+            }
         }
     },
     components: {

@@ -92,7 +92,6 @@ export default {
         .meal-list {
             .info {
                 height: 69px;
-                cursor: pointer;
                 border-top: 1px solid #ebebeb;
                 .title {
                     font-size: 14px;

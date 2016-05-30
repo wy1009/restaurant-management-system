@@ -35,7 +35,7 @@ export default {
             })
         },
         dispatchCloseDlgMsg () {
-            this.$dispatch('close-member-dlg', false)
+            this.$dispatch('close-dlg', false)
         }
     }
 }

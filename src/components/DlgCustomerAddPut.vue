@@ -8,3 +8,21 @@
         </div>
     </div>
 </template>
+
+<script>
+import customerAdd from './customerAdd.vue'
+
+export default {
+    data () {
+        return {
+            customerObj: {}
+        }
+    },
+    methods: {
+        dispatchCloseDlgMsg () {
+            this.$dispatch('close-dlg', false)
+        }
+    }
+}
+</script>
+

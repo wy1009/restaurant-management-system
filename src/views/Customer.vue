@@ -6,12 +6,14 @@
         <div class="member-box ui list-wrap">
             <h3 class="ui title">会员等级列表<span @click="toggleMemberDlg">添加会员等级</span></h3>
         </div>
-        <dlg-member-add-put @close-member-dlg="toggleMemberDlg" v-show="dlgMemberShow" transition="expand">添加</dlg-member-add-put>
+        <dlg-member-add-put @close-dlg="toggleMemberDlg" v-show="dlgMemberShow" transition="expand">添加</dlg-member-add-put>
+        <dlg-customer-add-put @close-dlg="toggleCustomerDlg" v-show="dlgCustomerShow" transition="expand"></dlg-customer-add-put>
     </div>
 </template>
 
 <script>
 import DlgMemberAddPut from '../components/DlgMemberAddPut.vue'
+import DlgCustomerAddPut from '../components/DlgCustomerAddPut.vue'
 
 export default {
     data () {
@@ -29,7 +31,8 @@ export default {
         }
     },
     components: {
-        DlgMemberAddPut
+        DlgMemberAddPut,
+        DlgCustomerAddPut
     }
 }
 </script>

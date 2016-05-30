@@ -45,9 +45,6 @@ export default {
     .add-put-member-dialog {
         width: 280px;
         height: 180px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
         margin-top: -114px;
         margin-left: -90px;
     }

@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="button-wrapper">
-            <button @click="addCustomer">确定</button>
+            <button class="ui button" @click="addCustomer">确定</button>
         </div>
     </div>
 </template>
@@ -23,6 +23,7 @@
 export default {
     data () {
         return {
+            memberList: [],
             customerObj: {}
         }
     },
@@ -31,9 +32,13 @@ export default {
     },
     methods: {
         getMemberList () {
-            var _this = this
-            _this.$http.get('/api/member/').then(function (res) {
-
+            this.$http.get('/api/member/').then(function (res) {
+                var data = res.data
+                if (data.success) {
+                    this.memberList = data.memberList
+                } else {
+                    console.log(data.reason)
+                }
             })
         },
         addCustomer () {

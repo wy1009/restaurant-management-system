@@ -22,6 +22,9 @@ export default {
         dispatchCloseDlgMsg () {
             this.$dispatch('close-dlg', false)
         }
+    },
+    components: {
+        customerAdd
     }
 }
 </script>
@@ -30,9 +33,6 @@ export default {
     .add-put-customer-dialog {
         width: 280px;
         height: 180px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
         margin-top: -114px;
         margin-left: -90px;
     }

@@ -72,6 +72,15 @@ body {
                 border-radius: 3px;
                 cursor: pointer;
             }
+            &.input-wrapper {
+                border-top: 1px solid #ebebeb;
+                input {
+                    border: 0;
+                    padding: 14px 10px;
+                    width: 100%;
+                    box-sizing: border-box;
+                }
+            }
         }
         #page-wrap {
             .inner-wrap {
@@ -88,6 +97,9 @@ body {
             bottom: 0;
             background-color: rgba(56,62,68,.9);
             .dialog {
+                position: absolute;
+                top: 50%;
+                left: 50%;
                 background: #fff;
                 border-radius: 3px;
                 .header {
@@ -109,17 +121,6 @@ body {
                         transform: rotate(45deg);
                         font-style: normal;
                         cursor: pointer;
-                    }
-                }
-                .content {
-                    .input-wrapper {
-                        border-top: 1px solid #ebebeb;
-                        input {
-                            border: 0;
-                            padding: 14px 10px;
-                            width: 100%;
-                            box-sizing: border-box;
-                        }
                     }
                 }
             }

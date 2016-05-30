@@ -1,6 +1,5 @@
 <template>
     <div class="dialog-box">
-    <topnav></topnav> 
         <div class="add-put-customer-dialog dialog">
             <div class="header"><slot></slot>会员<i @click="dispatchCloseDlgMsg" class="close-btn">+</i></div>
             <div class="content">
@@ -11,8 +10,7 @@
 </template>
 
 <script>
-import customerAdd from './customerAdd.vue'
-import Topnav from '../components/Topnav.vue'
+import CustomerAdd from './CustomerAdd.vue'
 
 export default {
     data () {
@@ -26,8 +24,7 @@ export default {
         }
     },
     components: {
-        customerAdd,
-        Topnav
+        CustomerAdd
     }
 }
 </script>

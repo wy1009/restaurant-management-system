@@ -43,7 +43,8 @@ export default {
         },
         addCustomer () {
             this.$http.post('/api/customer/', this.customerObj).then(function (res) {
-                // this.$dispatch('close-dlg', false)
+                this.$dispatch('submited', false)
+                this.customerObj = {}
             })
         }
     }

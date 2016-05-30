@@ -9,7 +9,7 @@
             </div>
             <div class="ui input-wrapper">
                 <select>
-                    <option value=""></option>
+                    <option v-for="member of memberList" value="{{ member._id }}">{{ member.name }}</option>
                 </select>
             </div>
         </div>

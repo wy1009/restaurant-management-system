@@ -43,7 +43,7 @@
                     <a href="javascript:;">新顾客</a>
                     <a href="javascript:;">老顾客</a>
                 </div>
-                <!-- <customer-add></customer-add> -->
+                <customer-add></customer-add>
                 <!-- <customer-select></customer-select> -->
             </div>
         </div>
@@ -79,7 +79,7 @@
 
 <script>
 import MealListMixin from '../components/MealListMixin.vue'
-// import CustomerAdd from '../components/CustomerAdd.vue'
+import CustomerAdd from '../components/CustomerAdd.vue'
 
 export default {
     mixins: [MealListMixin],
@@ -109,7 +109,7 @@ export default {
         }
     },
     components: {
-        // CustomerAdd
+        CustomerAdd
     }
 }
 </script>

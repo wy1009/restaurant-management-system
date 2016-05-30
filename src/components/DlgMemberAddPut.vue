@@ -4,10 +4,10 @@
             <div class="header"><slot></slot>会员等级<i @click="dispatchCloseDlgMsg" class="close-btn">+</i></div>
             <div class="content">
                 <div class="group-inputs">
-                    <div class="input-wrapper">
+                    <div class="ui input-wrapper">
                         <input type="text" placeholder="名称" v-model="memberObj.name">
                     </div>
-                    <div class="input-wrapper">
+                    <div class="ui input-wrapper">
                         <input type="text" placeholder="折扣（输入整数或小数）" v-model="memberObj.discount">
                     </div>
                 </div>

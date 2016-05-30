@@ -1,13 +1,13 @@
 <template>
     <div class="add-customer-box">
         <div class="group-inputs">
-            <div class="input-wrapper">
+            <div class="ui input-wrapper">
                 <input type="text" placeholder="姓名" v-model="customerObj.name">
             </div>
-            <div class="input-wrapper">
+            <div class="ui input-wrapper">
                 <input type="text" placeholder="电话" v-model="customerObj.phone">
             </div>
-            <div class="input-wrapper">
+            <div class="ui input-wrapper">
                 <select>
                     <option value=""></option>
                 </select>
@@ -42,8 +42,7 @@ export default {
             })
         },
         addCustomer () {
-            var _this = this
-            _this.$http.post('/api/customer/', _this.customerObj).then(function (res) {
+            this.$http.post('/api/customer/', this.customerObj).then(function (res) {
                 this.$dispatch('close-customer-dlg', false)
             })
         }

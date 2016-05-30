@@ -23,9 +23,8 @@
                                 <h4 class="title fl">{{ meal.name }}</h4>
                                 <div class="sales fr">已售{{ meal.sales }}份</div>
                                 <div class="operation fr">
-                                        <i v-show="orderObj.meal['5732eec538c7b80009023955']" class="minusfrcart" @click="minusFromCart(meal._id)">-</i>
-                                        <i v-show="orderObj.meal['5732eec538c7b80009023955']" class="select-count"></i>
-                                    {{ orderObj.meal[meal._id] }}
+                                    <i class="minusfrcart" :class="orderObj.meal[meal._id] ? '' : 'visibility-hidden'" @click="minusFromCart(meal._id)">-</i>
+                                    <i class="select-count" :class="orderObj.meal[meal._id] ? '' : 'visibility-hidden'">{{ orderObj.meal[meal._id] ? orderObj.meal[meal._id].count : 0 }}</i>
                                     <i class="addtocart" @click="addToCart(meal._id)">+</i>
                                 </div>
                                 <div class="price fr">¥{{ meal.price }}/份</div>
@@ -102,14 +101,6 @@ export default {
                     mealId: mealId,
                     count: 1
                 })
-                // this.$set(this.orderObj.meal[mealId], {
-                //     mealId: mealId,
-                //     count: 1
-                // })
-                // this.orderObj.meal[mealId] = {
-                //     mealId: mealId,
-                //     count: 1
-                // }
             }
             console.log(this.orderObj.meal)
         },
@@ -129,13 +120,13 @@ export default {
         .sales {
             width: 70px;
             height: 100%;
-            margin-right: 38px;
+            margin-right: 30px;
             line-height: 69px;
             font-size: 12px;
             color: #898989;
         }
         .operation {
-            width: 92px;
+            width: 110px;
             padding-top: 20px;
             .minusfrcart,
             .addtocart {
@@ -150,6 +141,14 @@ export default {
                 color: #ff2d4b;
                 font-size: 26px;
                 cursor: pointer;
+            }
+            .select-count {
+                display: inline-block;
+                width: 26px;
+                height: 26px;
+                text-align: center;
+                color: #ff2d4b;
+                font-weight: bold;
             }
         }
         .price {

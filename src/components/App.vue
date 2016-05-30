@@ -45,6 +45,9 @@ body {
         .fr {
             float: right;
         }
+        .visibility-hidden {
+            visibility: hidden;
+        }
         .ui {
             &.title {
                 height: 35px;

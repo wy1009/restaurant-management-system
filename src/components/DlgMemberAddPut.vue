@@ -28,8 +28,7 @@ export default {
     },
     methods: {
         addMember () {
-            var _this = this
-            _this.$http.post('/api/member/', _this.memberObj).then(function (res) {
+            this.$http.post('/api/member/', this.memberObj).then(function (res) {
                 this.memberObj = {}
                 this.dispatchCloseDlgMsg()
             })

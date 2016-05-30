@@ -19,28 +19,26 @@ export default {
     },
     methods: {
         getCategoryList () {
-            var _this = this
-            _this.$http.get('/api/category/').then(function (res) {
+            this.$http.get('/api/category/').then(function (res) {
                 var data = res.data
                 if (data.success) {
-                    _this.categoryList = data.categoryList
-                    _this.getMealList(_this.categoryList[0], 0)
+                    this.categoryList = data.categoryList
+                    this.getMealList(this.categoryList[0], 0)
                 } else {
                     console.log(data.reason)
                 }
             })
         },
         getMealList (category, index) {
-            var _this = this
-            _this.nowCategory = category
-            _this.nowCategory.index = index
+            this.nowCategory = category
+            this.nowCategory.index = index
             var filterCondition = {
                 category: category._id
             }
-            _this.$http.get('/api/meal/', filterCondition).then(function (res) {
+            this.$http.get('/api/meal/', filterCondition).then(function (res) {
                 var data = res.data
                 if (data.success) {
-                    _this.mealList = data.mealList
+                    this.mealList = data.mealList
                 } else {
                     console.log(data.reason)
                 }

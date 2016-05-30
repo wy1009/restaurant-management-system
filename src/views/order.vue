@@ -95,19 +95,17 @@ export default {
     },
     methods: {
         addToCart (mealId) {
-            var _this = this
-            if (_this.orderObj.meal[mealId]) {
-                _this.orderObj.meal[mealId].count ++
+            if (this.orderObj.meal[mealId]) {
+                this.orderObj.meal[mealId].count ++
             } else {
-                _this.orderObj.meal[mealId] = {
+                this.orderObj.meal[mealId] = {
                     mealId: mealId,
                     count: 1
                 }
             }
-            console.log(_this.orderObj.meal)
+            console.log(this.orderObj.meal)
         },
         minusFromCart (mealId) {
-            var _this = this
         }
     },
     components: {

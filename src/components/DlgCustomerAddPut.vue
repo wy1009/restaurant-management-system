@@ -3,14 +3,14 @@
         <div class="add-put-customer-dialog dialog">
             <div class="header"><slot></slot>会员<i @click="dispatchCloseDlgMsg" class="close-btn">+</i></div>
             <div class="content">
-                <customer-add></customer-add>
+                <!-- <customer-add></customer-add> -->
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import customerAdd from './customerAdd.vue'
+// import customerAdd from './customerAdd.vue'
 
 export default {
     data () {
@@ -24,7 +24,7 @@ export default {
         }
     },
     components: {
-        customerAdd
+        // customerAdd
     }
 }
 </script>

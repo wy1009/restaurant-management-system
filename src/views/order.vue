@@ -23,10 +23,9 @@
                                 <h4 class="title fl">{{ meal.name }}</h4>
                                 <div class="sales fr">已售{{ meal.sales }}份</div>
                                 <div class="operation fr">
-                                    <template v-show="orderObj.meal[meal._id]">
-                                        <i class="minusfrcart" @click="minusFromCart(meal._id)">-</i>
-                                        <i class="select-count"></i>
-                                    </template>
+                                        <i v-show="orderObj.meal['5732eec538c7b80009023955']" class="minusfrcart" @click="minusFromCart(meal._id)">-</i>
+                                        <i v-show="orderObj.meal['5732eec538c7b80009023955']" class="select-count"></i>
+                                    {{ orderObj.meal[meal._id] }}
                                     <i class="addtocart" @click="addToCart(meal._id)">+</i>
                                 </div>
                                 <div class="price fr">¥{{ meal.price }}/份</div>
@@ -78,6 +77,7 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import MealListMixin from '../components/MealListMixin.vue'
 import CustomerAdd from '../components/CustomerAdd.vue'
 
@@ -98,14 +98,23 @@ export default {
             if (this.orderObj.meal[mealId]) {
                 this.orderObj.meal[mealId].count ++
             } else {
-                this.orderObj.meal[mealId] = {
+                Vue.set(this.orderObj.meal, mealId, {
                     mealId: mealId,
                     count: 1
-                }
+                })
+                // this.$set(this.orderObj.meal[mealId], {
+                //     mealId: mealId,
+                //     count: 1
+                // })
+                // this.orderObj.meal[mealId] = {
+                //     mealId: mealId,
+                //     count: 1
+                // }
             }
             console.log(this.orderObj.meal)
         },
         minusFromCart (mealId) {
+            delete this.orderObj.meal['5732eec538c7b80009023955']
         }
     },
     components: {

@@ -1,7 +1,6 @@
 <script>
 import DlgCategoryAddPut from './DlgCategoryAddPut.vue'
 import DlgMealAddPut from './DlgMealAddPut.vue'
-import MealListInOrderPage from './MealListInOrderPage.vue'
 
 export default {
     props: ['type'],
@@ -48,7 +47,6 @@ export default {
     components: {
         DlgCategoryAddPut,
         DlgMealAddPut,
-        MealListInOrderPage
     }
 }
 </script>

@@ -8,7 +8,7 @@
                 <input type="text" placeholder="电话" v-model="customerObj.phone">
             </div>
             <div class="ui input-wrapper">
-                <select>
+                <select v-model="customerObj.member">
                     <option v-for="member of memberList" value="{{ member._id }}">{{ member.name }}</option>
                 </select>
             </div>

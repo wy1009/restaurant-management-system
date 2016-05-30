@@ -29,7 +29,8 @@ body {
         a {
             text-decoration: none;
         }
-        input {
+        input,
+        select {
             outline: none;
         }
         .expand-transition {
@@ -74,7 +75,8 @@ body {
             }
             &.input-wrapper {
                 border-top: 1px solid #ebebeb;
-                input {
+                input,
+                select {
                     border: 0;
                     padding: 14px 10px;
                     width: 100%;

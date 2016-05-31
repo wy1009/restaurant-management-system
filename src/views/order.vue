@@ -64,13 +64,17 @@
                             <tr v-for="meal of orderMealList">
                                 <td class="item-name">{{ meal.name }}</td>
                                 <td class="item-count">{{ meal.count }}</td>
-                                <td class="item-price">{{ meal.price }}</td>
+                                <td class="item-price">¥{{ meal.price }}</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-            <div class="cart-bar"></div>
+            <div class="cart-bar">
+                <span v-show>购物车是空的</span>
+                <span>暂挂</span>
+                <span>提交</span>
+            </div>
         </div>
     </div>
 </template>
@@ -79,18 +83,16 @@
 import Vue from 'vue'
 import MealListMixin from '../components/MealListMixin.vue'
 import CustomerAdd from '../components/CustomerAdd.vue'
+import Json from '../public/javascripts/Json'
 
 export default {
     mixins: [MealListMixin],
     data () {
         return {
             mealList: [],
-            orderObj: {
-                customer: null,
-                meal: {},
-            },
             customer: {},
             orderMealList: {},
+            orderObj: {},
             dlgCustomerShow: false
         }
     },
@@ -246,6 +248,10 @@ export default {
                     }
                 }
             }
+        }
+        .cart-bar {
+            height: 40px;
+            background: #3f4347;
         }
     }
 }

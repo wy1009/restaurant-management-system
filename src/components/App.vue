@@ -19,9 +19,15 @@ export default {
 </script>
 
 <style lang="sass">
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Microsoft YaHei';
+}
 body {
     background-color: #f5f5f5;
     font: 12px/1.4 Helvetica,宋体,Arial,sans-serif;
+    color: #333;
     #wrapper {
         ul {
             list-style-type: none;

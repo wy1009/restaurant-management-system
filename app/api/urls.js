@@ -12,6 +12,7 @@ module.exports = function (app) {
     app.get('/api/meal/', Meal.search)
     app.post('/api/meal/', Meal.save)
     // customer
+    app.get('/api/customer/', Customer.search)
     app.post('/api/customer/', Customer.save)
     // member
     app.get('/api/member/', Member.fetch)

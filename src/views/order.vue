@@ -38,18 +38,17 @@
             <h3 class="ui title">顾客信息</h3>
             <div class="main-body">
                 <div class="tab-navs">
-                    <a href="javascript:;">新顾客</a>
-                    <a href="javascript:;">老顾客</a>
+                    <a href="javascript:;" @click="currentView = 'CustomerAdd'">新顾客</a>
+                    <a href="javascript:;" @click="currentView = 'CustomerSelect'">老顾客</a>
                 </div>
-                <customer-add></customer-add>
-                <!-- <customer-select></customer-select> -->
+                <component :is="currentView"></component>
             </div>
         </div>
         <div class="menu-cart">
-            <div class="cc-warp">
+            <div class="cc-warp" v-show="orderMealListLen">
                 <div class="title">
                     <span class="txt">点单列表</span>
-                    <span class="customer-info fr">{{ orderObj.customer }}</span>
+                    <span class="customer-info fr">{{ customer.name }}</span>
                 </div>
                 <div class="cart-panel">
                     <table>
@@ -72,9 +71,9 @@
             </div>
             <div class="cart-bar">
                 <span v-show="orderMealListLen == 0" class="empty">购物车是空的</span>
-                <span v-show="orderMealListLen > 0">共¥{{ totalPrice }}</span>
-                <span v-show="orderMealListLen > 0" class="submit fr">提交</span>
-                <span v-show="orderMealListLen > 0" class="hold-on fr">暂挂</span>
+                <span v-show="orderMealListLen" class="total-price">共¥{{ totalPrice }}</span>
+                <span v-show="orderMealListLen" class="submit fr">提交</span>
+                <span v-show="orderMealListLen" class="hold-on fr">暂挂</span>
             </div>
         </div>
     </div>
@@ -84,6 +83,7 @@
 import Vue from 'vue'
 import MealListMixin from '../components/MealListMixin.vue'
 import CustomerAdd from '../components/CustomerAdd.vue'
+import CustomerSelect from '../components/CustomerSelect.vue'
 import Json from '../public/javascripts/Json'
 
 export default {
@@ -94,7 +94,7 @@ export default {
             customer: {},
             orderMealList: {},
             orderObj: {},
-            dlgCustomerShow: false
+            currentView: 'CustomerAdd'
         }
     },
     computed: {
@@ -131,7 +131,8 @@ export default {
         }
     },
     components: {
-        CustomerAdd
+        CustomerAdd,
+        CustomerSelect
     }
 }
 </script>
@@ -268,7 +269,8 @@ export default {
             background: #3f4347;
             font-size: 15px;
             color: #fff;
-            .empty {
+            .empty,
+            .total-price {
                 padding-left: 18px;
             }
             .hold-on,

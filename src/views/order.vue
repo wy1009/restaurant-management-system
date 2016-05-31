@@ -71,9 +71,10 @@
                 </div>
             </div>
             <div class="cart-bar">
-                <span v-show>购物车是空的</span>
-                <span>暂挂</span>
-                <span>提交</span>
+                <span v-show="orderMealListLen == 0" class="empty">购物车是空的</span>
+                <span v-show="orderMealListLen > 0">共¥{{ totalPrice }}</span>
+                <span v-show="orderMealListLen > 0" class="submit fr">提交</span>
+                <span v-show="orderMealListLen > 0" class="hold-on fr">暂挂</span>
             </div>
         </div>
     </div>
@@ -94,6 +95,18 @@ export default {
             orderMealList: {},
             orderObj: {},
             dlgCustomerShow: false
+        }
+    },
+    computed: {
+        orderMealListLen () {
+            return Json.getLen(this.orderMealList)
+        },
+        totalPrice () {
+            var price = 0
+            for (var key in this.orderMealList) {
+                price += this.orderMealList[key].price
+            }
+            return price
         }
     },
     methods: {
@@ -251,7 +264,22 @@ export default {
         }
         .cart-bar {
             height: 40px;
+            line-height: 40px;
             background: #3f4347;
+            font-size: 15px;
+            color: #fff;
+            .empty {
+                padding-left: 18px;
+            }
+            .hold-on,
+            .submit {
+                background-color: #ff2d4b;
+                padding: 0 18px;
+                cursor: pointer;
+                &:hover {
+                    color: #ffd0d6;
+                }
+            }
         }
     }
 }

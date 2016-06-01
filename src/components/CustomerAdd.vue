@@ -43,8 +43,13 @@ export default {
         },
         addCustomer () {
             this.$http.post('/api/customer/', this.customerObj).then(function (res) {
-                this.$dispatch('finished', this.customerObj)
-                this.customerObj = {}
+                var data = res.data
+                if (data.success) {
+                    this.$dispatch('finished', data.customer)
+                    this.customerObj = {}
+                } else {
+                    console.log(data.reason)
+                }
             })
         }
     }

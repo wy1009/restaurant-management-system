@@ -133,7 +133,7 @@ export default {
             this.customer = customer
         },
         submitOrder (orderStatus) {
-            
+            this.orderObj.customer = this.customer._id
         }
     },
     components: {

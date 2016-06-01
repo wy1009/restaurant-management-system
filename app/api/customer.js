@@ -15,7 +15,8 @@ exports.save = function (req, res) {
                 })
             } else {
                 res.send({
-                    success: true
+                    success: true,
+                    customer: customer
                 })
             }
         })

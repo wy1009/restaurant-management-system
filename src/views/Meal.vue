@@ -35,8 +35,8 @@
 
 <script>
 import MealListMixin from '../components/MealListMixin.vue'
-import DlgCategoryAddPut from './DlgCategoryAddPut.vue'
-import DlgMealAddPut from './DlgMealAddPut.vue'
+import DlgCategoryAddPut from '../components/DlgCategoryAddPut.vue'
+import DlgMealAddPut from '../components/DlgMealAddPut.vue'
 
 export default {
     mixins: [MealListMixin],

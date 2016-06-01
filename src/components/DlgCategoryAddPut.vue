@@ -1,6 +1,6 @@
 <template>
     <div class="dialog-box">
-        <div class="add-put-category-dialog dialog">
+        <div id="add-put-category-dialog" class="dialog">
             <div class="header">菜肴类别<i @click="dispatchCloseDlgMsg" class="close-btn">+</i></div>
             <div class="content">
                 <div class="group-inputs">
@@ -43,4 +43,9 @@ export default {
 }
 </script>
 
-style
+<style lang="sass">
+    #add-put-category-dialog {
+        height: 130px;
+        margin-top: -65px;
+    }
+</style>

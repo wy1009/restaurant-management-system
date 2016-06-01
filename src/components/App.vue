@@ -132,6 +132,10 @@ body {
                 position: absolute;
                 top: 50%;
                 left: 50%;
+                width: 280px;
+                height: 180px;
+                margin-top: -114px;
+                margin-left: -90px;
                 background: #fff;
                 border-radius: 3px;
                 .header {

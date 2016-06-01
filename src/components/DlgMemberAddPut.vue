@@ -39,12 +39,3 @@ export default {
     }
 }
 </script>
-
-<style lang="sass">
-    .add-put-member-dialog {
-        width: 280px;
-        height: 180px;
-        margin-top: -114px;
-        margin-left: -90px;
-    }
-</style>

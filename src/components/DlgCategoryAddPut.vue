@@ -1,7 +1,7 @@
 <template>
     <div class="dialog-box">
         <div class="add-put-category-dialog dialog">
-            <div class="header">菜肴类别</div>
+            <div class="header">菜肴类别<i @click="dispatchCloseDlgMsg" class="close-btn">+</i></div>
             <div class="content">
                 <div class="group-inputs">
                     <div class="ui input-wrapper">
@@ -39,12 +39,3 @@ export default {
     }
 }
 </script>
-
-<style lang="sass">
-    .add-put-category-dialog {
-        width: 280px;
-        height: 180px;
-        margin-top: -114px;
-        margin-left: -90px;
-    }
-</style>

@@ -71,6 +71,19 @@ body {
             &.list-wrap {
                 background-color: #fff;
                 border: 1px solid #ebebeb;
+                .list {
+                    li {
+                        height: 69px;
+                        border-top: 1px solid #ebebeb;
+                        .title {
+                            font-size: 14px;
+                            color: #313131;
+                            font-weight: normal;
+                            padding-left: 30px;
+                            padding-top: 25px;
+                        }
+                    }
+                }
             }
             &.button {
                 border: 0;

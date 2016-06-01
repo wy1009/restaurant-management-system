@@ -8,6 +8,7 @@ var MealSchema = new mongoose.Schema({
         ref: 'Category'
     }, // 菜品类别
     price: Number, // 菜品价格
+    description: String,
     sales: {
         type: Number,
         default: 0

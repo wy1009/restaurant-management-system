@@ -2,6 +2,7 @@ import Overviews from './views/Overviews.vue'
 import OrderAdd from './views/OrderAdd.vue'
 import Customer from './views/Customer.vue'
 import Order from './views/Order.vue'
+import Meal from './views/Meal.vue'
 
 export default function (router) {
 	router.map({
@@ -9,7 +10,7 @@ export default function (router) {
 			name: 'home',
 			component: Overviews
 		},
-		'/overviews': {
+		'/overviews/': {
 			name: 'overviews',
 			component: Overviews
 		},
@@ -24,6 +25,10 @@ export default function (router) {
 		'/order/': {
 			name: 'order',
 			component: Order
+		},
+		'/meal/': {
+			name: 'meal',
+			component: Meal
 		}
 		// '/customers/processed': {
 		// 	name: 'processed',

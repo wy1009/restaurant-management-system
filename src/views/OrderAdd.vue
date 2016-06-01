@@ -16,19 +16,17 @@
                     {{ nowCategory.name }}
                     <a v-if="type == 'mealpage'" class="add-meal-link" href="javascript:;" @click="dlgMealShow = !dlgMealShow">添加菜肴</a>
                 </h3>
-                <div class="meal-list">
+                <div class="meal-list list">
                     <ul>
-                        <li v-for="meal in mealList">
-                            <div class="info">
-                                <h4 class="title fl">{{ meal.name }}</h4>
-                                <div class="sales fr">已售{{ meal.sales }}份</div>
-                                <div class="operation fr">
-                                    <i class="minusfrcart" :class="orderMealList[meal._id] ? '' : 'visibility-hidden'" @click="minusFromCart(meal)">-</i>
-                                    <i class="select-count" :class="orderMealList[meal._id] ? '' : 'visibility-hidden'">{{ orderMealList[meal._id] ? orderMealList[meal._id].count : 0 }}</i>
-                                    <i class="addtocart" @click="addToCart(meal)">+</i>
-                                </div>
-                                <div class="price fr">¥{{ meal.price }}/份</div>
+                        <li class="info" v-for="meal in mealList">
+                            <h4 class="title fl">{{ meal.name }}</h4>
+                            <div class="sales fr">已售{{ meal.sales }}份</div>
+                            <div class="operation fr">
+                                <i class="minusfrcart" :class="orderMealList[meal._id] ? '' : 'visibility-hidden'" @click="minusFromCart(meal)">-</i>
+                                <i class="select-count" :class="orderMealList[meal._id] ? '' : 'visibility-hidden'">{{ orderMealList[meal._id] ? orderMealList[meal._id].count : 0 }}</i>
+                                <i class="addtocart" @click="addToCart(meal)">+</i>
                             </div>
+                            <div class="price fr">¥{{ meal.price }}/份</div>
                         </li>
                     </ul>
                 </div>
@@ -161,47 +159,81 @@ export default {
 
 <style lang="sass">
 .order-add-wrapper {
-    .meal-list {
-        .sales {
-            width: 70px;
-            height: 100%;
-            margin-right: 30px;
-            line-height: 69px;
-            font-size: 12px;
-            color: #898989;
-        }
-        .operation {
-            width: 110px;
-            padding-top: 20px;
-            .minusfrcart,
-            .addtocart {
-                font-style: normal;
-                width: 26px;
-                height: 26px;
-                line-height: 21px;
-                display: inline-block;
-                border: 1px solid #898989;
-                border-radius: 13px;
-                text-align: center;
-                color: #ff2d4b;
-                font-size: 26px;
-                cursor: pointer;
-            }
-            .select-count {
-                display: inline-block;
-                width: 26px;
-                height: 26px;
-                text-align: center;
-                color: #ff2d4b;
-                font-weight: bold;
+    .meal-list-box {
+        margin-top: 10px;
+        width: 690px;
+        float: left;
+        .category-wrap {
+            background-color: #fff;
+            border: 1px solid #ebebeb;
+            padding: 21px 20px;
+            ul {
+                overflow: auto;
+                li {
+                    width: 124px;
+                    height: 24px;
+                    line-height: 24px;
+                    margin-right: 5px;
+                    margin-bottom: 4px;
+                    float: left;
+                    a {
+                        padding: 5px;
+                        color: #535353;
+                        height: 14px;
+                        font-size: 14px;
+                        line-height: 14px;
+                    }
+                    &.active a {
+                        color: #ff2d4b;
+                    }
+                }
             }
         }
-        .price {
-            line-height: 69px;
-            margin-right: 15px;
-            font-size: 14px;
-            color: #313131;
-            font-weight: bold;
+        .list-wrap {
+            margin-top: 10px;
+            .meal-list {
+                .sales {
+                    width: 70px;
+                    height: 100%;
+                    margin-right: 30px;
+                    line-height: 69px;
+                    font-size: 12px;
+                    color: #898989;
+                }
+                .operation {
+                    width: 110px;
+                    padding-top: 20px;
+                    .minusfrcart,
+                    .addtocart {
+                        font-style: normal;
+                        width: 26px;
+                        height: 26px;
+                        line-height: 21px;
+                        display: inline-block;
+                        border: 1px solid #898989;
+                        border-radius: 13px;
+                        text-align: center;
+                        color: #ff2d4b;
+                        font-size: 26px;
+                        cursor: pointer;
+                    }
+                    .select-count {
+                        display: inline-block;
+                        width: 26px;
+                        height: 26px;
+                        text-align: center;
+                        color: #ff2d4b;
+                        font-weight: bold;
+                    }
+                }
+                .price {
+                    line-height: 69px;
+                    margin-right: 15px;
+                    font-size: 14px;
+                    color: #313131;
+                    font-weight: bold;
+                }
+            }
         }
     }
     .customer-info-box {

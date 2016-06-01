@@ -1,0 +1,49 @@
+<template>
+    <div class="meal-wrapper has-side-nav">
+        <aside>
+            <ul>
+                <li v-for="category in categoryList">
+                    <a href="javascript:;" @click="getMealList(category, $index);" :class="nowCategory.index === $index ? 'active' : ''">{{ category.name }}</a>
+                </li>
+                <li v-if="type == 'mealpage'">
+                    <a href="javascript:;" @click="dlgCategoryShow = !dlgCategoryShow">添加菜肴类别</a>
+                </li>
+            </ul>
+        </aside>
+        <article class="ui list-wrap">
+            <h3 class="ui title">
+                {{ nowCategory.name }}
+                <a v-if="type == 'mealpage'" class="add-meal-link" href="javascript:;" @click="dlgMealShow = !dlgMealShow">添加菜肴</a>
+            </h3>
+            <div class="list">
+                <ul>
+                    <li v-for="meal in mealList">
+                        <h4 class="title">{{ meal.name }}</h4>
+                        <div class="desc">{{ meal.description }}</div>
+                        <div class="price">¥{{ meal.price }}/份</div>
+                        <div class="sales">{{ meal.sales }}</div>
+                        <div class="operation">
+                            <span>编辑</span>
+                            <span>删除</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </article>
+    </div>
+</template>
+
+<script>
+import MealListMixin from '../components/MealListMixin.vue'
+
+export default {
+    mixins: [MealListMixin],
+    data () {
+        return {}
+    }
+}
+</script>
+
+<style lang="sass">
+    
+</style>

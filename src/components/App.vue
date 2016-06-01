@@ -136,6 +136,28 @@ body {
                 }
             }
         }
+        .has-side-nav {
+            aside {
+                float: left;
+                width: 200px;
+                li {
+                    margin-right: 10px;
+                    a {
+                        padding: 5px 10px;
+                        display: block;
+                        font-size: 16px;
+                        color: #ff2d4b;
+                        &.active {
+                            background: #ff2d4b;
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+            article {
+                margin-left: 200px;
+            }
+        }
     }
 }
 </style>

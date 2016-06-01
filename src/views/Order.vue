@@ -1,13 +1,15 @@
 <template>
-    <div class="order-wrapper">
+    <div class="order-wrapper has-side-nav">
         <aside>
             <ul>
-                <li v-for="orderStatus of orderStatusList" @click="nowOrderStatus = orderStatus">{{ orderStatus.name }}</li>
+                <li v-for="orderStatus of orderStatusList">
+                    <a href="javascript:;" @click="nowOrderStatus = orderStatus" :class="orderStatus == nowOrderStatus ? 'active' : ''">{{ orderStatus.name }}</a>
+                </li>
             </ul>
         </aside>
-        <div class="ui list-warp">
-            <h3>{{ nowOrderStatus.name }}</h3>
-        </div>
+        <article class="ui list-wrap">
+            <h3 class="ui title">{{ nowOrderStatus.name }}</h3>
+        </article>
     </div>
 </template>
 
@@ -28,6 +30,7 @@ export default {
                 var data = res.data
                 if (data.success) {
                     this.orderStatusList = data.orderstatuses
+                    this.nowOrderStatus = data.orderstatuses[0]
                 } else {
                     console.log(data.reason)
                 }
@@ -36,3 +39,6 @@ export default {
     }
 }
 </script>
+
+<style lang="sass">
+</style>

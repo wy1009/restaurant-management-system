@@ -23,7 +23,7 @@ exports.save = function (req, res) {
 }
 
 exports.search = function (req, res) {
-    var filterCondition = req.body
+    var filterCondition = req.query
     Meal.find(filterCondition)
         .sort('meta.updateAt')
         .exec(function (err, meals) {

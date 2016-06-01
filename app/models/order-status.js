@@ -5,10 +5,6 @@ var ObjectId = mongoose.Schema.Types.ObjectId
 
 var OrderStatusSchema = new mongoose.Schema({
     name: String,
-    orders: [{
-        type: ObjectId,
-        ref: 'Order'
-    }],
     meta: {
         createAt: {
             type: Date,

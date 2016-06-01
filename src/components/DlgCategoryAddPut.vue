@@ -20,22 +20,27 @@
 export default {
     data () {
         return {
-            categoryObj: {
-                name: ''
-            }
+            categoryObj: {}
         }
     },
     methods: {
         addCategory () {
             var _this = this
             _this.$http.post('/api/category/', _this.categoryObj).then(function (res) {
-                console.log('success')
-                console.log(res)
-            }, function (res) {
-                console.log('error')
-                console.log(res)
+                var data = res.data
+                if (data.success) {
+                    this.categoryObj = {}
+                    this.dispatchCloseDlgMsg()
+                } else {
+                    console.log(data.reason)
+                }
             })
+        },
+        dispatchCloseDlgMsg () {
+            this.$dispatch('finished')
         }
     }
 }
 </script>
+
+style

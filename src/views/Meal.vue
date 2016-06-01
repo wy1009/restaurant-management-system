@@ -30,8 +30,8 @@
                 </ul>
             </div>
         </article>
-        <dlg-category-add-put v-show="dlgCategoryShow"></dlg-category-add-put>
-        <dlg-meal-add-put v-show="dlgMealShow" :category-list="categoryList"></dlg-meal-add-put>
+        <dlg-category-add-put v-show="dlgCategoryShow" @finished="toggleCategoryDlg"></dlg-category-add-put>
+        <dlg-meal-add-put v-show="dlgMealShow" :category-list="categoryList" @finished="toggleMealDlg"></dlg-meal-add-put>
     </div>
 </template>
 
@@ -51,6 +51,7 @@ export default {
     methods: {
         toggleCategoryDlg () {
             this.dlgCategoryShow = !this.dlgCategoryShow
+            this.getCategoryList()
         },
         toggleMealDlg () {
             this.dlgMealShow = !this.dlgMealShow

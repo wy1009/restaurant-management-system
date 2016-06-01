@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div class="button-wrapper">
-                    <button class="ui button" @click="test">确定</button>
+                    <button class="ui button" @click="addMeal">确定</button>
                 </div>
             </div>
         </div>
@@ -30,26 +30,23 @@ export default {
     props: ['categoryList'],
     data () {
         return {
-            mealObj: {
-                name: '',
-                category: '',
-                price: ''
-            }
+            mealObj: {}
         }
     },
     methods: {
         addMeal () {
-            var _this = this
-            _this.$http.post('/api/meal/', _this.mealObj).then(function (res) {
-                if (res.success) {
-                    _this.$dispatch('update-meal-list')
+            this.$http.post('/api/meal/', this.mealObj).then(function (res) {
+                var data = res.data
+                if (data.success) {
+                    this.mealObj = {}
+                    this.$dispatch('finished')
                 } else {
-                    console.log(res.reason)
+                    console.log(data.reason)
                 }
             })
         },
-        test () {
-            console.log(this.categoryList)
+        dispatchCloseDlgMsg () {
+            this.$dispatch('finished')
         }
     }
 }

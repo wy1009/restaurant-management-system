@@ -47,4 +47,3 @@ OrderSchema.statics = {
 }
 
 module.exports = mongoose.model('Order', OrderSchema)
-

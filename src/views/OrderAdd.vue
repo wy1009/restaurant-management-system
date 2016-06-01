@@ -1,5 +1,5 @@
 <template>
-    <div class="order-wrapper">
+    <div class="order-add-wrapper">
         <div class="meal-list-box">
             <div class="category-wrap">
                 <ul>
@@ -160,7 +160,7 @@ export default {
 </script>
 
 <style lang="sass">
-.order-wrapper {
+.order-add-wrapper {
     .meal-list {
         .sales {
             width: 70px;

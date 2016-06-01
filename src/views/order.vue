@@ -142,7 +142,9 @@ export default {
                 meal: meal,
                 status: orderStatus
             }
-            console.log(this.orderObj)
+            this.$http.post('/api/order/', this.orderObj).then(function (res) {
+                
+            })
         }
     },
     components: {

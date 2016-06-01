@@ -135,7 +135,10 @@ export default {
         submitOrder (orderStatus) {
             var meal = []
             for (var key in this.orderMealList) {
-                meal.push(this.orderMealList[key]._id)
+                meal.push({
+                    id: this.orderMealList[key]._id,
+                    count: this.orderMealList[key].count
+                })
             }
             this.orderObj = {
                 customer: this.customer._id,

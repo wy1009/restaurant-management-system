@@ -146,7 +146,9 @@ export default {
                 status: orderStatus
             }
             this.$http.post('/api/order/', this.orderObj).then(function (res) {
-                
+                this.orderObj = {}
+                this.customer = {}
+                this.orderMealList = {}
             })
         }
     },

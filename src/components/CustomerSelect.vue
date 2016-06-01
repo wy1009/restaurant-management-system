@@ -4,12 +4,9 @@
             <div class="ui input-wrapper">
                 <input v-model="customerFilter" debounce="300" type="text" placeholder="请输入电话进行查找">
                 <ul class="search-result-list">
-                    <li v-for="result of searchResultList"></li>
+                    <li v-for="result of searchResultList">{{ result.name }} {{ result.phone }}</li>
                 </ul>
             </div>
-        </div>
-        <div class="button-wrapper">
-            <button class="ui button">确定</button>
         </div>
     </div>
 </template>
@@ -28,7 +25,12 @@ export default {
                 phone: val
             }
             this.$http.get('/api/customer/', filter).then(function (res) {
-
+                var data = res.data
+                if (data.success) {
+                    this.searchResultList = data.customers
+                } else {
+                    console.log(data.reason)
+                }
             })
         }
     },
@@ -54,6 +56,11 @@ export default {
                 line-height: 26px;
                 text-align: left;
                 padding: 0 10px;
+                cursor: pointer;
+                &:hover {
+                    background: #ff2d4b;
+                    color: #fff;
+                }
             }
         }
     }

@@ -1,7 +1,19 @@
 var OrderStatus = require('../models/order-status')
 
 exports.fetch = function (req, res) {
-    // OrderStatus.fetch(function (err, orderstatus))
+    OrderStatus.fetch(function (err, orderstatuses) {
+        if (err) {
+            res.send({
+                success: false,
+                reason: err
+            })
+        } else {
+            res.send({
+                success: true,
+                orderstatuses: orderstatuses
+            })
+        }
+    })
 }
 
 exports.save = function (req, res) {

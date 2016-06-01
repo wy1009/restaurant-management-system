@@ -22,9 +22,6 @@ export default {
         }
     },
     ready () {
-        this.$http.post('/api/order-status/', {
-            name: '暂挂'
-        })
     },
     methods: {
 

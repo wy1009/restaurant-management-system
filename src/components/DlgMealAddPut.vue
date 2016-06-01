@@ -1,13 +1,13 @@
 <template>
     <div class="dialog-box">
-        <div class="add-put-meal-dialog">
+        <div class="add-put-meal-dialog dialog">
             <div class="header">菜肴信息</div>
             <div class="content">
                 <div class="group-inputs">
-                    <div class="input-wrapper">
+                    <div class="ui input-wrapper">
                         <input type="text" placeholder="名称" v-model="mealObj.name">
                     </div>
-                    <div class="input-wrapper">
+                    <div class="ui input-wrapper">
                         <select v-model="mealObj['category']">
                             <option value="">请选择</option>
                             <template v-for="category in categoryList">
@@ -15,14 +15,13 @@
                             </template>
                         </select>
                     </div>
-                    <div class="input-wrapper">
+                    <div class="ui input-wrapper">
                         <input type="text" placeholder="价格" v-model="mealObj['price']">
                     </div>
                 </div>
-            </div>
-            <div class="footer">
-                <input type="button" value="取消">
-                <input type="button" value="确定" @click="addMeal">
+                <div class="button-wrapper">
+                    <input type="ui button" value="确定" @click="addMeal">
+                </div>
             </div>
         </div>
     </div>

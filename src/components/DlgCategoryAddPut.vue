@@ -1,17 +1,16 @@
 <template>
     <div class="dialog-box">
-        <div class="add-put-category-dialog">
+        <div class="add-put-category-dialog dialog">
             <div class="header">菜肴类别</div>
             <div class="content">
                 <div class="group-inputs">
-                    <div class="input-wrapper">
+                    <div class="ui input-wrapper">
                         <input type="text" placeholder="名称" v-model="categoryObj.name">
                     </div>
                 </div>
-            </div>
-            <div class="footer">
-                <input type="button" value="取消">
-                <input type="button" value="确定" @click="addCategory">
+                <div class="button-wrapper">
+                    <input type="ui button" value="确定" @click="addCategory">
+                </div>
             </div>
         </div>
     </div>

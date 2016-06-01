@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <div class="button-wrapper">
-                    <input type="ui button" value="确定" @click="addMeal">
+                    <button class="ui button" @click="addCategory">确定</button>
                 </div>
             </div>
         </div>
@@ -52,3 +52,12 @@ export default {
     }
 }
 </script>
+
+<style lang="sass">
+    .add-put-meal-dialog {
+        width: 280px;
+        height: 180px;
+        margin-top: -114px;
+        margin-left: -90px;
+    }
+</style>

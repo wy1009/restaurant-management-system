@@ -15,6 +15,7 @@ var OrderSchema = new mongoose.Schema({
         },
         count: Number
     }],
+    status: String,
     meta: {
         createAt: {
             type: Date,

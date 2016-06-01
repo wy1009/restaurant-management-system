@@ -72,8 +72,8 @@
             <div class="cart-bar">
                 <span v-show="orderMealListLen == 0" class="empty">购物车是空的</span>
                 <span v-show="orderMealListLen" class="total-price">共¥{{ totalPrice }}</span>
-                <span v-show="orderMealListLen" class="submit fr">提交</span>
-                <span v-show="orderMealListLen" class="hold-on fr">暂挂</span>
+                <span v-show="orderMealListLen" @click="submitOrder('待支付')" class="submit fr">提交</span>
+                <span v-show="orderMealListLen" @click="submitOrder('暂挂')" class="hold-on fr">暂挂</span>
             </div>
         </div>
     </div>
@@ -131,6 +131,9 @@ export default {
         },
         selectedCustomer (customer) {
             this.customer = customer
+        },
+        submitOrder (orderStatus) {
+            
         }
     },
     components: {

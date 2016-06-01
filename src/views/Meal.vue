@@ -55,13 +55,16 @@ export default {
         },
         toggleMealDlg () {
             this.dlgMealShow = !this.dlgMealShow
+            if (!this.dlgMealShow) {
+                this.selectedMealObj = {}
+            }
         },
         dlgSubmitedCategory () {
             this.getCategoryList()
             this.toggleCategoryDlg()
         },
         dlgSubmitedMeal () {
-            this.selectedMealObj = {}
+            
             this.getMealList(this.nowCategory, this.nowCategory.index)
             this.toggleMealDlg()
         },

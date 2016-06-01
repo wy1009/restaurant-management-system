@@ -3,7 +3,7 @@
         <div class="add-put-customer-dialog dialog">
             <div class="header"><slot></slot>会员<i @click="dispatchCloseDlgMsg" class="close-btn">+</i></div>
             <div class="content">
-                <customer-add></customer-add>
+                <customer-add :customer-obj="customerObj"></customer-add>
             </div>
         </div>
     </div>
@@ -13,6 +13,7 @@
 import CustomerAdd from './CustomerAdd.vue'
 
 export default {
+    props: ['customerObj'],
     data () {
         return {
             customerObj: {}

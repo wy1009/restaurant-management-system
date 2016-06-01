@@ -21,10 +21,10 @@
 
 <script>
 export default {
+    props: ['customerObj'],
     data () {
         return {
-            memberList: [],
-            customerObj: {}
+            memberList: []
         }
     },
     ready () {

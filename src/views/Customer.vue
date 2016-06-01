@@ -8,8 +8,8 @@
                         <h4 class="title fl">{{ customer.name }}</h4>
                         <div class="phone fl">{{ customer.phone }}</div>
                         <div class="operation fr">
-                            <span>编辑</span>
-                            <span>删除</span>
+                            <span @click="editCustomer(customer)">编辑</span>
+                            <span @click="delCustomer(customer)">删除</span>
                         </div>
                     </li>
                 </ul>
@@ -19,7 +19,7 @@
             <h3 class="ui title">会员等级列表<span @click="toggleMemberDlg">添加会员等级</span></h3>
         </div>
         <dlg-member-add-put @close-dlg="toggleMemberDlg" v-show="dlgMemberShow" transition="expand">添加</dlg-member-add-put>
-        <dlg-customer-add-put @close-dlg="toggleCustomerDlg" v-show="dlgCustomerShow" transition="expand"></dlg-customer-add-put>
+        <dlg-customer-add-put :customer-obj="selectedCustomerObj" @close-dlg="toggleCustomerDlg" v-show="dlgCustomerShow" transition="expand"></dlg-customer-add-put>
     </div>
 </template>
 
@@ -31,6 +31,7 @@ export default {
     data () {
         return {
             customerList: [],
+            selectedCustomerObj: {},
             dlgMemberShow: false,
             dlgCustomerShow: false
         }
@@ -49,11 +50,18 @@ export default {
                 }
             })
         },
+        editCustomer (customer) {
+            this.selectedCustomerObj = customer
+            this.toggleCustomerDlg()
+        },
         toggleMemberDlg () {
             this.dlgMemberShow = !this.dlgMemberShow
         },
         toggleCustomerDlg () {
             this.dlgCustomerShow = !this.dlgCustomerShow
+            if (!this.dlgCustomerShow) {
+                this.selectedCustomerObj = {}
+            }
         }
     },
     components: {

@@ -35,7 +35,7 @@
                     <a href="javascript:;" @click="currentView = 'CustomerAdd'" :class="currentView == 'CustomerAdd' ? 'border-bottom' : ''">新顾客</a>
                     <a href="javascript:;" @click="currentView = 'CustomerSelect'" :class="currentView == 'CustomerSelect' ? 'border-bottom' : ''">老顾客</a>
                 </div>
-                <component :is="currentView" @finished="selectedCustomer"></component>
+                <component :is="currentView" :customer-obj="{}"></component>
             </div>
         </div>
         <div class="menu-cart">

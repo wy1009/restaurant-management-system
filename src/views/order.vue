@@ -133,7 +133,16 @@ export default {
             this.customer = customer
         },
         submitOrder (orderStatus) {
-            this.orderObj.customer = this.customer._id
+            var meal = []
+            for (var key in this.orderMealList) {
+                meal.push(this.orderMealList[key]._id)
+            }
+            this.orderObj = {
+                customer: this.customer._id,
+                meal: meal,
+                status: orderStatus
+            }
+            console.log(this.orderObj)
         }
     },
     components: {

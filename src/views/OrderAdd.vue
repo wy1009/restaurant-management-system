@@ -6,15 +6,11 @@
                     <li v-for="category in categoryList" :class="nowCategory.index === $index ? 'active' : ''">
                         <a href="javascript:;" @click="getMealList(category, $index);">{{ category.name }}</a>
                     </li>
-                    <li v-if="type == 'mealpage'">
-                        <a href="javascript:;" @click="dlgCategoryShow = !dlgCategoryShow">添加菜肴类别</a>
-                    </li>
                 </ul>
             </div>
             <div class="ui list-wrap">
                 <h3 class="ui title">
                     {{ nowCategory.name }}
-                    <a v-if="type == 'mealpage'" class="add-meal-link" href="javascript:;" @click="dlgMealShow = !dlgMealShow">添加菜肴</a>
                 </h3>
                 <div class="meal-list list">
                     <ul>

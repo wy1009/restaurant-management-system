@@ -5,15 +5,15 @@
                 <li v-for="category in categoryList">
                     <a href="javascript:;" @click="getMealList(category, $index);" :class="nowCategory.index === $index ? 'active' : ''">{{ category.name }}</a>
                 </li>
-                <li v-if="type == 'mealpage'">
-                    <a href="javascript:;" @click="dlgCategoryShow = !dlgCategoryShow">添加菜肴类别</a>
+                <li>
+                    <a href="javascript:;" @click="toggleCategoryDlg">添加菜肴类别</a>
                 </li>
             </ul>
         </aside>
         <article class="ui list-wrap">
             <h3 class="ui title">
                 {{ nowCategory.name }}
-                <a v-if="type == 'mealpage'" class="add-meal-link" href="javascript:;" @click="dlgMealShow = !dlgMealShow">添加菜肴</a>
+                <span @click="toggleMealDlg">添加菜肴</span>
             </h3>
             <div class="list">
                 <ul>
@@ -35,11 +35,28 @@
 
 <script>
 import MealListMixin from '../components/MealListMixin.vue'
+import DlgCategoryAddPut from './DlgCategoryAddPut.vue'
+import DlgMealAddPut from './DlgMealAddPut.vue'
 
 export default {
     mixins: [MealListMixin],
     data () {
-        return {}
+        return {
+            dlgMealShow: false,
+            dlgCategoryShow: false
+        }
+    },
+    methods: {
+        toggleCategoryDlg () {
+            this.dlgCategoryShow = !this.dlgCategoryShow
+        },
+        toggleMealDlg () {
+            this.dlgMealShow = !this.dlgMealShow
+        }
+    },
+    components: {
+        DlgCategoryAddPut,
+        DlgMealAddPut
     }
 }
 </script>

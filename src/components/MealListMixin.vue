@@ -1,16 +1,11 @@
 <script>
-import DlgCategoryAddPut from './DlgCategoryAddPut.vue'
-import DlgMealAddPut from './DlgMealAddPut.vue'
 
 export default {
-    props: ['type'],
     data () {
         return {
             nowCategory: {},
             categoryList: [],
             mealList: [],
-            dlgMealShow: false,
-            dlgCategoryShow: false
         }
     },
     ready () {
@@ -43,10 +38,6 @@ export default {
                 }
             })
         }
-    },
-    components: {
-        DlgCategoryAddPut,
-        DlgMealAddPut,
     }
 }
 </script>

@@ -35,13 +35,13 @@
             </div>
         </div>
         <div class="customer-info-box ui list-wrap">
-            <h3 class="ui title">顾客信息</h3>
+            <h3 class="ui title">顾客信息<span>{{ customer.name }} {{ customer.phone }}</span></h3>
             <div class="main-body">
                 <div class="tab-navs">
                     <a href="javascript:;" @click="currentView = 'CustomerAdd'">新顾客</a>
                     <a href="javascript:;" @click="currentView = 'CustomerSelect'">老顾客</a>
                 </div>
-                <component :is="currentView"></component>
+                <component :is="currentView" @finished="selectedCustomer"></component>
             </div>
         </div>
         <div class="menu-cart">
@@ -128,6 +128,9 @@ export default {
             } else {
                 Vue.delete(this.orderMealList, meal._id)
             }
+        },
+        selectedCustomer (customer) {
+            this.customer = customer
         }
     },
     components: {

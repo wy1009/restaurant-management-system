@@ -4,7 +4,7 @@
             <div class="ui input-wrapper">
                 <input v-model="customerFilter" debounce="300" type="text" placeholder="请输入电话进行查找">
                 <ul class="search-result-list">
-                    <li v-for="result of searchResultList">{{ result.name }} {{ result.phone }}</li>
+                    <li v-for="result of searchResultList" @click="dispatchCustomerMsg(result)">{{ result.name }} {{ result.phone }}</li>
                 </ul>
             </div>
         </div>
@@ -16,7 +16,8 @@ export default {
     data () {
         return {
             customerFilter: null,
-            searchResultList: []
+            searchResultList: [],
+            selectedCustomer: {}
         }
     },
     watch: {
@@ -35,10 +36,11 @@ export default {
         }
     },
     methods: {
-        searchCustomer () {
-            this.$http.get('/api/customer/', this.customerFilter).then(function (res) {
-
-            })
+        dispatchCustomerMsg (result) {
+            this.searchResultList = []
+            this.customerFilter = null
+            this.selectedCustomer = result
+            this.$dispatch('finished', this.selectedCustomer)
         }
     }
 }

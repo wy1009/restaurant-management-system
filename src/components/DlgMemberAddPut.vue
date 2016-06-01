@@ -30,11 +30,11 @@ export default {
         addMember () {
             this.$http.post('/api/member/', this.memberObj).then(function (res) {
                 this.memberObj = {}
-                this.dispatchCloseDlgMsg()
+                this.$dispatch('finish')
             })
         },
         dispatchCloseDlgMsg () {
-            this.$dispatch('finished', false)
+            this.$dispatch('close-dlg')
         }
     }
 }

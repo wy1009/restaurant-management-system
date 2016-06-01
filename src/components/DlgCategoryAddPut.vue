@@ -30,14 +30,14 @@ export default {
                 var data = res.data
                 if (data.success) {
                     this.categoryObj = {}
-                    this.dispatchCloseDlgMsg()
+                    this.$dispatch('finish')
                 } else {
                     console.log(data.reason)
                 }
             })
         },
         dispatchCloseDlgMsg () {
-            this.$dispatch('finished')
+            this.$dispatch('close-dlg')
         }
     }
 }

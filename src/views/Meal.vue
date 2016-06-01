@@ -30,8 +30,8 @@
                 </ul>
             </div>
         </article>
-        <dlg-category-add-put v-show="dlgCategoryShow" @finished="toggleCategoryDlg"></dlg-category-add-put>
-        <dlg-meal-add-put v-show="dlgMealShow" :category-list="categoryList" @finished="toggleMealDlg"></dlg-meal-add-put>
+        <dlg-category-add-put v-show="dlgCategoryShow" @close-dlg="toggleCategoryDlg"  transition="expand"></dlg-category-add-put>
+        <dlg-meal-add-put v-show="dlgMealShow" :category-list="categoryList" @close-dlg="toggleMealDlg"  transition="expand"></dlg-meal-add-put>
     </div>
 </template>
 

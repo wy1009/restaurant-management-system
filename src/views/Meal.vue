@@ -18,14 +18,14 @@
             <div class="list">
                 <ul>
                     <li v-for="meal in mealList">
-                        <h4 class="title">{{ meal.name }}</h4>
-                        <div class="desc">{{ meal.description }}</div>
-                        <div class="price">¥{{ meal.price }}/份</div>
-                        <div class="sales">{{ meal.sales }}</div>
-                        <div class="operation">
+                        <h4 class="title fl">{{ meal.name }}</h4>
+                        <div class="operation fr">
                             <span>编辑</span>
                             <span>删除</span>
                         </div>
+                        <div class="sales fr">已售{{ meal.sales }}份</div>
+                        <div class="price fr">¥{{ meal.price }}/份</div>
+                        <div class="desc fr">{{ meal.description }}</div>
                     </li>
                 </ul>
             </div>
@@ -45,5 +45,23 @@ export default {
 </script>
 
 <style lang="sass">
-    
+    .meal-wrapper {
+        .desc {
+            width: 250px;
+        }
+        .price {
+            width: 100px;
+        }
+        .sales {
+            width: 70px;
+        }
+        .operation {
+            width: 100px;
+        }
+        div.fr {
+            margin-right: 20px;
+            height: 69px;
+            line-height: 69px;
+        }
+    }
 </style>

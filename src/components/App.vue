@@ -82,6 +82,14 @@ body {
                             padding-left: 30px;
                             padding-top: 25px;
                         }
+                        .price {
+                            font-size: 14px;
+                            font-weight: bold;
+                        }
+                        .sales {
+                            font-size: 12px;
+                            color: #898989;
+                        }
                     }
                 }
             }

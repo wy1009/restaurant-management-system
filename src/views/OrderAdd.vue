@@ -197,8 +197,6 @@ export default {
                     height: 100%;
                     margin-right: 30px;
                     line-height: 69px;
-                    font-size: 12px;
-                    color: #898989;
                 }
                 .operation {
                     width: 110px;
@@ -229,9 +227,7 @@ export default {
                 .price {
                     line-height: 69px;
                     margin-right: 15px;
-                    font-size: 14px;
                     color: #313131;
-                    font-weight: bold;
                 }
             }
         }

@@ -9,9 +9,7 @@
                     </div>
                     <div class="ui input-wrapper">
                         <select v-model="mealObj['category']">
-                            <template v-for="category in categoryList">
-                                <option value="{{ category._id }}">{{ category.name }}</option>
-                            </template>
+                            <option v-for="category in categoryList" value="{{ category._id }}">{{ category.name }}</option>
                         </select>
                     </div>
                     <div class="ui input-wrapper">
@@ -39,7 +37,7 @@ export default {
                 var data = res.data
                 if (data.success) {
                     this.mealObj = {}
-                    this.$dispatch('finish')
+                    this.$dispatch('submited')
                 } else {
                     console.log(data.reason)
                 }

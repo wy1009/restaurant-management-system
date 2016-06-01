@@ -30,7 +30,7 @@ export default {
                 var data = res.data
                 if (data.success) {
                     this.categoryObj = {}
-                    this.$dispatch('finish')
+                    this.$dispatch('submited')
                 } else {
                     console.log(data.reason)
                 }

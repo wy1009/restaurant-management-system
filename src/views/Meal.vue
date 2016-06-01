@@ -3,7 +3,7 @@
         <aside>
             <ul>
                 <li v-for="category in categoryList">
-                    <a href="javascript:;" @click="getMealList(category, $index);" :class="nowCategory.index === $index ? 'active' : ''">{{ category.name }}</a>
+                    <a href="javascript:;" @click="getMealList(category, $index)" :class="nowCategory.index === $index ? 'active' : ''">{{ category.name }}</a>
                 </li>
                 <li>
                     <a href="javascript:;" @click="toggleCategoryDlg">添加菜肴类别</a>
@@ -30,8 +30,8 @@
                 </ul>
             </div>
         </article>
-        <dlg-category-add-put v-show="dlgCategoryShow" @close-dlg="toggleCategoryDlg"  transition="expand"></dlg-category-add-put>
-        <dlg-meal-add-put v-show="dlgMealShow" :category-list="categoryList" @close-dlg="toggleMealDlg"  transition="expand"></dlg-meal-add-put>
+        <dlg-category-add-put v-show="dlgCategoryShow" @close-dlg="toggleCategoryDlg" @submited="dlgSubmitedCategory" transition="expand"></dlg-category-add-put>
+        <dlg-meal-add-put v-show="dlgMealShow" :category-list="categoryList" @close-dlg="toggleMealDlg" @submited="dlgSubmitedMeal" transition="expand"></dlg-meal-add-put>
     </div>
 </template>
 
@@ -51,10 +51,17 @@ export default {
     methods: {
         toggleCategoryDlg () {
             this.dlgCategoryShow = !this.dlgCategoryShow
-            this.getCategoryList()
         },
         toggleMealDlg () {
             this.dlgMealShow = !this.dlgMealShow
+        },
+        dlgSubmitedCategory () {
+            this.getCategoryList()
+            this.toggleCategoryDlg()
+        },
+        dlgSubmitedMeal () {
+            this.getMealList(this.nowCategory, this.nowCategory.index)
+            this.toggleMealDlg()
         }
     },
     components: {

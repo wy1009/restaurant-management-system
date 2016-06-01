@@ -45,7 +45,7 @@ export default {
             this.$http.post('/api/customer/', this.customerObj).then(function (res) {
                 var data = res.data
                 if (data.success) {
-                    this.$dispatch('finished', data.customer)
+                    this.$dispatch('submited', data.customer)
                     this.customerObj = {}
                 } else {
                     console.log(data.reason)

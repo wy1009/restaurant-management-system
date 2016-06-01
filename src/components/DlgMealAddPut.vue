@@ -8,12 +8,12 @@
                         <input type="text" placeholder="名称" v-model="mealObj.name">
                     </div>
                     <div class="ui input-wrapper">
-                        <select v-model="mealObj['category']">
+                        <select v-model="mealObj.category">
                             <option v-for="category in categoryList" value="{{ category._id }}">{{ category.name }}</option>
                         </select>
                     </div>
                     <div class="ui input-wrapper">
-                        <input type="text" placeholder="价格" v-model="mealObj['price']">
+                        <input type="text" placeholder="价格" v-model="mealObj.price">
                     </div>
                 </div>
                 <div class="button-wrapper">
@@ -25,10 +25,10 @@
 </template>
 <script>
 export default {
-    props: ['categoryList'],
+    props: ['categoryList', 'mealObj'],
     data () {
         return {
-            mealObj: {}
+            // mealObj: {}
         }
     },
     methods: {

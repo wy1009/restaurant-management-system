@@ -20,8 +20,8 @@
                     <li v-for="meal in mealList">
                         <h4 class="title fl">{{ meal.name }}</h4>
                         <div class="operation fr">
-                            <span>编辑</span>
-                            <span>删除</span>
+                            <span @click="editMeal(meal)">编辑</span>
+                            <span @click="delMeal(meal)">删除</span>
                         </div>
                         <div class="sales fr">已售{{ meal.sales }}份</div>
                         <div class="price fr">¥{{ meal.price }}/份</div>
@@ -31,7 +31,7 @@
             </div>
         </article>
         <dlg-category-add-put v-show="dlgCategoryShow" @close-dlg="toggleCategoryDlg" @submited="dlgSubmitedCategory" transition="expand"></dlg-category-add-put>
-        <dlg-meal-add-put v-show="dlgMealShow" :category-list="categoryList" @close-dlg="toggleMealDlg" @submited="dlgSubmitedMeal" transition="expand"></dlg-meal-add-put>
+        <dlg-meal-add-put v-show="dlgMealShow" :meal-obj="selectedMealObj" :category-list="categoryList" @close-dlg="toggleMealDlg" @submited="dlgSubmitedMeal" transition="expand"></dlg-meal-add-put>
     </div>
 </template>
 
@@ -45,7 +45,8 @@ export default {
     data () {
         return {
             dlgMealShow: false,
-            dlgCategoryShow: false
+            dlgCategoryShow: false,
+            selectedMealObj: {}
         }
     },
     methods: {
@@ -60,8 +61,16 @@ export default {
             this.toggleCategoryDlg()
         },
         dlgSubmitedMeal () {
+            this.selectedMealObj = {}
             this.getMealList(this.nowCategory, this.nowCategory.index)
             this.toggleMealDlg()
+        },
+        editMeal (meal) {
+            this.selectedMealObj = meal
+            this.toggleMealDlg()
+        },
+        delMeal (meal) {
+
         }
     },
     components: {

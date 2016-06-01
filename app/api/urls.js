@@ -3,6 +3,7 @@ var Category = require('./category')
 var Meal = require('./meal')
 var Customer = require('./customer')
 var Member = require('./member')
+var Order = require('./order')
 
 module.exports = function (app) {
     // category
@@ -17,4 +18,6 @@ module.exports = function (app) {
     // member
     app.get('/api/member/', Member.fetch)
     app.post('/api/member', Member.save)
+    // order
+    app.post('/api/order/', Order.save)
 }

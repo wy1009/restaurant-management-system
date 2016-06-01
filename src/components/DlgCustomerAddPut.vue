@@ -20,7 +20,7 @@ export default {
     },
     methods: {
         dispatchCloseDlgMsg () {
-            this.$dispatch('close-dlg', false)
+            this.$dispatch('finished', false)
         }
     },
     components: {

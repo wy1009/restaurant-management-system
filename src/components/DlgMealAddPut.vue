@@ -39,7 +39,7 @@ export default {
                 var data = res.data
                 if (data.success) {
                     this.mealObj = {}
-                    this.$dispatch('finished')
+                    this.dispatchCloseDlgMsg()
                 } else {
                     console.log(data.reason)
                 }

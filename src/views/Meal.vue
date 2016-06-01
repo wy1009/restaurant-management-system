@@ -31,7 +31,7 @@
             </div>
         </article>
         <dlg-category-add-put v-show="dlgCategoryShow"></dlg-category-add-put>
-        <dlg-meal-add-put v-show="dlgMealShow"></dlg-meal-add-put>
+        <dlg-meal-add-put v-show="dlgMealShow" :category-list="categoryList"></dlg-meal-add-put>
     </div>
 </template>
 

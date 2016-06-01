@@ -9,7 +9,6 @@
                     </div>
                     <div class="ui input-wrapper">
                         <select v-model="mealObj['category']">
-                            <option value="">请选择</option>
                             <template v-for="category in categoryList">
                                 <option value="{{ category._id }}">{{ category.name }}</option>
                             </template>
@@ -20,7 +19,7 @@
                     </div>
                 </div>
                 <div class="button-wrapper">
-                    <button class="ui button" @click="addCategory">确定</button>
+                    <button class="ui button" @click="test">确定</button>
                 </div>
             </div>
         </div>
@@ -48,6 +47,9 @@ export default {
                     console.log(res.reason)
                 }
             })
+        },
+        test () {
+            console.log(this.categoryList)
         }
     }
 }

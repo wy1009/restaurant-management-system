@@ -26,6 +26,7 @@ exports.save = function (req, res) {
 exports.search = function (req, res) {
     var filter = req.query
     Customer.find(filter)
+        .populate('member')
         .exec(function (err, customers) {
             if (err) {
                 res.send({

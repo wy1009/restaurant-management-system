@@ -11,6 +11,7 @@
                             <span @click="editCustomer(customer)">编辑</span>
                             <span @click="delCustomer(customer)">删除</span>
                         </div>
+                        <!-- <div class="member fr">{{ customer.member.name }}</div> -->
                     </li>
                 </ul>
             </div>
@@ -84,6 +85,10 @@ export default {
                     line-height: 69px;
                     margin-left: 26px;
                     font-size: 14px;
+                }
+                .member {
+                    font-size: 14px;
+                    margin-right: 26px;
                 }
             }
         }

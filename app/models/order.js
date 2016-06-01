@@ -8,7 +8,7 @@ var OrderSchema = new mongoose.Schema({
         type: ObjectId,
         ref: 'Customer' // 建立Model时的名称
     },
-    meal: [{
+    meals: [{
         id: {
             type: ObjectId,
             ref: 'Meal'

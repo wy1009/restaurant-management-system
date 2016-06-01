@@ -1,5 +1,5 @@
 import Overviews from './views/Overviews.vue'
-import Order from './views/Order.vue'
+import OrderAdd from './views/OrderAdd.vue'
 import Customer from './views/Customer.vue'
 
 export default function (router) {
@@ -14,7 +14,7 @@ export default function (router) {
 		},
 		'/order/add/': {
 			name: 'order',
-			component: Order
+			component: OrderAdd
 		},
 		'/customer/': {
 			name: 'customer',

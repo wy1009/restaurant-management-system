@@ -38,8 +38,8 @@
             <h3 class="ui title">顾客信息<span>{{ customer.name }} {{ customer.phone }}</span></h3>
             <div class="main-body">
                 <div class="tab-navs">
-                    <a href="javascript:;" @click="currentView = 'CustomerAdd'">新顾客</a>
-                    <a href="javascript:;" @click="currentView = 'CustomerSelect'">老顾客</a>
+                    <a href="javascript:;" @click="currentView = 'CustomerAdd'" :class="currentView == 'CustomerAdd' ? 'border-bottom' : ''">新顾客</a>
+                    <a href="javascript:;" @click="currentView = 'CustomerSelect'" :class="currentView == 'CustomerSelect' ? 'border-bottom' : ''">老顾客</a>
                 </div>
                 <component :is="currentView" @finished="selectedCustomer"></component>
             </div>
@@ -201,6 +201,9 @@ export default {
                     float: left;
                     color: #ff2d4b;
                     line-height: 35px;
+                    &.border-bottom {
+                        border-bottom: 3px solid;
+                    }
                 }
             }
             .add-customer-box {

@@ -40,3 +40,18 @@ exports.search = function (req, res) {
             }
         })
 }
+
+// exports.fetch = function (req, res) {
+//     Customer.fetch(function (err, customers) {
+//         if (err) {
+//             res.send({
+//                 success: false,
+//                 reason: err
+//             })
+//         } else {
+//             res.send({
+//                 success: true
+//             })
+//         }
+//     })
+// }

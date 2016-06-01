@@ -89,6 +89,20 @@ body {
                         font-size: 12px;
                         color: #898989;
                     }
+                    .operation {
+                        width: 100px;
+                        span {
+                            font-size: 14px;
+                            color: #ff2d4b;
+                            margin-right: 10px;
+                            cursor: pointer;
+                        }
+                    }
+                    div.fr {
+                        margin-right: 20px;
+                        height: 69px;
+                        line-height: 69px;
+                    }
                 }
             }
         }

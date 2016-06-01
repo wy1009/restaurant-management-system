@@ -70,7 +70,7 @@ export default {
             this.toggleMealDlg()
         },
         delMeal (meal) {
-
+            // this.$http.delete('/api/meal/', meal)
         }
     },
     components: {
@@ -90,20 +90,6 @@ export default {
         }
         .sales {
             width: 70px;
-        }
-        .operation {
-            width: 100px;
-            span {
-                font-size: 14px;
-                color: #ff2d4b;
-                margin-right: 10px;
-                cursor: pointer;
-            }
-        }
-        div.fr {
-            margin-right: 20px;
-            height: 69px;
-            line-height: 69px;
         }
     }
 </style>

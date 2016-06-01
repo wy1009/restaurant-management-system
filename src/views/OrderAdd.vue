@@ -17,7 +17,7 @@
                         <li class="info" v-for="meal in mealList">
                             <h4 class="title fl">{{ meal.name }}</h4>
                             <div class="sales fr">已售{{ meal.sales }}份</div>
-                            <div class="operation fr">
+                            <div class="order-operation">
                                 <i class="minusfrcart" :class="orderMealList[meal._id] ? '' : 'visibility-hidden'" @click="minusFromCart(meal)">-</i>
                                 <i class="select-count" :class="orderMealList[meal._id] ? '' : 'visibility-hidden'">{{ orderMealList[meal._id] ? orderMealList[meal._id].count : 0 }}</i>
                                 <i class="addtocart" @click="addToCart(meal)">+</i>
@@ -194,9 +194,10 @@ export default {
                     margin-right: 30px;
                     line-height: 69px;
                 }
-                .operation {
+                .order-operation {
                     width: 110px;
                     padding-top: 20px;
+                    float: right;
                     .minusfrcart,
                     .addtocart {
                         font-style: normal;

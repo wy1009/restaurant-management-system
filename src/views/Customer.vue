@@ -2,6 +2,18 @@
     <div class="customer-wrapper">
         <div class="customer-list-box ui list-wrap">
             <h3 class="ui title">会员列表<span @click="toggleCustomerDlg">添加会员</span></h3>
+            <div class="list">
+                <ul>
+                    <li v-for="customer of customerList">
+                        <h4 class="title fl">{{ customer.name }}</h4>
+                        <div class="phone fl">{{ customer.phone }}</div>
+                        <div class="operation fr">
+                            <span>编辑</span>
+                            <span>删除</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
         <div class="member-box ui list-wrap">
             <h3 class="ui title">会员等级列表<span @click="toggleMemberDlg">添加会员等级</span></h3>
@@ -18,11 +30,25 @@ import DlgCustomerAddPut from '../components/DlgCustomerAddPut.vue'
 export default {
     data () {
         return {
+            customerList: [],
             dlgMemberShow: false,
             dlgCustomerShow: false
         }
     },
+    ready () {
+        this.getCustomerList()
+    },
     methods: {
+        getCustomerList () {
+            this.$http.get('/api/customer/').then(function (res) {
+                var data = res.data
+                if (data.success) {
+                    this.customerList = data.customers
+                } else {
+                    console.log(data.reason)
+                }
+            })
+        },
         toggleMemberDlg () {
             this.dlgMemberShow = !this.dlgMemberShow
         },
@@ -42,6 +68,16 @@ export default {
         .customer-list-box {
             width: 690px;
             float: left;
+            .list {
+                .title {
+                    width: 100px;
+                }
+                .phone {
+                    line-height: 69px;
+                    margin-left: 26px;
+                    font-size: 14px;
+                }
+            }
         }
         .member-box {
             width: 280px;

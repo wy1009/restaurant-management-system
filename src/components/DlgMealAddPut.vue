@@ -26,11 +26,6 @@
 <script>
 export default {
     props: ['categoryList', 'mealObj'],
-    data () {
-        return {
-            // mealObj: {}
-        }
-    },
     methods: {
         addMeal () {
             this.$http.post('/api/meal/', this.mealObj).then(function (res) {

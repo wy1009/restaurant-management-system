@@ -14,11 +14,6 @@ import CustomerAdd from './CustomerAdd.vue'
 
 export default {
     props: ['customerObj'],
-    data () {
-        return {
-            customerObj: {}
-        }
-    },
     methods: {
         dispatchCloseDlgMsg () {
             this.$dispatch('close-dlg')

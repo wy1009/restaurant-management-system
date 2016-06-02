@@ -25,7 +25,7 @@
                 </ul>
             </div>
         </article>
-        <dlg-user-add-put v-show="dlgUserShow" :user-obj="selectedUserObj" :role-list="roleList" @close-dlg="toggleUserDlg"></dlg-user-add-put>
+        <dlg-user-add-put v-show="dlgUserShow" :user-obj="selectedUserObj" :role-list="roleList" @close-dlg="toggleUserDlg" @submited="dlgUserSubmited"></dlg-user-add-put>
     </div>
 </template>
 
@@ -57,6 +57,9 @@ export default {
     methods: {
         toggleUserDlg () {
             this.dlgUserShow = !this.dlgUserShow
+        },
+        dlgUserSubmited () {
+
         }
     },
     components: {

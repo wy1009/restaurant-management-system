@@ -30,8 +30,8 @@
                 </ul>
             </div>
         </article>
-        <dlg-category-add-put v-show="dlgCategoryShow" @close-dlg="toggleCategoryDlg" @submited="dlgSubmitedCategory" transition="expand"></dlg-category-add-put>
-        <dlg-meal-add-put v-show="dlgMealShow" :meal-obj="selectedMealObj" :category-list="categoryList" @close-dlg="toggleMealDlg" @submited="dlgSubmitedMeal" transition="expand"></dlg-meal-add-put>
+        <dlg-category-add-put v-show="dlgCategoryShow" @close-dlg="toggleCategoryDlg" @submited="dlgCategorySubmited" transition="expand"></dlg-category-add-put>
+        <dlg-meal-add-put v-show="dlgMealShow" :meal-obj="selectedMealObj" :category-list="categoryList" @close-dlg="toggleMealDlg" @submited="dlgMealSubmited" transition="expand"></dlg-meal-add-put>
     </div>
 </template>
 
@@ -59,12 +59,11 @@ export default {
                 this.selectedMealObj = {}
             }
         },
-        dlgSubmitedCategory () {
+        dlgCategorySubmited () {
             this.getCategoryList()
             this.toggleCategoryDlg()
         },
-        dlgSubmitedMeal () {
-            
+        dlgMealSubmited () {
             this.getMealList(this.nowCategory, this.nowCategory.index)
             this.toggleMealDlg()
         },

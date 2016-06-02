@@ -26,7 +26,9 @@ export default {
     props: ['userObj', 'roleList'],
     methods: {
         addUser () {
-
+            this.$http.post('/api/user/', this.userObj).then(function (res) {
+                
+            })
         },
         dispatchCloseDlgMsg () {
             this.$dispatch('close-dlg')

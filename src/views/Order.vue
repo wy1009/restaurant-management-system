@@ -2,8 +2,8 @@
     <div class="order-wrapper has-side-nav">
         <aside>
             <ul>
-                <li v-for="orderStatus of orderStatusList">
-                    <a href="javascript:;" @click="nowOrderStatus = orderStatus" :class="orderStatus == nowOrderStatus ? 'active' : ''">{{ orderStatus.name }}</a>
+                <li v-for="orderStatus of orderStatusList" :class="orderStatus == nowOrderStatus ? 'active' : ''">
+                    <a href="javascript:;" @click="nowOrderStatus = orderStatus">{{ orderStatus.name }}</a>
                 </li>
             </ul>
         </aside>

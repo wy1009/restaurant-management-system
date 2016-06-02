@@ -2,7 +2,9 @@
     <div class="meal-wrapper has-side-nav">
         <aside>
             <ul>
-                <li v-for="role in roleList"><a href="javascript:;" @click="getUserList(role)" :class="role.name == nowRole.name ? 'active' : ''">{{ role.name }}</a></li>
+                <li v-for="role in roleList" :class="role.name == nowRole.name ? 'active' : ''">
+                    <a href="javascript:;" @click="getUserList(role)">{{ role.name }}</a>
+                </li>
             </ul>
         </aside>
         <article class="ui list-wrap">

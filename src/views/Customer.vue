@@ -2,8 +2,8 @@
     <div class="customer-wrapper has-side-nav">
         <aside>
             <ul>
-                <li v-for="member in memberList">
-                    <a href="javascript:;" @click="getCustomerList(member)" :class="member._id == nowMember._id ? 'active' : ''">{{ member.name }}</a>
+                <li v-for="member in memberList" :class="member._id == nowMember._id ? 'active' : ''">
+                    <a href="javascript:;" @click="getCustomerList(member)">{{ member.name }}</a>
                 </li>
                 <li>
                     <a href="javascript:;" @click="toggleMemberDlg">+ 添加会员等级</a>

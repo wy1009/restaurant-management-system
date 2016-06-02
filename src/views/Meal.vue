@@ -2,8 +2,12 @@
     <div class="meal-wrapper has-side-nav">
         <aside>
             <ul>
-                <li v-for="category in categoryList">
-                    <a href="javascript:;" @click="getMealList(category)" :class="nowCategory._id == category._id ? 'active' : ''">{{ category.name }}</a>
+                <li v-for="category in categoryList" :class="nowCategory._id == category._id ? 'active' : ''">
+                    <div @click="getMealList(category)">
+                        {{ category.name }}
+                        <span class="fr">编辑</span>
+                        <span class="fr">删除</span>
+                    </div>
                 </li>
                 <li>
                     <a href="javascript:;" @click="toggleCategoryDlg">+ 添加菜肴类别</a>

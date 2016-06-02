@@ -182,14 +182,29 @@ body {
             width: 280px;
             li {
                 margin-right: 10px;
-                a {
-                    padding: 5px 10px;
-                    display: block;
-                    font-size: 16px;
+                padding: 5px 10px;
+                display: block;
+                font-size: 16px;
+                div {
                     color: #ff2d4b;
-                    &.active {
-                        background: #ff2d4b;
+                    cursor: pointer;
+                    span {
+                        color: #f5f5f5;
+                    }
+                    &:hover span {
+                        color: #ff2d4b;
+                    }
+                }
+                &.active {
+                    background: #ff2d4b;
+                    div {
                         color: #fff;
+                        span {
+                            color: #ff2d4b;
+                        }
+                        &:hover span {
+                            color: #fff;
+                        }
                     }
                 }
             }

@@ -1,7 +1,20 @@
 <template>
     <div class="customer-wrapper">
-        <div class="customer-list-box ui list-wrap">
-            <h3 class="ui title">会员列表<span @click="toggleCustomerDlg">添加会员</span></h3>
+        <aside class="member-box ui list-wrap">
+            <ul>
+                <li v-for="member in memberList">
+                    <a href="javascript:;" @click="getCustomerList(category, $index)" :class="nowCategory.index === $index ? 'active' : ''">{{ category.name }}</a>
+                </li>
+                <li>
+                    <a href="javascript:;" @click="toggleMemberDlg">+ 添加会员等级</a>
+                </li>
+            </ul>
+        </aside>
+        <article class="ui list-wrap">
+            <h3 class="ui title">
+                {{ nowMember.name }}
+                <span @click="toggleCustomerDlg">添加会员</span>
+            </h3>
             <div class="list">
                 <ul>
                     <li v-for="customer of customerList">
@@ -11,14 +24,10 @@
                             <span @click="editCustomer(customer)">编辑</span>
                             <span @click="delCustomer(customer)">删除</span>
                         </div>
-                        <!-- <div class="member fr">{{ customer.member.name }}</div> -->
                     </li>
                 </ul>
             </div>
-        </div>
-        <div class="member-box ui list-wrap">
-            <h3 class="ui title">会员等级列表<span @click="toggleMemberDlg">添加会员等级</span></h3>
-        </div>
+        </article>
         <dlg-member-add-put @close-dlg="toggleMemberDlg" v-show="dlgMemberShow" transition="expand">添加</dlg-member-add-put>
         <dlg-customer-add-put :customer-obj="selectedCustomerObj" @close-dlg="toggleCustomerDlg" v-show="dlgCustomerShow" transition="expand"></dlg-customer-add-put>
     </div>
@@ -34,7 +43,8 @@ export default {
             customerList: [],
             selectedCustomerObj: {},
             dlgMemberShow: false,
-            dlgCustomerShow: false
+            dlgCustomerShow: false,
+            nowMember: {}
         }
     },
     ready () {

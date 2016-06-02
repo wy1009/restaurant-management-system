@@ -6,7 +6,7 @@
                     <a href="javascript:;" @click="getMealList(category, $index)" :class="nowCategory.index === $index ? 'active' : ''">{{ category.name }}</a>
                 </li>
                 <li>
-                    <a href="javascript:;" @click="toggleCategoryDlg">添加菜肴类别</a>
+                    <a href="javascript:;" @click="toggleCategoryDlg">+ 添加菜肴类别</a>
                 </li>
             </ul>
         </aside>

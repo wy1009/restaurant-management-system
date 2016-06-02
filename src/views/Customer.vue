@@ -65,7 +65,10 @@ export default {
         },
         getCustomerList (member) {
             this.nowMember = member
-            this.$http.get('/api/customer/').then(function (res) {
+            var filterCondition = {
+                member: member._id
+            }
+            this.$http.get('/api/customer/', filterCondition).then(function (res) {
                 var data = res.data
                 if (data.success) {
                     this.customerList = data.customers

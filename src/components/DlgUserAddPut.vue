@@ -5,7 +5,7 @@
             <div class="content">
                 <div class="group-inputs">
                     <div class="ui input-wrapper">
-                        <input type="text" placeholder="名称" v-model="memberObj.name">
+                        <input type="text" placeholder="名称" v-model="userObj.name">
                     </div>
                     <div class="ui input-wrapper">
                         <select v-model="userObj.role">
@@ -26,7 +26,10 @@ export default {
     props: ['userObj', 'roleList'],
     methods: {
         addUser () {
-            
+
+        },
+        dispatchCloseDlgMsg () {
+            this.$dispatch('close-dlg')
         }
     }
 }

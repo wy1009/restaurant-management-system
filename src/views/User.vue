@@ -25,7 +25,7 @@
                 </ul>
             </div>
         </article>
-        <dlg-user-add-put></dlg-user-add-put>
+        <dlg-user-add-put v-show="dlgUserShow" :user-obj="selectedUserObj" :role-list="roleList" @close-dlg="toggleUserDlg"></dlg-user-add-put>
     </div>
 </template>
 
@@ -49,12 +49,14 @@ export default {
                 name: '超级管理员',
                 role: 50
             }],
-            userList: []
+            userList: [],
+            selectedUserObj: {},
+            dlgUserShow: false
         }
     },
     methods: {
         toggleUserDlg () {
-
+            this.dlgUserShow = !this.dlgUserShow
         }
     },
     components: {

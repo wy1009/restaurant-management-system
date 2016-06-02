@@ -46,7 +46,7 @@ export default {
         return {
             dlgMealShow: false,
             dlgCategoryShow: false,
-            selectedMealObj: {}
+            selectedMealObj: {} // 指被操作的行
         }
     },
     methods: {

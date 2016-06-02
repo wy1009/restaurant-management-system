@@ -2,14 +2,12 @@
     <div class="meal-wrapper has-side-nav">
         <aside>
             <ul>
-                <li><a href="javascript:;">超级管理员</a></li>
-                <li><a href="javascript:;">管理员</a></li>
-                <li><a href="javascript:;">普通员工</a></li>
+                <li v-for="role in roleList"><a href="javascript:;" @click="nowRole = role" :class="role == nowRole ? 'active' : ''">{{ role.name }}</a></li>
             </ul>
         </aside>
         <article class="ui list-wrap">
             <h3 class="ui title">
-                超级管理员
+                {{ nowRole.name }}
                 <span @click="toggleUserDlg">添加员工</span>
             </h3>
             <div class="list">
@@ -34,6 +32,20 @@
 export default {
     data () {
         return {
+            nowRole: {
+                name: '普通员工',
+                role: 0
+            },
+            roleList: [{
+                name: '普通员工',
+                role: 0
+            }, {
+                name: '管理员',
+                role: 1
+            }, {
+                name: '超级管理员',
+                role: 50
+            }],
             userList: []
         }
     },

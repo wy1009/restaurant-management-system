@@ -3,7 +3,7 @@
         <aside>
             <ul>
                 <li v-for="member in memberList">
-                    <a href="javascript:;" @click="getCustomerList(category, $index)" :class="nowCategory.index === $index ? 'active' : ''">{{ category.name }}</a>
+                    <a href="javascript:;" @click="getCustomerList(member)" :class="member._id == nowMember._id ? 'active' : ''">{{ member.name }}</a>
                 </li>
                 <li>
                     <a href="javascript:;" @click="toggleMemberDlg">+ 添加会员等级</a>
@@ -44,14 +44,27 @@ export default {
             selectedCustomerObj: {},
             dlgMemberShow: false,
             dlgCustomerShow: false,
-            nowMember: {}
+            nowMember: {},
+            memberList: []
         }
     },
     ready () {
-        this.getCustomerList()
+        this.getMemberList()
     },
     methods: {
-        getCustomerList () {
+        getMemberList () {
+            this.$http.get('/api/member/').then(function (res) {
+                var data = res.data
+                if (data.success) {
+                    this.memberList = data.memberList
+                    this.getCustomerList(this.memberList[0])
+                } else {
+                    console.log(data.reason)
+                }
+            })
+        },
+        getCustomerList (member) {
+            this.nowMember = member
             this.$http.get('/api/customer/').then(function (res) {
                 var data = res.data
                 if (data.success) {

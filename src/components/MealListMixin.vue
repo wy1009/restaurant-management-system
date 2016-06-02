@@ -16,7 +16,7 @@ export default {
                 var data = res.data
                 if (data.success) {
                     this.categoryList = data.categoryList
-                    this.getMealList(this.categoryList[0], 0)
+                    this.getMealList(this.categoryList[0])
                 } else {
                     console.log(data.reason)
                 }

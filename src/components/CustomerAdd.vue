@@ -46,7 +46,6 @@ export default {
                 var data = res.data
                 if (data.success) {
                     this.$dispatch('submited', data.customer)
-                    this.customerObj = {}
                 } else {
                     console.log(data.reason)
                 }

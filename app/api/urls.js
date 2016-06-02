@@ -26,5 +26,6 @@ module.exports = function (app) {
     app.get('/api/order-status/', OrderStatus.fetch)
     app.post('/api/order-status/', OrderStatus.save)
     // user
+    app.get('/api/user', User.search)
     app.post('/api/user/', User.save)
 }

@@ -31,7 +31,6 @@ export default {
             this.$http.post('/api/meal/', this.mealObj).then(function (res) {
                 var data = res.data
                 if (data.success) {
-                    this.mealObj = {}
                     this.$dispatch('submited')
                 } else {
                     console.log(data.reason)

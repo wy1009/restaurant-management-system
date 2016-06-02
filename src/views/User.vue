@@ -2,7 +2,7 @@
     <div class="meal-wrapper has-side-nav">
         <aside>
             <ul>
-                <li v-for="role in roleList"><a href="javascript:;" @click="nowRole = role" :class="role.name == nowRole.name ? 'active' : ''">{{ role.name }}</a></li>
+                <li v-for="role in roleList"><a href="javascript:;" @click="getUserList(role)" :class="role.name == nowRole.name ? 'active' : ''">{{ role.name }}</a></li>
             </ul>
         </aside>
         <article class="ui list-wrap">
@@ -18,9 +18,7 @@
                             <span @click="editMeal(user)">编辑</span>
                             <span @click="delMeal(user)">删除</span>
                         </div>
-                        <div class="sales fr">已售{{ user.sales }}份</div>
-                        <div class="price fr">¥{{ user.price }}/份</div>
-                        <div class="desc fr">{{ user.description }}</div>
+                        <div class="phone fr">{{ user.phone }}</div>
                     </li>
                 </ul>
             </div>
@@ -54,12 +52,32 @@ export default {
             dlgUserShow: false
         }
     },
+    ready () {
+        this.getUserList()
+    },
     methods: {
+        getUserList (role) {
+            if (role) {
+                this.nowRole = role
+            }
+            this.$http.get('/api/user/', this.nowRole).then(function (res) {
+                var data = res.data
+                if (data.success) {
+                    this.userList = data.userList
+                } else {
+                    console.log(data.reason)
+                }
+            })
+        },
         toggleUserDlg () {
             this.dlgUserShow = !this.dlgUserShow
+            if (!this.dlgUserShow) {
+                this.selectedUserObj = {}
+            }
         },
         dlgUserSubmited () {
-
+            this.getUserList()
+            this.toggleUserDlg()
         }
     },
     components: {

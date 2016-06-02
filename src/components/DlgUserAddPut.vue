@@ -29,7 +29,6 @@ export default {
             this.$http.post('/api/user/', this.userObj).then(function (res) {
                 var data = res.data
                 if (data.success) {
-                    this.userObj = {}
                     this.$dispatch('submited')
                 } else {
                     console.log(data.reason)

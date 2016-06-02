@@ -21,3 +21,23 @@ exports.save = function (req, res) {
         })
     }
 }
+
+exports.search = function (req, res) {
+    var filter = {
+        role: req.query.role
+    }
+    User.find(filter)
+        .exec(function (err, users) {
+            if (err) {
+                res.send({
+                    success: false,
+                    reason: err
+                })
+            } else {
+                res.send({
+                    success: true,
+                    userList: users
+                })
+            }
+        })
+}

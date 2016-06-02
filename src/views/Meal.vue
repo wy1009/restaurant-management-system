@@ -3,7 +3,7 @@
         <aside>
             <ul>
                 <li v-for="category in categoryList">
-                    <a href="javascript:;" @click="getMealList(category, $index)" :class="nowCategory.index === $index ? 'active' : ''">{{ category.name }}</a>
+                    <a href="javascript:;" @click="getMealList(category)" :class="nowCategory._id == category._id ? 'active' : ''">{{ category.name }}</a>
                 </li>
                 <li>
                     <a href="javascript:;" @click="toggleCategoryDlg">+ 添加菜肴类别</a>
@@ -64,7 +64,7 @@ export default {
             this.toggleCategoryDlg()
         },
         dlgMealSubmited () {
-            this.getMealList(this.nowCategory, this.nowCategory.index)
+            this.getMealList(this.nowCategory)
             this.toggleMealDlg()
         },
         editMeal (meal) {

@@ -3,8 +3,8 @@
         <div class="meal-list-box">
             <div class="category-wrap">
                 <ul>
-                    <li v-for="category in categoryList" :class="nowCategory.index === $index ? 'active' : ''">
-                        <a href="javascript:;" @click="getMealList(category, $index);">{{ category.name }}</a>
+                    <li v-for="category in categoryList" :class="nowCategory._id == category._id ? 'active' : ''">
+                        <a href="javascript:;" @click="getMealList(category);">{{ category.name }}</a>
                     </li>
                 </ul>
             </div>

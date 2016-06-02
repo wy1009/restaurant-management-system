@@ -22,9 +22,8 @@ export default {
                 }
             })
         },
-        getMealList (category, index) {
+        getMealList (category) {
             this.nowCategory = category
-            this.nowCategory.index = index
             var filterCondition = {
                 category: category._id
             }

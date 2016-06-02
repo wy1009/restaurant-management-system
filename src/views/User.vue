@@ -23,7 +23,7 @@
                 </ul>
             </div>
         </article>
-        <dlg-user-add-put v-show="dlgUserShow" :user-obj="selectedUserObj" :role-list="roleList" @close-dlg="toggleUserDlg" @submited="dlgUserSubmited"></dlg-user-add-put>
+        <dlg-user-add-put v-show="dlgUserShow" :user-obj="selectedUserObj" :role-list="roleList" @close-dlg="toggleUserDlg" @submited="dlgUserSubmited" transition="expand"></dlg-user-add-put>
     </div>
 </template>
 

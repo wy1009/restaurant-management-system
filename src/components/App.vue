@@ -190,6 +190,9 @@ body {
                     cursor: pointer;
                     span {
                         color: #f5f5f5;
+                        margin-left: 6px;
+                        font-size: 14px;
+                        line-height: 22px;
                     }
                     &:hover span {
                         color: #ff2d4b;

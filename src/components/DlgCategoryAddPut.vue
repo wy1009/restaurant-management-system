@@ -18,11 +18,7 @@
 
 <script>
 export default {
-    data () {
-        return {
-            categoryObj: {}
-        }
-    },
+    props: ['categoryObj'],
     methods: {
         addCategory () {
             var _this = this

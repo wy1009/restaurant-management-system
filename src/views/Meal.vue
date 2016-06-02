@@ -5,8 +5,8 @@
                 <li v-for="category in categoryList" :class="nowCategory._id == category._id ? 'active' : ''">
                     <div @click="getMealList(category)">
                         {{ category.name }}
-                        <span class="fr">编辑</span>
-                        <span class="fr">删除</span>
+                        <span class="fr" @click.stop="editCategory(category)">编辑</span>
+                        <span class="fr" @click.stop="delCategory(category)">删除</span>
                     </div>
                 </li>
                 <li>
@@ -34,7 +34,7 @@
                 </ul>
             </div>
         </article>
-        <dlg-category-add-put v-show="dlgCategoryShow" @close-dlg="toggleCategoryDlg" @submited="dlgCategorySubmited" transition="expand"></dlg-category-add-put>
+        <dlg-category-add-put v-show="dlgCategoryShow" :category-obj="selectCategoryObj" @close-dlg="toggleCategoryDlg" @submited="dlgCategorySubmited" transition="expand"></dlg-category-add-put>
         <dlg-meal-add-put v-show="dlgMealShow" :meal-obj="selectedMealObj" :category-list="categoryList" @close-dlg="toggleMealDlg" @submited="dlgMealSubmited" transition="expand"></dlg-meal-add-put>
     </div>
 </template>
@@ -50,12 +50,16 @@ export default {
         return {
             dlgMealShow: false,
             dlgCategoryShow: false,
-            selectedMealObj: {} // 指被操作的行
+            selectedMealObj: {}, // 指被操作的行
+            selectCategoryObj: {}
         }
     },
     methods: {
         toggleCategoryDlg () {
             this.dlgCategoryShow = !this.dlgCategoryShow
+            if (!this.dlgCategoryShow) {
+                this.selectCategoryObj = {}
+            }
         },
         toggleMealDlg () {
             this.dlgMealShow = !this.dlgMealShow
@@ -77,6 +81,13 @@ export default {
         },
         delMeal (meal) {
             // this.$http.delete('/api/meal/', meal)
+        },
+        editCategory (category) {
+            this.selectCategoryObj = category
+            this.toggleCategoryDlg()
+        },
+        delCategory (category) {
+
         }
     },
     components: {

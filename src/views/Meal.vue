@@ -85,13 +85,7 @@ export default {
 <style lang="sass">
     .meal-wrapper {
         .desc {
-            width: 250px;
-        }
-        .price {
-            width: 100px;
-        }
-        .sales {
-            width: 70px;
+            width: 200px;
         }
     }
 </style>

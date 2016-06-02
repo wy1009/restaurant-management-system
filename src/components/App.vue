@@ -82,15 +82,17 @@ body {
                         padding-top: 25px;
                     }
                     .price {
+                        width: 90px;
                         font-size: 14px;
                         font-weight: bold;
                     }
                     .sales {
+                        width: 70px;
                         font-size: 12px;
                         color: #898989;
                     }
                     .operation {
-                        width: 100px;
+                        width: 90px;
                         span {
                             font-size: 14px;
                             color: #ff2d4b;
@@ -177,7 +179,7 @@ body {
     .has-side-nav {
         aside {
             float: left;
-            width: 200px;
+            width: 280px;
             li {
                 margin-right: 10px;
                 a {
@@ -193,7 +195,7 @@ body {
             }
         }
         article {
-            margin-left: 200px;
+            margin-left: 280px;
         }
     }
 }

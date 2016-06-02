@@ -8,8 +8,8 @@
                         <input type="text" placeholder="名称" v-model="memberObj.name">
                     </div>
                     <div class="ui input-wrapper">
-                        <select v-model="customerObj.member">
-                            <option v-for="member of memberList" value="{{ member._id }}">{{ member.name }}</option>
+                        <select v-model="userObj.role">
+                            <option v-for="role of roleList" value="{{ role.role }}">{{ role.name }}</option>
                         </select>
                     </div>
                 </div>
@@ -20,3 +20,12 @@
         </div>
     </div>
 </template>
+
+<script>
+export default {
+    props: ['userObj', 'roleList'],
+    methods: {
+
+    }
+}
+</script>

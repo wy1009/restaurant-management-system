@@ -5,8 +5,8 @@
                 <li v-for="category in categoryList" :class="nowCategory._id == category._id ? 'active' : ''">
                     <div @click="getMealList(category)">
                         {{ category.name }}
-                        <span class="fr" @click.stop="editCategory(category)">编辑</span>
                         <span class="fr" @click.stop="delCategory(category)">删除</span>
+                        <span class="fr" @click.stop="editCategory(category)">编辑</span>
                     </div>
                 </li>
                 <li>

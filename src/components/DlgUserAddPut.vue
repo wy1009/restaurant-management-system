@@ -14,7 +14,7 @@
                     </div>
                 </div>
                 <div class="button-wrapper">
-                    <button class="ui button" @click="addMember">确定</button>
+                    <button class="ui button" @click="addUser">确定</button>
                 </div>
             </div>
         </div>
@@ -25,7 +25,9 @@
 export default {
     props: ['userObj', 'roleList'],
     methods: {
-
+        addUser () {
+            
+        }
     }
 }
 </script>

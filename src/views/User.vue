@@ -25,10 +25,13 @@
                 </ul>
             </div>
         </article>
+        <dlg-user-add-put></dlg-user-add-put>
     </div>
 </template>
 
 <script>
+import DlgUserAddPut from '../components/DlgUserAddPut.vue'
+
 export default {
     data () {
         return {
@@ -53,6 +56,9 @@ export default {
         toggleUserDlg () {
 
         }
+    },
+    components: {
+        DlgUserAddPut
     }
 }
 </script>

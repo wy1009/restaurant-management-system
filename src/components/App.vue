@@ -79,7 +79,6 @@ body {
                         color: #313131;
                         font-weight: normal;
                         padding-left: 30px;
-                        padding-top: 25px;
                     }
                     .price {
                         width: 90px;
@@ -100,7 +99,8 @@ body {
                             cursor: pointer;
                         }
                     }
-                    div.fr {
+                    &>.fr,
+                    &>.fl {
                         margin-right: 20px;
                         height: 69px;
                         line-height: 69px;

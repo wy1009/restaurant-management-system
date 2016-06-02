@@ -1,6 +1,6 @@
 <template>
-    <div class="customer-wrapper">
-        <aside class="member-box ui list-wrap">
+    <div class="customer-wrapper has-side-nav">
+        <aside>
             <ul>
                 <li v-for="member in memberList">
                     <a href="javascript:;" @click="getCustomerList(category, $index)" :class="nowCategory.index === $index ? 'active' : ''">{{ category.name }}</a>

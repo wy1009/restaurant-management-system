@@ -62,17 +62,21 @@ exports.search = function (req, res) {
         })
 }
 
-// exports.fetch = function (req, res) {
-//     Customer.fetch(function (err, customers) {
-//         if (err) {
-//             res.send({
-//                 success: false,
-//                 reason: err
-//             })
-//         } else {
-//             res.send({
-//                 success: true
-//             })
-//         }
-//     })
-// }
+exports.searchWithMemberInfo = function (req, res) {
+    var filterCondition = req.query
+    Customer.find(filterCondition)
+        .populate('member')
+        .exec(function (err, customers) {
+            if (err) {
+                res.send({
+                    success: false,
+                    reason: err
+                })
+            } else {
+                res.send({
+                    success: true,
+                    customerList: customers
+                })
+            }
+        })
+}

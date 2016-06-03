@@ -42,7 +42,7 @@
             <div class="cc-warp" v-show="orderMealListLen">
                 <div class="title">
                     <span class="txt">点单列表</span>
-                    <span class="customer-info fr">{{ customer.name }}</span>
+                    <span class="customer-info fr">{{ customer.member ? customer.member.name + '（' + customer.member.discount + '折）' : '' }}</span>
                 </div>
                 <div class="cart-panel">
                     <table>
@@ -101,10 +101,12 @@ export default {
         },
         totalPrice () {
             var price = 0
+            var discount = this.customer.member ? this.customer.member.discount * 0.1 : 1
+            console.log(discount)
             for (var key in this.orderMealList) {
-                price += this.orderMealList[key].price
+                price += this.orderMealList[key].price * discount
             }
-            return price
+            return price.toFixed(1)
         }
     },
     methods: {

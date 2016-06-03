@@ -19,6 +19,7 @@ var OrderSchema = new mongoose.Schema({
         type: ObjectId,
         ref: 'OrderStatus'
     },
+    price: Number,
     meta: {
         createAt: {
             type: Date,

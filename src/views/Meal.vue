@@ -34,8 +34,8 @@
                 </ul>
             </div>
         </article>
-        <dlg-category-add-put v-show="dlgCategoryShow" :old-info-obj="selectCategoryObj" @close-dlg="toggleCategoryDlg" @submited="dlgCategorySubmited" transition="expand"></dlg-category-add-put>
-        <dlg-meal-add-put v-show="dlgMealShow" :old-info-obj="selectedMealObj" :category-list="categoryList" @close-dlg="toggleMealDlg" @submited="dlgMealSubmited" transition="expand"></dlg-meal-add-put>
+        <dlg-category-add-put v-show="dlgCategoryShow" type="category" :old-info-obj="selectCategoryObj" @close-dlg="toggleCategoryDlg" @submited="dlgCategorySubmited" transition="expand"></dlg-category-add-put>
+        <dlg-meal-add-put v-show="dlgMealShow" type="meal" :old-info-obj="selectedMealObj" :category-list="categoryList" @close-dlg="toggleMealDlg" @submited="dlgMealSubmited" transition="expand"></dlg-meal-add-put>
     </div>
 </template>
 

@@ -44,7 +44,13 @@ OrderSchema.statics = {
     fetch: function (cb) {
         return this
             .find({})
-            .sort('meta.update')
+            .sort('meta.createAt')
+            .exec(cb)
+    },
+    findById: function (id, cb) {
+        return this
+            .findOne({_id: id})
+            .sort('meta.createAt')
             .exec(cb)
     }
 }

@@ -23,8 +23,8 @@ exports.save = function (req, res) {
 
 exports.search = function (req, res) {
     var filterCondition = req.query
-    Order.find({})
-        .populate('meals')
+    Order.find(filterCondition)
+        .populate('meals.id')
         .exec(function (err, orders) {
             if (err) {
                 res.send({

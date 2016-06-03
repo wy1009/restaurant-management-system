@@ -31,7 +31,7 @@ export default {
                 var data = res.data
                 if (data.success) {
                     this.orderStatusList = data.orderstatuses
-                    this.nowOrderStatus = data.orderstatuses[0]
+                    this.getOrderList(this.orderStatusList[0])
                 } else {
                     console.log(data.reason)
                 }

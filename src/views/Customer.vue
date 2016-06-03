@@ -92,7 +92,8 @@ export default {
             if (!this.dlgCustomerShow) {
                 this.selectedCustomerObj = {}
             }
-        },dlgMemberSubmited () {
+        },
+        dlgMemberSubmited () {
             this.getMemberList()
             this.toggleMemberDlg()
         },

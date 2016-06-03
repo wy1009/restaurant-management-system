@@ -1,10 +1,25 @@
 var Meal = require('../models/meal')
+var _ = require('underscore')
 
 exports.save = function (req, res) {
     var mealObj = req.body
     var _meal
-    if (mealObj.id) {
-
+    if (mealObj._id) {
+        Meal.findById(mealObj._id, function (err, meal) {
+            _meal = _.extend(meal, mealObj)
+            _meal.save(function (err, meal) {
+                if (err) {
+                    res.send({
+                        success: false,
+                        reason: err
+                    })
+                } else {
+                    res.send({
+                        success: true
+                    })
+                }
+            })
+        })
     } else {
         _meal = new Meal(mealObj)
         _meal.save(function (err, meal) {
@@ -25,7 +40,7 @@ exports.save = function (req, res) {
 exports.search = function (req, res) {
     var filterCondition = req.query
     Meal.find(filterCondition)
-        .sort('meta.updateAt')
+        .sort('meta.createAt')
         .exec(function (err, meals) {
             if (err) {
                 res.send({

@@ -185,7 +185,7 @@ body {
                 padding: 5px 10px;
                 display: block;
                 font-size: 16px;
-                div {
+                a, div {
                     color: #ff2d4b;
                     cursor: pointer;
                     span {
@@ -200,7 +200,7 @@ body {
                 }
                 &.active {
                     background: #ff2d4b;
-                    div {
+                    a, div {
                         color: #fff;
                         span {
                             color: #ff2d4b;

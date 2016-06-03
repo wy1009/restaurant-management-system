@@ -28,8 +28,8 @@
                 </ul>
             </div>
         </article>
-        <dlg-member-add-put @close-dlg="toggleMemberDlg" v-show="dlgMemberShow" transition="expand">添加</dlg-member-add-put>
-        <dlg-customer-add-put :customer-obj="selectedCustomerObj" @close-dlg="toggleCustomerDlg" v-show="dlgCustomerShow" transition="expand"></dlg-customer-add-put>
+        <dlg-member-add-put @submited="dlgMemberSubmited" @close-dlg="toggleMemberDlg" v-show="dlgMemberShow" transition="expand">添加</dlg-member-add-put>
+        <dlg-customer-add-put :customer-obj="selectedCustomerObj" @submited="dlgCustomerSubmited" @close-dlg="toggleCustomerDlg" v-show="dlgCustomerShow" transition="expand"></dlg-customer-add-put>
     </div>
 </template>
 
@@ -83,12 +83,22 @@ export default {
         },
         toggleMemberDlg () {
             this.dlgMemberShow = !this.dlgMemberShow
+            if (!this.dlgMemberShow) {
+                this.selectedMemberObj = {}
+            }
         },
         toggleCustomerDlg () {
             this.dlgCustomerShow = !this.dlgCustomerShow
             if (!this.dlgCustomerShow) {
                 this.selectedCustomerObj = {}
             }
+        },dlgMemberSubmited () {
+            this.getMemberList()
+            this.toggleMemberDlg()
+        },
+        dlgCustomerSubmited () {
+            this.getCustomerList(this.nowMember)
+            this.toggleCustomerDlg()
         }
     },
     components: {
@@ -97,30 +107,3 @@ export default {
     }
 }
 </script>
-
-<style lang="sass">
-    .customer-wrapper {
-        .customer-list-box {
-            width: 690px;
-            float: left;
-            .list {
-                .title {
-                    width: 100px;
-                }
-                .phone {
-                    line-height: 69px;
-                    margin-left: 26px;
-                    font-size: 14px;
-                }
-                .member {
-                    font-size: 14px;
-                    margin-right: 26px;
-                }
-            }
-        }
-        .member-box {
-            width: 280px;
-            float: right;
-        }
-    }
-</style>

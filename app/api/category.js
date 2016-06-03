@@ -2,11 +2,10 @@ var Category = require('../models/category')
 
 exports.save = function (req, res) {
     var categoryObj = req.body
-    var id = req.body.id
 
     var _category
-    if (id) {
-
+    if (categoryObj._id) {
+        console.log('aaaaaaa')
     } else {
         _category = new Category(categoryObj)
         _category.save(function (err, category) {

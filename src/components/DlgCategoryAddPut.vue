@@ -5,11 +5,11 @@
             <div class="content">
                 <div class="group-inputs">
                     <div class="ui input-wrapper">
-                        <input type="text" placeholder="名称" v-model="categoryObj.name">
+                        <input type="text" placeholder="名称" value="{{ oldInfoObj.name }}" v-model="newInfoObj.name">
                     </div>
                 </div>
                 <div class="button-wrapper">
-                    <button class="ui button" @click="addCategory">确定</button>
+                    <button class="ui button" @click="addInfo">确定</button>
                 </div>
             </div>
         </div>
@@ -17,25 +17,10 @@
 </template>
 
 <script>
+import DlgAddPutMixin from './DlgAddPutMixin.vue'
+
 export default {
-    props: ['categoryObj'],
-    methods: {
-        addCategory () {
-            var _this = this
-            _this.$http.post('/api/category/', _this.categoryObj).then(function (res) {
-                var data = res.data
-                if (data.success) {
-                    this.categoryObj = {}
-                    this.$dispatch('submited')
-                } else {
-                    console.log(data.reason)
-                }
-            })
-        },
-        dispatchCloseDlgMsg () {
-            this.$dispatch('close-dlg')
-        }
-    }
+    mixins: [DlgAddPutMixin]
 }
 </script>
 

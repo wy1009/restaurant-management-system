@@ -29,7 +29,7 @@
             </div>
         </article>
         <dlg-member-add-put @submited="dlgMemberSubmited" @close-dlg="toggleMemberDlg" v-show="dlgMemberShow" transition="expand">添加</dlg-member-add-put>
-        <dlg-customer-add-put :customer-obj="selectedCustomerObj" @submited="dlgCustomerSubmited" @close-dlg="toggleCustomerDlg" v-show="dlgCustomerShow" transition="expand"></dlg-customer-add-put>
+        <dlg-customer-add-put :old-info-obj="selectedCustomerObj" :member-list="memberList" @submited="dlgCustomerSubmited" @close-dlg="toggleCustomerDlg" v-show="dlgCustomerShow" transition="expand"></dlg-customer-add-put>
     </div>
 </template>
 

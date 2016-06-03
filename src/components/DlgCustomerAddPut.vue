@@ -3,7 +3,7 @@
         <div class="add-put-customer-dialog dialog">
             <div class="header"><slot></slot>会员<i @click="dispatchCloseDlgMsg" class="close-btn">+</i></div>
             <div class="content">
-                <customer-add :customer-obj="customerObj"></customer-add>
+                <customer-add :customer-obj="oldInfoObj" :member-list="memberList"></customer-add>
             </div>
         </div>
     </div>
@@ -11,14 +11,11 @@
 
 <script>
 import CustomerAdd from './CustomerAdd.vue'
+import DlgAddPutMixin from './DlgAddPutMixin.vue'
 
 export default {
-    props: ['customerObj'],
-    methods: {
-        dispatchCloseDlgMsg () {
-            this.$dispatch('close-dlg')
-        }
-    },
+    mixins: [DlgAddPutMixin],
+    props: ['memberList'],
     components: {
         CustomerAdd
     }

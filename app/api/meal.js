@@ -6,8 +6,13 @@ exports.save = function (req, res) {
     var _meal
     if (mealObj._id) {
         Meal.findById(mealObj._id, function (err, meal) {
+            if (err) {
+                res.send({
+                    success: false,
+                    reason: err
+                })
+            }
             _meal = _.extend(meal, mealObj)
-            console.log(mealObj)
             _meal.save(function (err, meal) {
                 if (err) {
                     res.send({

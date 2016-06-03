@@ -1,4 +1,5 @@
 var User = require('../models/user')
+var _ = require('underscore')
 
 exports.save = function (req, res) {
     var userObj = req.body

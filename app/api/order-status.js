@@ -1,4 +1,5 @@
 var OrderStatus = require('../models/order-status')
+var _ = require('underscore')
 
 exports.fetch = function (req, res) {
     OrderStatus.fetch(function (err, orderstatuses) {

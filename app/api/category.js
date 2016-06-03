@@ -7,6 +7,12 @@ exports.save = function (req, res) {
     var _category
     if (categoryObj._id) {
         Category.findById(categoryObj._id, function (err, category) {
+            if (err) {
+                res.send({
+                    success: false,
+                    reason: err
+                })
+            }
             _category = _.extend(category, categoryObj)
             _category.save(function (err, category) {
                 if (err) {

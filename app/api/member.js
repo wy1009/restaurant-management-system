@@ -1,4 +1,5 @@
 var Member = require('../models/member')
+var _ = require('underscore')
 
 exports.fetch = function (req, res) {
     Member.fetch(function (err, members) {

@@ -20,8 +20,28 @@ exports.fetch = function (req, res) {
 exports.save = function (req, res) {
     var memberObj = req.body
     var _member
-    if (memberObj.id) {
-
+    if (memberObj._id) {
+        Member.findById(memberObj._id, function (err, member) {
+            if (err) {
+                res.send({
+                    success: false,
+                    reason: err
+                })
+            }
+            _member = _.extend(member, memberObj)
+            _member.save(function (err, member) {
+                if (err) {
+                    res.send({
+                        success: false,
+                        reason: err
+                    })
+                } else {
+                    res.send({
+                        success: true
+                    })
+                }
+            })
+        })
     } else {
         _member = new Member(memberObj)
         _member.save(function (err, member) {

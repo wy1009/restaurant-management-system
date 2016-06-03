@@ -32,8 +32,8 @@
                 </ul>
             </div>
         </article>
-        <dlg-member-add-put :info-obj="selectedMemberObj" @submited="dlgMemberSubmited" @close-dlg="toggleMemberDlg" v-show="dlgMemberShow" transition="expand">添加</dlg-member-add-put>
-        <dlg-customer-add-put :info-obj="selectedCustomerObj" :member-list="memberList" @submited="dlgCustomerSubmited" @close-dlg="toggleCustomerDlg" v-show="dlgCustomerShow" transition="expand"></dlg-customer-add-put>
+        <dlg-member-add-put type="member" :info-obj="selectedMemberObj" @submited="dlgMemberSubmited" @close-dlg="toggleMemberDlg" v-show="dlgMemberShow" transition="expand">添加</dlg-member-add-put>
+        <dlg-customer-add-put type="customer" :info-obj="selectedCustomerObj" :member-list="memberList" @submited="dlgCustomerSubmited" @close-dlg="toggleCustomerDlg" v-show="dlgCustomerShow" transition="expand"></dlg-customer-add-put>
     </div>
 </template>
 

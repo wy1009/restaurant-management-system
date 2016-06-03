@@ -35,7 +35,7 @@
             </div>
         </article>
         <dlg-category-add-put v-show="dlgCategoryShow" :old-info-obj="selectCategoryObj" @close-dlg="toggleCategoryDlg" @submited="dlgCategorySubmited" transition="expand"></dlg-category-add-put>
-        <dlg-meal-add-put v-show="dlgMealShow" :meal-obj="selectedMealObj" :category-list="categoryList" @close-dlg="toggleMealDlg" @submited="dlgMealSubmited" transition="expand"></dlg-meal-add-put>
+        <dlg-meal-add-put v-show="dlgMealShow" :old-info-obj="selectedMealObj" :category-list="categoryList" @close-dlg="toggleMealDlg" @submited="dlgMealSubmited" transition="expand"></dlg-meal-add-put>
     </div>
 </template>
 
@@ -76,6 +76,7 @@ export default {
             this.toggleMealDlg()
         },
         editMeal (meal) {
+            meal.category = meal.category._id
             this.selectedMealObj = meal
             this.toggleMealDlg()
         },

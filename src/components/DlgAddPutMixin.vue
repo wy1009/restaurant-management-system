@@ -6,6 +6,11 @@ export default {
             newInfoObj: {}
         }
     },
+    computed: {
+        newInfoObj () {
+            return this.oldInfoObj
+        }
+    },
     methods: {
         addInfo () {
             var _this = this

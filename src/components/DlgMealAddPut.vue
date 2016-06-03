@@ -5,41 +5,30 @@
             <div class="content">
                 <div class="group-inputs">
                     <div class="ui input-wrapper">
-                        <input type="text" placeholder="名称" v-model="mealObj.name">
+                        <input type="text" placeholder="名称" value="{{ oldInfoObj.name }}" v-model="newInfoObj.name">
                     </div>
                     <div class="ui input-wrapper">
-                        <select v-model="mealObj.category">
-                            <option v-for="category in categoryList" value="{{ category._id }}">{{ category.name }}</option>
+                        <select v-model="newInfoObj.category">
+                            <option v-for="category in categoryList" value="{{ category._id }}" {{ category._id == oldInfoObj.category ? 'selected' : '' }}>{{ category.name }}</option>
                         </select>
                     </div>
                     <div class="ui input-wrapper">
-                        <input type="text" placeholder="价格" v-model="mealObj.price">
+                        <input type="text" placeholder="价格" value="{{ oldInfoObj.price }}" v-model="newInfoObj.price">
                     </div>
                 </div>
                 <div class="button-wrapper">
-                    <button class="ui button" @click="addMeal">确定</button>
+                    <button class="ui button" @click="addInfo">确定</button>
                 </div>
             </div>
         </div>
     </div>
 </template>
+
 <script>
+import DlgAddPutMixin from './DlgAddPutMixin.vue'
+
 export default {
-    props: ['categoryList', 'mealObj'],
-    methods: {
-        addMeal () {
-            this.$http.post('/api/meal/', this.mealObj).then(function (res) {
-                var data = res.data
-                if (data.success) {
-                    this.$dispatch('submited')
-                } else {
-                    console.log(data.reason)
-                }
-            })
-        },
-        dispatchCloseDlgMsg () {
-            this.$dispatch('close-dlg')
-        }
-    }
+    mixins: [DlgAddPutMixin],
+    props: ['categoryList']
 }
 </script>

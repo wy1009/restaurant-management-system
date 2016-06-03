@@ -5,14 +5,14 @@
             <div class="content">
                 <div class="group-inputs">
                     <div class="ui input-wrapper">
-                        <input type="text" placeholder="名称" v-model="memberObj.name">
+                        <input type="text" placeholder="名称" value="{{ oldInfoObj.name }}" v-model="newInfoObj.name">
                     </div>
                     <div class="ui input-wrapper">
-                        <input type="text" placeholder="折扣（输入整数或小数）" v-model="memberObj.discount">
+                        <input type="text" placeholder="折扣（输入整数或小数）" value="{{ oldInfoObj.discount }}" v-model="newInfoObj.discount">
                     </div>
                 </div>
                 <div class="button-wrapper">
-                    <button class="ui button" @click="addMember">确定</button>
+                    <button class="ui button" @click="addInfo">确定</button>
                 </div>
             </div>
         </div>
@@ -20,22 +20,10 @@
 </template>
 
 <script>
+import DlgAddPutMixin from './DlgAddPutMixin.vue'
+
 export default {
-    data () {
-        return {
-            memberObj: {}
-        }
-    },
-    methods: {
-        addMember () {
-            this.$http.post('/api/member/', this.memberObj).then(function (res) {
-                this.memberObj = {}
-                this.$dispatch('submited')
-            })
-        },
-        dispatchCloseDlgMsg () {
-            this.$dispatch('close-dlg')
-        }
-    }
+    mixins: [DlgAddPutMixin],
+    props: ['categoryList']
 }
 </script>

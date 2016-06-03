@@ -20,3 +20,22 @@ exports.save = function (req, res) {
         })
     }
 }
+
+exports.search = function (req, res) {
+    var filterCondition = req.query
+    Order.find({})
+        .populate(meals)
+        .exec(function (err, orders) {
+            if (err) {
+                res.send({
+                    success: false,
+                    reason: err
+                })
+            } else {
+                res.send({
+                    success: true,
+                    orderList: orders
+                })
+            }
+        })
+}

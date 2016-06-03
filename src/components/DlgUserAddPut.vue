@@ -22,7 +22,6 @@
 </template>
 
 <script>
-export default {
 import DlgAddPutMixin from './DlgAddPutMixin.vue'
 
 export default {

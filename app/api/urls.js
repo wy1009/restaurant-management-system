@@ -6,6 +6,8 @@ var Member = require('./member')
 var Order = require('./order')
 var OrderStatus = require('./order-status')
 var User = require('./user')
+var AccountType = require('./account-type')
+var Account = require('./account')
 
 module.exports = function (app) {
     // category
@@ -30,4 +32,10 @@ module.exports = function (app) {
     // user
     app.get('/api/user', User.search)
     app.post('/api/user/', User.save)
+    // account-type
+    app.get('/api/account-type/', AccountType.fetch)
+    app.post('/api/account-type/', AccountType.save)
+    // account
+    app.get('/api/account/', Account.search)
+    app.post('/api/account/', Account.save)
 }

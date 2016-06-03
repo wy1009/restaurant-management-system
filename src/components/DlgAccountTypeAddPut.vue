@@ -23,3 +23,10 @@ export default {
     mixins: [DlgAddPutMixin]
 }
 </script>
+
+<style lang="sass">
+    #add-put-account-type-dialog {
+        height: 130px;
+        margin-top: -65px;
+    }
+</style>

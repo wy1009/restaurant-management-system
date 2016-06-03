@@ -35,7 +35,7 @@
                     <a href="javascript:;" @click="currentView = 'CustomerAdd'" :class="currentView == 'CustomerAdd' ? 'border-bottom' : ''">新顾客</a>
                     <a href="javascript:;" @click="currentView = 'CustomerSelect'" :class="currentView == 'CustomerSelect' ? 'border-bottom' : ''">老顾客</a>
                 </div>
-                <component :is="currentView" :customer-obj="{}" @submited="selectedCustomer"></component>
+                <component :is="currentView" :customer-obj="{}" @submited="selectedCustomer" :member-list="memberList"></component>
             </div>
         </div>
         <div class="menu-cart">
@@ -82,13 +82,17 @@ import Json from '../public/javascripts/Json'
 
 export default {
     mixins: [MealListMixin],
+    ready () {
+        this.getMemberList()
+    },
     data () {
         return {
             mealList: [],
             customer: {},
             orderMealList: {},
             orderObj: {},
-            currentView: 'CustomerAdd'
+            currentView: 'CustomerAdd',
+            memberList: []
         }
     },
     computed: {
@@ -143,6 +147,16 @@ export default {
                 this.orderObj = {}
                 this.customer = {}
                 this.orderMealList = {}
+            })
+        },
+        getMemberList () {
+            this.$http.get('/api/member/').then(function (res) {
+                var data = res.data
+                if (data.success) {
+                    this.memberList = data.memberList
+                } else {
+                    console.log(data.reason)
+                }
             })
         }
     },

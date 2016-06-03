@@ -21,26 +21,8 @@
 
 <script>
 export default {
-    props: ['customerObj'],
-    data () {
-        return {
-            memberList: []
-        }
-    },
-    ready () {
-        this.getMemberList()
-    },
+    props: ['customerObj', 'memberList'],
     methods: {
-        getMemberList () {
-            this.$http.get('/api/member/').then(function (res) {
-                var data = res.data
-                if (data.success) {
-                    this.memberList = data.memberList
-                } else {
-                    console.log(data.reason)
-                }
-            })
-        },
         addCustomer () {
             this.$http.post('/api/customer/', this.customerObj).then(function (res) {
                 var data = res.data

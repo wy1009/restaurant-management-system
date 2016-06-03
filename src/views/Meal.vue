@@ -34,7 +34,7 @@
                 </ul>
             </div>
         </article>
-        <dlg-category-add-put v-show="dlgCategoryShow" type="category" :info-obj="selectCategoryObj" @close-dlg="toggleCategoryDlg" @submited="dlgCategorySubmited" transition="expand"></dlg-category-add-put>
+        <dlg-category-add-put v-show="dlgCategoryShow" type="category" :info-obj="selectedCategoryObj" @close-dlg="toggleCategoryDlg" @submited="dlgCategorySubmited" transition="expand"></dlg-category-add-put>
         <dlg-meal-add-put v-show="dlgMealShow" type="meal" :info-obj="selectedMealObj" :category-list="categoryList" @close-dlg="toggleMealDlg" @submited="dlgMealSubmited" transition="expand"></dlg-meal-add-put>
     </div>
 </template>
@@ -51,14 +51,14 @@ export default {
             dlgMealShow: false,
             dlgCategoryShow: false,
             selectedMealObj: {}, // 指被操作的行
-            selectCategoryObj: {}
+            selectedCategoryObj: {}
         }
     },
     methods: {
         toggleCategoryDlg () {
             this.dlgCategoryShow = !this.dlgCategoryShow
             if (!this.dlgCategoryShow) {
-                this.selectCategoryObj = {}
+                this.selectedCategoryObj = {}
             }
         },
         toggleMealDlg () {
@@ -83,7 +83,7 @@ export default {
             // this.$http.delete('/api/meal/', meal)
         },
         editCategory (category) {
-            this.selectCategoryObj = category
+            this.selectedCategoryObj = category
             this.toggleCategoryDlg()
         },
         delCategory (category) {

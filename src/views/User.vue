@@ -1,9 +1,11 @@
 <template>
-    <div class="meal-wrapper has-side-nav">
+    <div class="User-wrapper has-side-nav">
         <aside>
             <ul>
                 <li v-for="role in roleList" :class="role.name == nowRole.name ? 'active' : ''">
-                    <a href="javascript:;" @click="getUserList(role)">{{ role.name }}</a>
+                    <div @click="getUserList(role)">
+                        {{ role.name }}
+                    </div>
                 </li>
             </ul>
         </aside>
@@ -17,15 +19,15 @@
                     <li v-for="user in userList">
                         <h4 class="title fl">{{ user.name }}</h4>
                         <div class="operation fr">
-                            <span @click="editMeal(user)">编辑</span>
-                            <span @click="delMeal(user)">删除</span>
+                            <span @click="editUser(user)">编辑</span>
+                            <span @click="delUser(user)">删除</span>
                         </div>
                         <div class="phone fr">{{ user.phone }}</div>
                     </li>
                 </ul>
             </div>
         </article>
-        <dlg-user-add-put v-show="dlgUserShow" :user-obj="selectedUserObj" :role-list="roleList" @close-dlg="toggleUserDlg" @submited="dlgUserSubmited" transition="expand"></dlg-user-add-put>
+        <dlg-user-add-put v-show="dlgUserShow" type="user" :info-obj="selectedUserObj" :role-list="roleList" @close-dlg="toggleUserDlg" @submited="dlgUserSubmited" transition="expand"></dlg-user-add-put>
     </div>
 </template>
 
@@ -80,6 +82,13 @@ export default {
         dlgUserSubmited () {
             this.getUserList()
             this.toggleUserDlg()
+        },
+        editUser (user) {
+            this.selectedUserObj = user
+            this.toggleUserDlg()
+        },
+        delUser (user) {
+
         }
     },
     components: {

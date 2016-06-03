@@ -3,7 +3,7 @@
         <aside>
             <ul>
                 <li v-for="orderStatus of orderStatusList" :class="orderStatus == nowOrderStatus ? 'active' : ''">
-                    <a href="javascript:;" @click="nowOrderStatus = orderStatus">{{ orderStatus.name }}</a>
+                    <a href="javascript:;" @click="getOrderList(orderStatus)">{{ orderStatus.name }}</a>
                 </li>
             </ul>
         </aside>
@@ -18,7 +18,8 @@ export default {
     data () {
         return {
             orderStatusList: [],
-            nowOrderStatus: {}
+            nowOrderStatus: {},
+            orderList: []
         }
     },
     ready () {
@@ -31,6 +32,17 @@ export default {
                 if (data.success) {
                     this.orderStatusList = data.orderstatuses
                     this.nowOrderStatus = data.orderstatuses[0]
+                } else {
+                    console.log(data.reason)
+                }
+            })
+        },
+        getOrderList (orderStatus) {
+            this.nowOrderStatus = orderStatus
+            this.$http.get('/api/order/').then(function (res) {
+                var data = res.data
+                if (data.success) {
+                    this.orderList = data.orderList
                 } else {
                     console.log(data.reason)
                 }

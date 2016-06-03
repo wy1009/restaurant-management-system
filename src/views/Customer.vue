@@ -71,7 +71,7 @@ export default {
             this.$http.get('/api/customer/', filterCondition).then(function (res) {
                 var data = res.data
                 if (data.success) {
-                    this.customerList = data.customers
+                    this.customerList = data.customerList
                 } else {
                     console.log(data.reason)
                 }

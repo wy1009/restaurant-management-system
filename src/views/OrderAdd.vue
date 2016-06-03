@@ -35,7 +35,7 @@
                     <a href="javascript:;" @click="currentView = 'CustomerAdd'" :class="currentView == 'CustomerAdd' ? 'border-bottom' : ''">新顾客</a>
                     <a href="javascript:;" @click="currentView = 'CustomerSelect'" :class="currentView == 'CustomerSelect' ? 'border-bottom' : ''">老顾客</a>
                 </div>
-                <component :is="currentView" :customer-obj="{}"></component>
+                <component :is="currentView" :customer-obj="{}" @submited="selectedCustomer"></component>
             </div>
         </div>
         <div class="menu-cart">
@@ -66,8 +66,8 @@
             <div class="cart-bar">
                 <span v-show="orderMealListLen == 0" class="empty">购物车是空的</span>
                 <span v-show="orderMealListLen" class="total-price">共¥{{ totalPrice }}</span>
-                <span v-show="orderMealListLen" @click="submitOrder('待支付')" class="submit fr">提交</span>
-                <span v-show="orderMealListLen" @click="submitOrder('暂挂')" class="hold-on fr">暂挂</span>
+                <span v-show="orderMealListLen" @click="submitOrder(1)" class="submit fr">提交</span>
+                <span v-show="orderMealListLen" @click="submitOrder(0)" class="hold-on fr">暂挂</span>
             </div>
         </div>
     </div>

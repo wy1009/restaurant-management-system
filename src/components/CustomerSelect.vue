@@ -28,7 +28,7 @@ export default {
             this.$http.get('/api/customer/', filter).then(function (res) {
                 var data = res.data
                 if (data.success) {
-                    this.searchResultList = data.customers
+                    this.searchResultList = data.customerList
                 } else {
                     console.log(data.reason)
                 }
@@ -40,7 +40,7 @@ export default {
             this.searchResultList = []
             this.customerFilter = null
             this.selectedCustomer = result
-            this.$dispatch('finished', this.selectedCustomer)
+            this.$dispatch('submited', this.selectedCustomer)
         }
     }
 }

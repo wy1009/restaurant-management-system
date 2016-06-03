@@ -76,7 +76,6 @@ export default {
             this.toggleMealDlg()
         },
         editMeal (meal) {
-            meal.category = meal.category._id
             this.selectedMealObj = meal
             this.toggleMealDlg()
         },

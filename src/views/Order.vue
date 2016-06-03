@@ -15,7 +15,7 @@
                         <h4 class="title fl">{{ order.customer.name }}</h4>
                         <div class="meal fl">
                             <template v-for="meal of order.meals">
-                                {{ meal.name }}
+                                {{ meal.meal.name }}{{ meal.count }}份
                             </template>
                         </div>
                         <div class="operation fr">

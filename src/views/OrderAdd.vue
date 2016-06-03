@@ -143,7 +143,8 @@ export default {
             this.orderObj = {
                 customer: this.customer._id,
                 meals: meals,
-                status: orderStatus
+                status: orderStatus,
+                price: this.totalPrice
             }
             this.$http.post('/api/order/', this.orderObj).then(function (res) {
                 this.orderObj = {}

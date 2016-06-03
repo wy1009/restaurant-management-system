@@ -20,6 +20,9 @@
                 <li :class="isActive['5']">
                     <a href="/#!/user/">员工</a>
                 </li>
+                <li :class="isActive['6']">
+                    <a href="/#!/user/">员工</a>
+                </li>
             </ul>
         </nav>
     </header>
@@ -67,7 +70,7 @@ header {
             &.active {
                 &:after {
                     border: 14px solid transparent;
-                    border-top-color: #333;
+                    border-top-color: #ff2d4b;;
                     content: '';
                     position: absolute;
                     top: 100%;

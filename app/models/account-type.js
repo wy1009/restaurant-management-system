@@ -1,17 +1,7 @@
 var mongoose = require('mongoose')
 
-var UserSchema = new mongoose.Schema({
-    username: String,
-    name: String, // 员工姓名
-    // 0: 普通员工
-    // 1: 管理员
-    // 50: 超级管理员
-    role: { // 员工权限
-        type: Number,
-        default: 0
-    },
-    phone: String,
-    password: String,
+var AccountTypeSchema = new mongoose.Schema({
+    name: String,
     meta: {
         createAt: {
             type: Date,
@@ -24,7 +14,7 @@ var UserSchema = new mongoose.Schema({
     }
 })
 
-UserSchema.pre('save', function (next) {
+AccountTypeSchema.pre('save', function (next) {
     if (this.isNew) {
         this.meta.createAt = this.meta.updateAt = Date.now()
     } else {
@@ -33,7 +23,7 @@ UserSchema.pre('save', function (next) {
     next()
 })
 
-UserSchema.statics = {
+AccountTypeSchema.statics = {
     fetch: function (cb) {
         return this
             .find({})
@@ -48,4 +38,4 @@ UserSchema.statics = {
     }
 }
 
-module.exports = mongoose.model('User', UserSchema)
+module.exports = mongoose.model('AccountType', AccountTypeSchema)

@@ -36,3 +36,9 @@
         <dlg-account-add-put type="account" :info-obj="selectedAccountObj" :accountType-list="accountTypeList" @submited="dlgAccountSubmited" @close-dlg="toggleAccountDlg" v-show="dlgAccountShow" transition="expand"></dlg-account-add-put>
     </div>
 </template>
+
+<script>
+export default {
+    
+}
+</script>

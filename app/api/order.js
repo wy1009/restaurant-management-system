@@ -19,7 +19,6 @@ exports.save = function (req, res) {
                     }
                 }
                 orderObj.status = orderStatus[orderObj.status]._id
-                console.log(orderObj)
                 _order = new Order(orderObj)
                 _order.save(function (err, order) {
                     if (err) {
@@ -41,7 +40,7 @@ exports.save = function (req, res) {
 exports.search = function (req, res) {
     var filterCondition = req.query
     Order.find(filterCondition)
-        .populate('meals.id')
+        .populate('customer meals.meal')
         .exec(function (err, orders) {
             if (err) {
                 res.send({

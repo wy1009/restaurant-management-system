@@ -9,6 +9,22 @@
         </aside>
         <article class="ui list-wrap">
             <h3 class="ui title">{{ nowOrderStatus.name }}</h3>
+            <div class="list">
+                <ul>
+                    <li v-for="order of orderList">
+                        <h4 class="title fl">{{ order.customer.name }}</h4>
+                        <div class="meal fl">
+                            <template v-for="meal of order.meals">
+                                {{ meal.name }}
+                            </template>
+                        </div>
+                        <div class="operation fr">
+                            <span @click="editOrder(order)">编辑</span>
+                            <span @click="delOrder(order)">删除</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </article>
     </div>
 </template>
@@ -47,6 +63,12 @@ export default {
                     console.log(data.reason)
                 }
             })
+        },
+        editOrder () {
+
+        },
+        delOrder () {
+
         }
     }
 }

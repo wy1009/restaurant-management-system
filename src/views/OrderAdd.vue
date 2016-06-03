@@ -130,7 +130,7 @@ export default {
             var meals = []
             for (var key in this.orderMealList) {
                 meals.push({
-                    id: this.orderMealList[key]._id,
+                    meal: this.orderMealList[key]._id,
                     count: this.orderMealList[key].count
                 })
             }

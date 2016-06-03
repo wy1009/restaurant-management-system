@@ -3,7 +3,9 @@
         <aside>
             <ul>
                 <li v-for="orderStatus of orderStatusList" :class="orderStatus == nowOrderStatus ? 'active' : ''">
-                    <a href="javascript:;" @click="getOrderList(orderStatus)">{{ orderStatus.name }}</a>
+                    <div @click="getOrderList(orderStatus)">
+                        {{ orderStatus.name }}
+                    </div>
                 </li>
             </ul>
         </aside>
@@ -35,7 +37,9 @@ export default {
         return {
             orderStatusList: [],
             nowOrderStatus: {},
-            orderList: []
+            orderList: [],
+            selectedOrderObj: {},
+            dlgOrderShow: false
         }
     },
     ready () {
@@ -55,7 +59,10 @@ export default {
         },
         getOrderList (orderStatus) {
             this.nowOrderStatus = orderStatus
-            this.$http.get('/api/order/').then(function (res) {
+            var filterCondition = {
+                status: orderStatus._id
+            }
+            this.$http.get('/api/order/', filterCondition).then(function (res) {
                 var data = res.data
                 if (data.success) {
                     this.orderList = data.orderList
@@ -64,8 +71,9 @@ export default {
                 }
             })
         },
-        editOrder () {
-
+        editOrder (order) {
+            this.selectedOrderObj = order
+            this.toggleOrderDlg()
         },
         delOrder () {
 

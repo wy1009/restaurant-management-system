@@ -4,6 +4,7 @@ import Customer from './views/Customer.vue'
 import Order from './views/Order.vue'
 import Meal from './views/Meal.vue'
 import User from './views/User.vue'
+import Account from './views/Account.vue'
 
 export default function (router) {
 	router.map({
@@ -34,6 +35,10 @@ export default function (router) {
 		'/user/': {
 			name: 'user',
 			component: User
+		},
+		'/account/': {
+			name: 'account',
+			component: Account
 		}
 		// '/customers/processed': {
 		// 	name: 'processed',

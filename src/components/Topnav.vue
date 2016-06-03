@@ -2,26 +2,26 @@
     <header id="page-header">
         <nav>
             <ul>
-                <li :class="isActive['0']">
-                    <a href="/#!/overviews/">首页</a>
+                <li :class="active === 0 ? 'active' : ''">
+                    <a href="/#!/overviews/" @click="changePage(0)">首页</a>
                 </li>
-                <li :class="isActive['1']">
-                    <a href="/#!/order/add/">点餐</a>
+                <li :class="active === 1 ? 'active' : ''">
+                    <a href="/#!/order/add/" @click="changePage(1)">点餐</a>
                 </li>
-                <li :class="isActive['2']">
-                    <a href="/#!/order/">订单</a>
+                <li :class="active === 2 ? 'active' : ''">
+                    <a href="/#!/order/" @click="changePage(2)">订单</a>
                 </li>
-                <li :class="isActive['3']">
-                    <a href="/#!/meal/">菜肴</a>
+                <li :class="active === 3 ? 'active' : ''">
+                    <a href="/#!/meal/" @click="changePage(3)">菜肴</a>
                 </li>
-                <li :class="isActive['4']">
-                    <a href="/#!/customer/">会员</a>
+                <li :class="active === 4 ? 'active' : ''">
+                    <a href="/#!/customer/" @click="changePage(4)">会员</a>
                 </li>
-                <li :class="isActive['5']">
-                    <a href="/#!/user/">员工</a>
+                <li :class="active === 5 ? 'active' : ''">
+                    <a href="/#!/user/" @click="changePage(5)">员工</a>
                 </li>
-                <li :class="isActive['6']">
-                    <a href="/#!/user/">员工</a>
+                <li :class="active === 6 ? 'active' : ''">
+                    <a href="/#!/account/" @click="changePage(6)">账务</a>
                 </li>
             </ul>
         </nav>
@@ -31,15 +31,15 @@
 <script>
 import Vue from 'vue'
 export default {
-    props: ['active'],
     data () {
         return {
-            isActive: {},
+            active: 0,
         }
     },
-    ready () {
-        var _this = this
-        Vue.set(_this.isActive, _this.active, 'active')
+    methods: {
+        changePage (index) {
+            this.active = index
+        }
     }
 }
 </script>

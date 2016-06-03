@@ -54,6 +54,7 @@ export default {
         }
     },
     ready () {
+        this.$dispatch('topnavIndex', 4)
         this.getMemberList()
     },
     methods: {

@@ -173,7 +173,6 @@ export default {
 <style lang="sass">
 .order-add-wrapper {
     .meal-list-box {
-        margin-top: 10px;
         width: 690px;
         float: left;
         .category-wrap {
@@ -249,7 +248,6 @@ export default {
     .customer-info-box {
         float: right;
         width: 280px;
-        margin-top: 10px;
         .main-body {
             text-align: center;
             .tab-navs {

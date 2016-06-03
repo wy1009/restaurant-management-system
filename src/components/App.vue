@@ -3,7 +3,7 @@
         <topnav></topnav>
         <div id="page-wrap">
             <div class="inner-wrap">
-                <router-view></router-view>
+                <router-view @topnav-index="test"></router-view>
             </div>
         </div>
     </div>
@@ -14,6 +14,11 @@ import Topnav from './Topnav.vue'
 export default {
     components: {
         Topnav
+    },
+    methods: {
+        test (a) {
+            console.log('a')
+        }
     }
 }
 </script>
@@ -133,7 +138,7 @@ body {
         .inner-wrap {
             padding: 0 20px;
             max-width: 980px;
-            margin: 24px auto 0;
+            margin: 34px auto 0;
         }
     }
     .dialog-box {

@@ -5,16 +5,16 @@
             <div class="content">
                 <div class="group-inputs">
                     <div class="ui input-wrapper">
-                        <input type="text" placeholder="名称" v-model="userObj.name">
+                        <input type="text" placeholder="名称" value="{{ oldInfoObj.name }}" v-model="newInfoObj.name">
                     </div>
                     <div class="ui input-wrapper">
-                        <select v-model="userObj.role">
+                        <select v-model="newInfoObj.role">
                             <option v-for="role of roleList" value="{{ role.role }}">{{ role.name }}</option>
                         </select>
                     </div>
                 </div>
                 <div class="button-wrapper">
-                    <button class="ui button" @click="addUser">确定</button>
+                    <button class="ui button" @click="addInfo">确定</button>
                 </div>
             </div>
         </div>
@@ -23,21 +23,10 @@
 
 <script>
 export default {
-    props: ['userObj', 'roleList'],
-    methods: {
-        addUser () {
-            this.$http.post('/api/user/', this.userObj).then(function (res) {
-                var data = res.data
-                if (data.success) {
-                    this.$dispatch('submited')
-                } else {
-                    console.log(data.reason)
-                }
-            })
-        },
-        dispatchCloseDlgMsg () {
-            this.$dispatch('close-dlg')
-        }
-    }
+import DlgAddPutMixin from './DlgAddPutMixin.vue'
+
+export default {
+    mixins: [DlgAddPutMixin],
+    props: ['roleList']
 }
 </script>

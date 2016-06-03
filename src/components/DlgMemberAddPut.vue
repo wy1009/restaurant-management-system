@@ -23,7 +23,6 @@
 import DlgAddPutMixin from './DlgAddPutMixin.vue'
 
 export default {
-    mixins: [DlgAddPutMixin],
-    props: ['categoryList']
+    mixins: [DlgAddPutMixin]
 }
 </script>

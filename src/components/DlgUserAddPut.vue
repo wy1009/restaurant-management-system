@@ -5,10 +5,10 @@
             <div class="content">
                 <div class="group-inputs">
                     <div class="ui input-wrapper">
-                        <input type="text" placeholder="名称" value="{{ oldInfoObj.name }}" v-model="newInfoObj.name">
+                        <input type="text" placeholder="名称" v-model="infoObj.name">
                     </div>
                     <div class="ui input-wrapper">
-                        <select v-model="newInfoObj.role">
+                        <select v-model="infoObj.role">
                             <option v-for="role of roleList" value="{{ role.role }}">{{ role.name }}</option>
                         </select>
                     </div>

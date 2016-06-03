@@ -5,15 +5,15 @@
             <div class="content">
                 <div class="group-inputs">
                     <div class="ui input-wrapper">
-                        <input type="text" placeholder="名称" value="{{ oldInfoObj.name }}" v-model="newInfoObj.name">
+                        <input type="text" placeholder="名称" v-model="infoObj.name">
                     </div>
                     <div class="ui input-wrapper">
-                        <select v-model="newInfoObj.category">
-                            <option v-for="category in categoryList" value="{{ category._id }}" {{ category._id == oldInfoObj.category ? 'selected' : '' }}>{{ category.name }}</option>
+                        <select v-model="infoObj.category">
+                            <option v-for="category in categoryList" value="{{ category._id }}" {{ category._id == infoObj.category ? 'selected' : '' }}>{{ category.name }}</option>
                         </select>
                     </div>
                     <div class="ui input-wrapper">
-                        <input type="text" placeholder="价格" value="{{ oldInfoObj.price }}" v-model="newInfoObj.price">
+                        <input type="text" placeholder="价格" v-model="infoObj.price">
                     </div>
                 </div>
                 <div class="button-wrapper">

@@ -5,10 +5,10 @@
             <div class="content">
                 <div class="group-inputs">
                     <div class="ui input-wrapper">
-                        <input type="text" placeholder="名称" value="{{ oldInfoObj.name }}" v-model="newInfoObj.name">
+                        <input type="text" placeholder="名称" v-model="infoObj.name">
                     </div>
                     <div class="ui input-wrapper">
-                        <input type="text" placeholder="折扣（输入整数或小数）" value="{{ oldInfoObj.discount }}" v-model="newInfoObj.discount">
+                        <input type="text" placeholder="折扣（输入整数或小数）" v-model="infoObj.discount">
                     </div>
                 </div>
                 <div class="button-wrapper">

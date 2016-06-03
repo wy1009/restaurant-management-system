@@ -2,8 +2,12 @@
     <div class="customer-wrapper has-side-nav">
         <aside>
             <ul>
-                <li v-for="member in memberList" :class="member._id == nowMember._id ? 'active' : ''">
-                    <a href="javascript:;" @click="getCustomerList(member)">{{ member.name }}</a>
+                <li v-for="member in memberList" :class="nowMember._id == member._id ? 'active' : ''">
+                    <div @click="getCustomerList(member)">
+                        {{ member.name }}
+                        <span class="fr" @click.stop="delMember(member)">删除</span>
+                        <span class="fr" @click.stop="editMember(member)">编辑</span>
+                    </div>
                 </li>
                 <li>
                     <a href="javascript:;" @click="toggleMemberDlg">+ 添加会员等级</a>
@@ -28,7 +32,7 @@
                 </ul>
             </div>
         </article>
-        <dlg-member-add-put @submited="dlgMemberSubmited" @close-dlg="toggleMemberDlg" v-show="dlgMemberShow" transition="expand">添加</dlg-member-add-put>
+        <dlg-member-add-put :info-obj="selectedMemberObj" @submited="dlgMemberSubmited" @close-dlg="toggleMemberDlg" v-show="dlgMemberShow" transition="expand">添加</dlg-member-add-put>
         <dlg-customer-add-put :info-obj="selectedCustomerObj" :member-list="memberList" @submited="dlgCustomerSubmited" @close-dlg="toggleCustomerDlg" v-show="dlgCustomerShow" transition="expand"></dlg-customer-add-put>
     </div>
 </template>
@@ -45,7 +49,8 @@ export default {
             dlgMemberShow: false,
             dlgCustomerShow: false,
             nowMember: {},
-            memberList: []
+            memberList: [],
+            selectedMemberObj: {}
         }
     },
     ready () {
@@ -100,6 +105,13 @@ export default {
         dlgCustomerSubmited () {
             this.getCustomerList(this.nowMember)
             this.toggleCustomerDlg()
+        },
+        editMember (member) {
+            this.selectedMemberObj = member
+            this.toggleMemberDlg()
+        },
+        delMember (member) {
+
         }
     },
     components: {

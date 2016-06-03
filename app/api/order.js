@@ -18,19 +18,20 @@ exports.save = function (req, res) {
                         orderStatus[1] = item
                     }
                 }
-            }
-        })
-        orderObj.status = orderStatus[orderObj.status]
-        _order = new Order(orderObj)
-        _order.save(function (err, order) {
-            if (err) {
-                res.send({
-                    success: false,
-                    reason: err
-                })
-            } else {
-                res.send({
-                    success: true
+                orderObj.status = orderStatus[orderObj.status]._id
+                console.log(orderObj)
+                _order = new Order(orderObj)
+                _order.save(function (err, order) {
+                    if (err) {
+                        res.send({
+                            success: false,
+                            reason: err
+                        })
+                    } else {
+                        res.send({
+                            success: true
+                        })
+                    }
                 })
             }
         })

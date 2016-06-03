@@ -11,11 +11,11 @@ exports.save = function (req, res) {
             if (err) {
                 console.log(err)
             } else {
-                for (i of orderstatuses) {
-                    if (orderstatuses[i].name = '暂挂') {
-                        orderStatus[0] = orderstatuses[i]
-                    } else if (orderstatuses[i].name == '未支付') {
-                        orderStatus[1] = orderstatuses[i]
+                for (var item of orderstatuses) {
+                    if (item.name == '暂挂') {
+                        orderStatus[0] = item
+                    } else if (item.name == '未支付') {
+                        orderStatus[1] = item
                     }
                 }
             }

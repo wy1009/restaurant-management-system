@@ -20,7 +20,6 @@
                         <h4 class="title fl">{{ user.name }}</h4>
                         <div class="operation fr">
                             <span @click="editUser(user)">编辑</span>
-                            <span @click="delUser(user)">删除</span>
                         </div>
                         <div class="phone fr">{{ user.phone }}</div>
                     </li>

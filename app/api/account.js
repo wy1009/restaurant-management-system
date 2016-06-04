@@ -55,7 +55,7 @@ exports.search = function (req, res) {
             } else {
                 res.send({
                     success: true,
-                    accountList: accounts
+                    itemInfoList: accounts
                 })
             }
         })

@@ -40,7 +40,7 @@
 <script>
 
 export default {
-    props: ['classType', 'itemType']
+    props: ['classType', 'itemType'],
     data () {
         return {
             itemInfoList: [],
@@ -58,7 +58,7 @@ export default {
     },
     methods: {
         getClassInfoList () {
-            this.$http.get('/api/' + classType + '/').then(function (res) {
+            this.$http.get('/api/' + this.classType + '/').then(function (res) {
                 var data = res.data
                 if (data.success) {
                     this.classInfoList = data.classInfoList
@@ -70,10 +70,9 @@ export default {
         },
         getItemInfoList (classInfo) {
             this.nowClassInfo = classInfo
-            var filterCondition = {
-                this.classType: classInfo._id
-            }
-            this.$http.get('/api/itemInfo/', filterCondition).then(function (res) {
+            var filterCondition
+            filterCondition[this.classType] = classInfo._id
+            this.$http.get('/api/' + this.itemType + '/', filterCondition).then(function (res) {
                 var data = res.data
                 if (data.success) {
                     this.itemInfoList = data.itemInfoList
@@ -113,10 +112,6 @@ export default {
         delClassInfo (classInfo) {
 
         }
-    },
-    components: {
-        DlgClassInfoAddPut,
-        DlgItemInfoAddPut
     }
 }
 </script>

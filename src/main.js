@@ -2,10 +2,12 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 import routerMap from './routers'
+import Vuex from 'vuex'
 import App from './components/App.vue'
 
 Vue.use(VueRouter)
 Vue.use(VueResource)
+Vue.use(Vuex)
 var router = new VueRouter()
 routerMap(router)
 // router.beforeEach(function (transition) {

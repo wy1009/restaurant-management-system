@@ -75,18 +75,19 @@
 
 <script>
 import Vue from 'vue'
-import MealListMixin from '../components/MealListMixin.vue'
 import CustomerAdd from '../components/CustomerAdd.vue'
 import CustomerSelect from '../components/CustomerSelect.vue'
 import Json from '../public/javascripts/Json'
 
 export default {
-    mixins: [MealListMixin],
     ready () {
+        this.getCategoryList()
         this.getMemberList()
     },
     data () {
         return {
+            nowCategory: {},
+            categoryList: [],
             mealList: [],
             customer: {},
             orderMealList: {},
@@ -102,7 +103,6 @@ export default {
         totalPrice () {
             var price = 0
             var discount = this.customer.member ? this.customer.member.discount * 0.1 : 1
-            console.log(discount)
             for (var key in this.orderMealList) {
                 price += this.orderMealList[key].price * discount
             }
@@ -110,6 +110,31 @@ export default {
         }
     },
     methods: {
+        getCategoryList () {
+            this.$http.get('/api/category/').then(function (res) {
+                var data = res.data
+                if (data.success) {
+                    this.categoryList = data.classInfoList
+                    this.getMealList(this.categoryList[0])
+                } else {
+                    console.log(data.reason)
+                }
+            })
+        },
+        getMealList (category) {
+            this.nowCategory = category
+            var filterCondition = {
+                category: category._id
+            }
+            this.$http.get('/api/meal/', filterCondition).then(function (res) {
+                var data = res.data
+                if (data.success) {
+                    this.mealList = data.itemInfoList
+                } else {
+                    console.log(data.reason)
+                }
+            })
+        },
         addToCart (meal) {
             if (this.orderMealList[meal._id]) {
                 this.orderMealList[meal._id].count ++
@@ -156,7 +181,7 @@ export default {
             this.$http.get('/api/member/').then(function (res) {
                 var data = res.data
                 if (data.success) {
-                    this.memberList = data.memberList
+                    this.memberList = data.classInfoList
                 } else {
                     console.log(data.reason)
                 }

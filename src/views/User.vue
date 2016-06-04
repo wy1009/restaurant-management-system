@@ -86,9 +86,6 @@ export default {
         editUser (user) {
             this.selectedUserObj = user
             this.toggleUserDlg()
-        },
-        delUser (user) {
-
         }
     },
     components: {

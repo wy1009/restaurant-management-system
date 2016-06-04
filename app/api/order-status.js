@@ -38,3 +38,19 @@ exports.save = function (req, res) {
         })
     }
 }
+
+exports.del = function (req, res) {
+    var filterCondition = req.body
+    OrderStatus.remove(filterCondition, function (err) {
+        if (err) {
+            res.send({
+                success: false,
+                reason: err
+            })
+        } else {
+            res.send({
+                success: true
+            })
+        }
+    })
+}

@@ -51,5 +51,17 @@ exports.fetch = function (req, res) {
 }
 
 exports.del = function (req, res) {
-    console.log(req)
+    var filterCondition = req.body
+    AccountType.remove(filterCondition, function (err) {
+        if (err) {
+            res.send({
+                success: false,
+                reason: err
+            })
+        } else {
+            res.send({
+                success: true
+            })
+        }
+    })
 }

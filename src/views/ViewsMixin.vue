@@ -86,10 +86,6 @@ export default {
                 }
             })
         },
-        editItemInfo (itemInfo) {
-            this.selectedItemInfoObj = itemInfo
-            this.toggleItemInfoDlg()
-        },
         toggleClassInfoDlg () {
             this.dlgClassInfoShow = !this.dlgClassInfoShow
             if (!this.dlgClassInfoShow) {
@@ -115,7 +111,34 @@ export default {
             this.toggleClassInfoDlg()
         },
         delClassInfo (classInfo) {
-
+            var filterCondition = {
+                _id: classInfo._id
+            }
+            this.$http.delete('/api/' + this.classType + '/', filterCondition).then(function (res) {
+                var data = res.data
+                if (data.success) {
+                    this.getClassInfoList()
+                } else {
+                    console.log(data.reason)
+                }
+            })
+        },
+        editItemInfo (itemInfo) {
+            this.selectedItemInfoObj = itemInfo
+            this.toggleItemInfoDlg()
+        },
+        delItemInfo (itemInfo) {
+            var filterCondition = {
+                _id: itemInfo._id
+            }
+            this.$http.delete('/api/' + this.itemType + '/', filterCondition).then(function (res) {
+                var data = res.data
+                if (data.success) {
+                    this.getItemInfoList()
+                } else {
+                    console.log(data.reason)
+                }
+            })
         }
     }
 }

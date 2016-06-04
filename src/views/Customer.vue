@@ -9,7 +9,10 @@ export default {
         return {
             classType: 'member',
             itemType: 'customer',
-            filterName: 'member'
+            filterName: 'member',
+            classCn: '会员等级',
+            itemCn: '会员',
+            filterName: 'type'
         }
     },
     components: {

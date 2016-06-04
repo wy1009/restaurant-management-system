@@ -9,7 +9,7 @@ export default {
             classType: 'order-status',
             itemType: 'order',
             filterName: 'status',
-            filterName: 'type'
+            filterName: 'status'
         }
     },
     components: {

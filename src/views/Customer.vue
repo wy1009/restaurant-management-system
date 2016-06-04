@@ -12,7 +12,7 @@ export default {
             filterName: 'member',
             classCn: '会员等级',
             itemCn: '会员',
-            filterName: 'type'
+            filterName: 'member'
         }
     },
     components: {

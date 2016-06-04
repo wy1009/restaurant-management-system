@@ -5,11 +5,11 @@
                 <li v-for="classInfo in classInfoList" :class="nowClassInfo._id == classInfo._id ? 'active' : ''">
                     <div @click="getItemInfoList(classInfo)">
                         {{ classInfo.name }}
-                        <span class="fr" @click.stop="delClassInfo(classInfo)">删除</span>
-                        <span class="fr" @click.stop="editClassInfo(classInfo)">编辑</span>
+                        <span v-if="['order-status'].indexOf(classType)" class="fr" @click.stop="delClassInfo(classInfo)">删除</span>
+                        <span v-if="['order-status'].indexOf(classType)" class="fr" @click.stop="editClassInfo(classInfo)">编辑</span>
                     </div>
                 </li>
-                <li>
+                <li v-if="['order-status'].indexOf(classType)">
                     <a href="javascript:;" @click="toggleClassInfoDlg">+ 添加{{ classCn }}</a>
                 </li>
             </ul>
@@ -17,7 +17,7 @@
         <article class="ui list-wrap">
             <h3 class="ui title">
                 {{ nowClassInfo.name }}
-                <span @click="toggleItemInfoDlg">添加{{ itemCn }}</span>
+                <span v-if="['order-status'].indexOf(classType)" @click="toggleItemInfoDlg">添加{{ itemCn }}</span>
             </h3>
             <div class="list">
                 <ul>
@@ -38,7 +38,7 @@
                 </ul>
             </div>
         </article>
-        <dlg-class-info-add-put :type="classType" :info-obj="selectedClassInfoObj" @submited="dlgClassInfoSubmited" @close-dlg="toggleClassInfoDlg" v-show="dlgClassInfoShow" transition="expand">添加</dlg-class-info-add-put>
+        <dlg-class-info-add-put v-if="['order-status'].indexOf(classType)" :type="classType" :info-obj="selectedClassInfoObj" @submited="dlgClassInfoSubmited" @close-dlg="toggleClassInfoDlg" v-show="dlgClassInfoShow" transition="expand">添加</dlg-class-info-add-put>
         <dlg-item-info-add-put :type="itemType" :info-obj="selectedItemInfoObj" :class-info-list="classInfoList" @submited="dlgItemInfoSubmited" @close-dlg="toggleItemInfoDlg" v-show="dlgItemInfoShow" transition="expand"></dlg-item-info-add-put>
     </div>
 </template>

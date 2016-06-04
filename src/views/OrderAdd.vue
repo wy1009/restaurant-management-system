@@ -104,7 +104,7 @@ export default {
             var price = 0
             var discount = this.customer.member ? this.customer.member.discount * 0.1 : 1
             for (var key in this.orderMealList) {
-                price += this.orderMealList[key].price * discount
+                price += this.orderMealList[key].price * this.orderMealList[key].count * discount
             }
             return price.toFixed(1)
         }

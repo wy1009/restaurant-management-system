@@ -1,7 +1,7 @@
 <template>
     <div class="dialog-box">
         <div id="add-put-account-type-dialog" class="dialog">
-            <div class="header">账务类别<i @click="dispatchCloseDlgMsg" class="close-btn">+</i></div>
+            <div class="header">账目类别<i @click="dispatchCloseDlgMsg" class="close-btn">+</i></div>
             <div class="content">
                 <div class="group-inputs">
                     <div class="ui input-wrapper">

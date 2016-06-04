@@ -6,7 +6,7 @@ var AccountSchema = new mongoose.Schema({
         type: ObjectId,
         ref: 'AccountType'
     },
-    earn: Boolean,
+    earn: Number,
     value: Number,
     meta: {
         createAt: {

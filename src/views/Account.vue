@@ -33,7 +33,7 @@
             </div>
         </article>
         <dlg-account-type-add-put type="account-type" :info-obj="selectedAccountTypeObj" @submited="dlgAccountTypeSubmited" @close-dlg="toggleAccountTypeDlg" v-show="dlgAccountTypeShow" transition="expand">添加</dlg-account-type-add-put>
-        <dlg-account-add-put type="account" :info-obj="selectedAccountObj" :accountType-list="accountTypeList" @submited="dlgAccountSubmited" @close-dlg="toggleAccountDlg" v-show="dlgAccountShow" transition="expand"></dlg-account-add-put>
+        <dlg-account-add-put type="account" :info-obj="selectedAccountObj" :account-type-list="accountTypeList" @submited="dlgAccountSubmited" @close-dlg="toggleAccountDlg" v-show="dlgAccountShow" transition="expand"></dlg-account-add-put>
     </div>
 </template>
 
@@ -47,6 +47,7 @@ export default {
             accountTypeList: [],
             accountList: [],
             dlgAccountTypeShow: false,
+            dlgAccountShow: false,
             selectedAccountTypeObj: {},
             selectedAccountObj: {},
             nowAccountType: {}
@@ -72,7 +73,7 @@ export default {
             var filterCondition = {
                 type: accountType._id
             }
-            this.$http.get('/api/account-type/', filterCondition).then(function (res) {
+            this.$http.get('/api/account/', filterCondition).then(function (res) {
                 var data = res.data
                 if (data.success) {
                     this.accountList = data.accountList

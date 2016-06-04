@@ -134,7 +134,7 @@ export default {
             this.$http.delete('/api/' + this.itemType + '/', filterCondition).then(function (res) {
                 var data = res.data
                 if (data.success) {
-                    this.getItemInfoList()
+                    this.getItemInfoList(this.nowClassInfo)
                 } else {
                     console.log(data.reason)
                 }

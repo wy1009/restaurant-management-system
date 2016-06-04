@@ -99,6 +99,21 @@ export default {
             this.toggleAccountTypeDlg()
         },
         dlgAccountSubmited () {
+            this.getAccountList(this.nowAccountType)
+            this.toggleAccountDlg()
+        },
+        editAccountType (accountType) {
+            this.selectedAccountTypeObj = accountType
+            this.toggleAccountTypeDlg()
+        },
+        delAccountType () {
+            
+        },
+        editAccount (account) {
+            this.selectedAccountObj = account
+            this.toggleAccountDlg()
+        },
+        delAccount () {
 
         }
     },

@@ -5,26 +5,17 @@ exports.save = function (req, res) {
 
     var _accountType
     if (accountTypeObj._id) {
-        AccountType.findById(accountTypeObj._id, function (err, accountType) {
+        AccountType.update({_id: accountTypeObj._id}, {$set: accountTypeObj}, function (err) {
             if (err) {
                 res.send({
                     success: false,
                     reason: err
                 })
+            } else {
+                res.send({
+                    success: true
+                })
             }
-            _accountType = _.extend(accountType, accountTypeObj)
-            _accountType.save(function (err, accountType) {
-                if (err) {
-                    res.send({
-                        success: false,
-                        reason: err
-                    })
-                } else {
-                    res.send({
-                        success: true
-                    })
-                }
-            })
         })
     } else {
         _accountType = new AccountType(accountTypeObj)
@@ -57,4 +48,8 @@ exports.fetch = function (req, res) {
             })
         }
     })
+}
+
+exports.del = function (req, res) {
+    console.log(req)
 }

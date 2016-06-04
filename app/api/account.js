@@ -44,6 +44,7 @@ exports.save = function (req, res) {
 
 exports.search = function (req, res) {
     var filterCondition = req.query
+    console.log(filterCondition)
     Account.find(filterCondition)
         .sort('meta.createAt')
         .exec(function (err, accounts) {

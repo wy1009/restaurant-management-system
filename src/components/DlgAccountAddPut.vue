@@ -4,7 +4,7 @@
             <div class="header">账目<i @click="dispatchCloseDlgMsg" class="close-btn">+</i></div>
             <div class="content">
                 <div class="ui input-wrapper">
-                    <select v-model="infoObj.accountType">
+                    <select v-model="infoObj.type">
                         <option v-for="accountType in classInfoList" value="{{ accountType._id }}">{{ accountType.name }}</option>
                     </select>
                 </div>

@@ -9,7 +9,7 @@
                     </div>
                     <div class="ui input-wrapper">
                         <select v-model="infoObj.category">
-                            <option v-for="category in categoryList" value="{{ category._id }}">{{ category.name }}</option>
+                            <option v-for="category in classInfoList" value="{{ category._id }}">{{ category.name }}</option>
                         </select>
                     </div>
                     <div class="ui input-wrapper">
@@ -29,6 +29,6 @@ import DlgAddPutMixin from './DlgAddPutMixin.vue'
 
 export default {
     mixins: [DlgAddPutMixin],
-    props: ['categoryList']
+    props: ['classInfoList']
 }
 </script>

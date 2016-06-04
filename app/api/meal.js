@@ -56,7 +56,7 @@ exports.search = function (req, res) {
             } else {
                 res.send({
                     success: true,
-                    mealList: meals
+                    itemInfoList: meals
                 })
             }
         })

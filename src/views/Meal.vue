@@ -9,6 +9,8 @@ export default {
         return {
             classType: 'category',
             itemType: 'meal',
+            classCn: '菜肴类别',
+            itemCn: '菜肴',
             filterName: 'category'
         }
     },

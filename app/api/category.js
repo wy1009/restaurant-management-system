@@ -44,7 +44,7 @@ exports.fetch = function (req, res) {
         } else {
             res.send({
                 success: true,
-                categoryList: categories
+                classInfoList: categories
             })
         }
     })

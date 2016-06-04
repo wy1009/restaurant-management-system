@@ -1,9 +1,9 @@
 <template>
-    <div class="customer-wrapper has-side-nav">
+    <div :class="classType + '-wrapper'" class="has-side-nav">
         <aside>
             <ul>
                 <li v-for="classInfo in classInfoList" :class="nowClassInfo._id == classInfo._id ? 'active' : ''">
-                    <div @click="getCustomerList(classInfo)">
+                    <div @click="getItemInfoList(classInfo)">
                         {{ classInfo.name }}
                         <span class="fr" @click.stop="delClassInfo(classInfo)">删除</span>
                         <span class="fr" @click.stop="editClassInfo(classInfo)">编辑</span>
@@ -17,23 +17,23 @@
         <article class="ui list-wrap">
             <h3 class="ui title">
                 {{ nowClassInfo.name }}
-                <span @click="toggleCustomerDlg">添加会员</span>
+                <span @click="toggleItemInfoDlg">添加会员</span>
             </h3>
             <div class="list">
                 <ul>
-                    <li v-for="customer of customerList">
-                        <h4 class="title fl">{{ customer.name }}</h4>
-                        <div class="phone fl">{{ customer.phone }}</div>
+                    <li v-for="itemInfo of itemInfoList">
+                        <h4 class="title fl">{{ itemInfo.name }}</h4>
+                        <div class="phone fl">{{ itemInfo.phone }}</div>
                         <div class="operation fr">
-                            <span @click="editCustomer(customer)">编辑</span>
-                            <span @click="delCustomer(customer)">删除</span>
+                            <span @click="editItemInfo(itemInfo)">编辑</span>
+                            <span @click="delItemInfo(itemInfo)">删除</span>
                         </div>
                     </li>
                 </ul>
             </div>
         </article>
         <dlg-class-info-add-put :type="classType" :info-obj="selectedClassInfoObj" @submited="dlgClassInfoSubmited" @close-dlg="toggleClassInfoDlg" v-show="dlgClassInfoShow" transition="expand">添加</dlg-class-info-add-put>
-        <dlg-item-info-add-put :type="itemType" :info-obj="selectedCustomerObj" :class-info-list="classInfoList" @submited="dlgCustomerSubmited" @close-dlg="toggleCustomerDlg" v-show="dlgCustomerShow" transition="expand"></dlg-item-info-add-put>
+        <dlg-item-info-add-put :type="itemType" :info-obj="selectedItemInfoObj" :class-info-list="classInfoList" @submited="dlgItemInfoSubmited" @close-dlg="toggleItemInfoDlg" v-show="dlgItemInfoShow" transition="expand"></dlg-item-info-add-put>
     </div>
 </template>
 
@@ -43,10 +43,10 @@ export default {
     props: ['classType', 'itemType']
     data () {
         return {
-            customerList: [],
-            selectedCustomerObj: {},
+            itemInfoList: [],
+            selectedItemInfoObj: {},
             dlgClassInfoShow: false,
-            dlgCustomerShow: false,
+            dlgItemInfoShow: false,
             nowClassInfo: {},
             classInfoList: [],
             selectedClassInfoObj: {}
@@ -62,29 +62,29 @@ export default {
                 var data = res.data
                 if (data.success) {
                     this.classInfoList = data.classInfoList
-                    this.getCustomerList(this.classInfoList[0])
+                    this.getItemInfoList(this.classInfoList[0])
                 } else {
                     console.log(data.reason)
                 }
             })
         },
-        getCustomerList (classInfo) {
+        getItemInfoList (classInfo) {
             this.nowClassInfo = classInfo
             var filterCondition = {
                 this.classType: classInfo._id
             }
-            this.$http.get('/api/customer/', filterCondition).then(function (res) {
+            this.$http.get('/api/itemInfo/', filterCondition).then(function (res) {
                 var data = res.data
                 if (data.success) {
-                    this.customerList = data.customerList
+                    this.itemInfoList = data.itemInfoList
                 } else {
                     console.log(data.reason)
                 }
             })
         },
-        editCustomer (customer) {
-            this.selectedCustomerObj = customer
-            this.toggleCustomerDlg()
+        editItemInfo (itemInfo) {
+            this.selectedItemInfoObj = itemInfo
+            this.toggleItemInfoDlg()
         },
         toggleClassInfoDlg () {
             this.dlgClassInfoShow = !this.dlgClassInfoShow
@@ -92,19 +92,19 @@ export default {
                 this.selectedClassInfoObj = {}
             }
         },
-        toggleCustomerDlg () {
-            this.dlgCustomerShow = !this.dlgCustomerShow
-            if (!this.dlgCustomerShow) {
-                this.selectedCustomerObj = {}
+        toggleItemInfoDlg () {
+            this.dlgItemInfoShow = !this.dlgItemInfoShow
+            if (!this.dlgItemInfoShow) {
+                this.selectedItemInfoObj = {}
             }
         },
         dlgClassInfoSubmited () {
             this.getClassInfoList()
             this.toggleClassInfoDlg()
         },
-        dlgCustomerSubmited () {
-            this.getCustomerList(this.nowClassInfo)
-            this.toggleCustomerDlg()
+        dlgItemInfoSubmited () {
+            this.getItemInfoList(this.nowClassInfo)
+            this.toggleItemInfoDlg()
         },
         editClassInfo (classInfo) {
             this.selectedClassInfoObj = classInfo

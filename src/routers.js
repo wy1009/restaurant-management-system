@@ -40,17 +40,5 @@ export default function (router) {
 			name: 'account',
 			component: Account
 		}
-		// '/customers/processed': {
-		// 	name: 'processed',
-		// 	component: require('./views/customers-processed.vue')
-		// },
-		// '/customers/today': {
-		// 	name: 'today',
-		// 	component: require('./views/customers-today.vue')
-		// },
-		// '/customers/search': {
-		// 	name: 'search',
-		// 	component: require('./views/customers-search.vue')
-		// }
 	})
 }

@@ -40,7 +40,6 @@
 <script>
 
 export default {
-    props: ['classType', 'itemType'],
     data () {
         return {
             itemInfoList: [],
@@ -70,8 +69,8 @@ export default {
         },
         getItemInfoList (classInfo) {
             this.nowClassInfo = classInfo
-            var filterCondition
-            filterCondition[this.classType] = classInfo._id
+            var filterCondition = {}
+            filterCondition[this.filterName] = classInfo._id
             this.$http.get('/api/' + this.itemType + '/', filterCondition).then(function (res) {
                 var data = res.data
                 if (data.success) {

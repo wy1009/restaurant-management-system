@@ -22,12 +22,14 @@
             <div class="list">
                 <ul>
                     <li v-for="itemInfo of itemInfoList">
-                        <h4 class="title fl">{{ itemInfo.name }}</h4>
-                        <div class="phone fl">{{ itemInfo.phone }}</div>
                         <div class="operation fr">
                             <span @click="editItemInfo(itemInfo)">编辑</span>
                             <span @click="delItemInfo(itemInfo)">删除</span>
                         </div>
+                        <template v-for="info in itemInfo">
+                            <h4 v-if="$key == 'name'" class="title fl">{{ info }}</h4>
+                            <div v-if="['_id', 'meta', filterName].indexOf($key) == -1 && $key != 'name'" class="{{ $key }} fr">{{ info }}</div>
+                        </template>
                     </li>
                 </ul>
             </div>

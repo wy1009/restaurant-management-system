@@ -10,14 +10,14 @@
                     </div>
                 </li>
                 <li>
-                    <a href="javascript:;" @click="toggleClassInfoDlg">+ 添加会员等级</a>
+                    <a href="javascript:;" @click="toggleClassInfoDlg">+ 添加{{ classCn }}</a>
                 </li>
             </ul>
         </aside>
         <article class="ui list-wrap">
             <h3 class="ui title">
                 {{ nowClassInfo.name }}
-                <span @click="toggleItemInfoDlg">添加会员</span>
+                <span @click="toggleItemInfoDlg">添加{{ itemCn }}</span>
             </h3>
             <div class="list">
                 <ul>

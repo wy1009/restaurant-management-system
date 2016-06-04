@@ -9,6 +9,8 @@ export default {
         return {
             classType: 'account-type',
             itemType: 'account',
+            classCn: '账目类别',
+            itemCn: '账目',
             filterName: 'type'
         }
     },

@@ -5,11 +5,11 @@
             <div class="content">
                 <div class="ui input-wrapper">
                     <select v-model="infoObj.accountType">
-                        <option v-for="accountType in accountTypeList" value="{{ accountType._id }}">{{ accountType.name }}</option>
+                        <option v-for="accountType in classInfoList" value="{{ accountType._id }}">{{ accountType.name }}</option>
                     </select>
                 </div>
                 <div class="ui input-wrapper">
-                    <select v-model="infoObj.accountType">
+                    <select v-model="infoObj.earn">
                         <option value="1">收入</option>
                         <option value="0">支出</option>
                     </select>
@@ -30,6 +30,6 @@ import DlgAddPutMixin from './DlgAddPutMixin.vue'
 
 export default {
     mixins: [DlgAddPutMixin],
-    props: ['accountTypeList']
+    props: ['classInfoList']
 }
 </script>

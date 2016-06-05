@@ -82,7 +82,7 @@ exports.calEarnData = function (req, res) {
     var day = req.query.day
     var gtDate = Date.now() - 24 * 60 * 60 * 1000 * (day + 1)
     var ltDate = Date.now() - 24 * 60 * 60 * 1000 * day
-    var payNum = 0
+    var earnNum = 0
     Account.find({'meta.createAt': {$gt: gtDate, $lt: ltDate}, earn: 1}, function (err, accounts) {
         if (err) {
             res.send({
@@ -91,21 +91,22 @@ exports.calEarnData = function (req, res) {
             })
         }
         for (var account of accounts) {
-            payNum += account.value
+            earnNum += account.value
         }
-        Order.find({'meta.createAt': {$gt: gtDate, $lt: ltDate}, function (err, orders) {
+        Order.find({'meta.createAt': {$gt: gtDate, $lt: ltDate}}, function (err, orders) {
             if (err) {
                 res.send({
                     success: false,
                     reason: err
                 })
             }
+            console.log(orders)
             for (var order of orders) {
-                payNum += order.price
+                earnNum += order.price
             }
             res.send({
                 success: true,
-                payNum: payNum
+                earnNum: earnNum
             })
         })
     })

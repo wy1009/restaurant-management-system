@@ -37,7 +37,6 @@ export default {
     },
     vuex: {
         actions: loginSuccess
-        }
     }
 }
 </script>

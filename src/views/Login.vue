@@ -9,7 +9,22 @@
             </div>
         </div>
         <div class="button-wrapper">
-            <button class="ui button" @click="addInfo">确定</button>
+            <button class="ui button" @click="login">确定</button>
         </div>
     </div>
 </template>
+
+<script>
+export default {
+    data () {
+        return {
+            infoObj: {}
+        }
+    },
+    methods: {
+        login () {
+
+        }
+    }
+}
+</script>

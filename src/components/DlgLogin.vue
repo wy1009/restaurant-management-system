@@ -18,6 +18,8 @@
 </template>
 
 <script>
+import DlgAddPutMixin from './DlgAddPutMixin.vue'
+
 export default {
     mixins: [DlgAddPutMixin]
 }

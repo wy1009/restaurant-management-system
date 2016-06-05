@@ -6,6 +6,7 @@
                 <router-view></router-view>
             </div>
         </div>
+        <dlg-login v-show="dlgLoginShow" type="user/login" :info-obj="{}" @close-dlg="toggleLoginDlg" @submited="toggleLoginDlg"></dlg-login>
     </div>
 </template>
 
@@ -13,14 +14,26 @@
 import store from '../vuex/store'
 import Topnav from './Topnav.vue'
 import { getLoginStatus } from '../vuex/getters'
+import DlgLogin from './DlgLogin.vue'
 export default {
+    data () {
+        return {
+            dlgLoginShow: false
+        }
+    },
     components: {
-        Topnav
+        Topnav,
+        DlgLogin
     },
     store,
     ready () {
-        if (!loginStatus) {
-            
+        if (!this.loginStatus) {
+            this.dlgLoginShow = true
+        }
+    },
+    methods: {
+        toggleLoginDlg () {
+            this.dlgLoginShow = !this.dlgLoginShow
         }
     },
     vuex: {

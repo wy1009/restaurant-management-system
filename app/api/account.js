@@ -1,4 +1,5 @@
 var Account = require('../models/account')
+var Order = require('../models/order')
 
 exports.save = function (req, res) {
     var accountObj = req.body
@@ -92,9 +93,20 @@ exports.calEarnData = function (req, res) {
         for (var account of accounts) {
             payNum += account.value
         }
-        res.send({
-            success: true,
-            payNum: payNum
+        Order.find({'meta.createAt': {$gt: gtDate, $lt: ltDate}, function (err, orders) {
+            if (err) {
+                res.send({
+                    success: false,
+                    reason: err
+                })
+            }
+            for (var order of orders) {
+                payNum += order.price
+            }
+            res.send({
+                success: true,
+                payNum: payNum
+            })
         })
     })
 }

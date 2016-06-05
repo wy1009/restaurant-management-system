@@ -38,6 +38,7 @@ module.exports = function (app) {
     // user
     app.get('/api/user', User.search)
     app.post('/api/user/', User.save)
+    app.post('/api/user/login/', User.login)
     // account-type
     app.get('/api/account-type/', AccountType.fetch)
     app.post('/api/account-type/', AccountType.save)

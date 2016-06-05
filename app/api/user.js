@@ -62,3 +62,33 @@ exports.search = function (req, res) {
             }
         })
 }
+
+exports.login = function (req, res) {
+    var username = req.body.username
+    var password = req.body.password
+    User.findOne({username: username}, function (err, user) {
+        if (err) {
+            res.send({
+                success: false,
+                reason: err
+            })
+        }
+        if (!user) {
+            res.send({
+                success: false,
+                reason: '无用户'
+            })
+        }
+        if (user.password === password) {
+            res.send({
+                success: true,
+                reason: '无用户'
+            })
+        } else {
+            res.send({
+                success: false,
+                reason: '密码错误'
+            })
+        }
+    })
+}

@@ -23,7 +23,9 @@ export default {
     },
     methods: {
         login () {
+            this.$http.post('/api/user/login/', this.infoObj).then(function (res) {
 
+            })
         }
     }
 }

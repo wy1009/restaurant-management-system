@@ -100,13 +100,12 @@ exports.calEarnData = function (req, res) {
                     reason: err
                 })
             }
-            console.log(orders)
             for (var order of orders) {
                 earnNum += order.price
             }
             res.send({
                 success: true,
-                earnNum: earnNum
+                earnNum: parseFloat(earnNum.toFixed(1))
             })
         })
     })
@@ -129,7 +128,7 @@ exports.calPayData = function (req, res) {
         }
         res.send({
             success: true,
-            payNum: payNum
+            payNum: parseFloat(payNum.toFixed(1))
         })
     })
 }

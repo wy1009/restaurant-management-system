@@ -15,6 +15,7 @@ export default {
     ready () {
         this.getPayData(0)
         this.getEarnData(0)
+        this.drawChart()
     },
     methods: {
         getEarnData (day) {
@@ -24,7 +25,7 @@ export default {
             this.$http.get('/api/account/earn/', {day: day}).then(function (res) {
                 var data = res.data
                 if (data.success) {
-                    this.earnData.push(data.payNum)
+                    this.earnData.push(data.earnNum)
                     this.getEarnData(day + 1)
                 } else {
                     console.log(data.reason)
@@ -57,14 +58,14 @@ export default {
                             strokeColor : "rgba(220,220,220,1)",
                             pointColor : "rgba(220,220,220,1)",
                             pointStrokeColor : "#fff",
-                            data : [65,59,90,81,56,55,40]
+                            data : this.earnData
                         },{
                             label: '支出',
                             fillColor : "rgba(151,187,205,0.5)",
                             strokeColor : "rgba(151,187,205,1)",
                             pointColor : "rgba(151,187,205,1)",
                             pointStrokeColor : "#fff",
-                            data : [28,48,40,19,96,27,100]
+                            data : this.payData
                         }
                     ]
                 },

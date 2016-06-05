@@ -48,4 +48,5 @@ module.exports = function (app) {
     app.post('/api/account/', Account.save)
     app.delete('/api/account/', Account.del)
     app.get('/api/account/pay/', Account.calPayData)
+    app.get('/api/account/earn/', Account.calEarnData)
 }

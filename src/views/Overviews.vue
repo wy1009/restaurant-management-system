@@ -13,16 +13,25 @@ export default {
         }
     },
     ready () {
-        this.getPayData()
+        this.getPayData(0)
+        this.getEarnData(0)
     },
     methods: {
-        getEarnData () {
-
+        getEarnData (day) {
+            if (day > 6) {
+                return
+            }
+            this.$http.get('/api/account/earn/', {day: day}).then(function (res) {
+                var data = res.data
+                if (data.success) {
+                    this.earnData.push(data.payNum)
+                    this.getEarnData(day + 1)
+                } else {
+                    console.log(data.reason)
+                }
+            })
         },
         getPayData (day) {
-            if (!day) {
-                day = 0
-            }
             if (day > 6) {
                 return
             }

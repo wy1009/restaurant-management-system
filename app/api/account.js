@@ -77,8 +77,26 @@ exports.del = function (req, res) {
     })
 }
 
-exports.earnData = function (req, res) {
-
+exports.calEarnData = function (req, res) {
+    var day = req.query.day
+    var gtDate = Date.now() - 24 * 60 * 60 * 1000 * (day + 1)
+    var ltDate = Date.now() - 24 * 60 * 60 * 1000 * day
+    var payNum = 0
+    Account.find({'meta.createAt': {$gt: gtDate, $lt: ltDate}, earn: 1}, function (err, accounts) {
+        if (err) {
+            res.send({
+                success: false,
+                reason: err
+            })
+        }
+        for (var account of accounts) {
+            payNum += account.value
+        }
+        res.send({
+            success: true,
+            payNum: payNum
+        })
+    })
 }
 
 exports.calPayData = function (req, res) {
@@ -86,9 +104,7 @@ exports.calPayData = function (req, res) {
     var gtDate = Date.now() - 24 * 60 * 60 * 1000 * (day + 1)
     var ltDate = Date.now() - 24 * 60 * 60 * 1000 * day
     var payNum = 0
-    console.log(gtDate)
-    console.log(ltDate)
-    Account.find({'meta.createAt': {$gt: gtDate, $lt: ltDate}}, function (err, accounts) {
+    Account.find({'meta.createAt': {$gt: gtDate, $lt: ltDate}, earn: 0}, function (err, accounts) {
         if (err) {
             res.send({
                 success: false,

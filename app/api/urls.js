@@ -47,4 +47,5 @@ module.exports = function (app) {
     app.get('/api/account/', Account.search)
     app.post('/api/account/', Account.save)
     app.delete('/api/account/', Account.del)
+    app.get('/api/account/pay/', Account.calPayData)
 }

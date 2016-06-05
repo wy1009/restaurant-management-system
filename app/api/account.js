@@ -44,7 +44,6 @@ exports.save = function (req, res) {
 
 exports.search = function (req, res) {
     var filterCondition = req.query
-    console.log(filterCondition)
     Account.find(filterCondition)
         .sort('meta.createAt')
         .exec(function (err, accounts) {
@@ -75,5 +74,33 @@ exports.del = function (req, res) {
                 success: true
             })
         }
+    })
+}
+
+exports.earnData = function (req, res) {
+
+}
+
+exports.calPayData = function (req, res) {
+    var day = req.query.day
+    var gtDate = Date.now() - 24 * 60 * 60 * 1000 * (day + 1)
+    var ltDate = Date.now() - 24 * 60 * 60 * 1000 * day
+    var payNum = 0
+    console.log(gtDate)
+    console.log(ltDate)
+    Account.find({'meta.createAt': {$gt: gtDate, $lt: ltDate}}, function (err, accounts) {
+        if (err) {
+            res.send({
+                success: false,
+                reason: err
+            })
+        }
+        for (var account of accounts) {
+            payNum += account.value
+        }
+        res.send({
+            success: true,
+            payNum: payNum
+        })
     })
 }

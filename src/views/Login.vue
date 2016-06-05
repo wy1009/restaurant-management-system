@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import { loginSuccess } from '../vuex/actions'
+
 export default {
     data () {
         return {
@@ -34,10 +36,7 @@ export default {
         }
     },
     vuex: {
-        actions: {
-            loginSuccess ({dispatch, state}, userInfo) {
-                dispatch('loginSuccess', userInfo)
-            }
+        actions: loginSuccess
         }
     }
 }

@@ -1,3 +1,3 @@
-export const successLogin = function ({dispatch, state}) {
+export const loginSuccess = function ({dispatch, state}) {
     dispatch('LOGINSUCCESS', userInfo)
 }

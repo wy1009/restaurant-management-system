@@ -12,11 +12,22 @@
 <script>
 import store from '../vuex/store'
 import Topnav from './Topnav.vue'
+import { getLoginStatus } from '../vuex/getters'
 export default {
     components: {
         Topnav
     },
-    store
+    store,
+    ready () {
+        if (!loginStatus) {
+            
+        }
+    },
+    vuex: {
+        getters: {
+            loginStatus: getLoginStatus
+        }
+    }
 }
 </script>
 

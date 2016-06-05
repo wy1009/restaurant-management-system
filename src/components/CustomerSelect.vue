@@ -25,7 +25,7 @@ export default {
             var filterCondition = {
                 phone: val
             }
-            this.$http.get('/api/customer/order/', filterCondition).then(function (res) {
+            this.$http.get('/api/customer/orderadd/', filterCondition).then(function (res) {
                 var data = res.data
                 if (data.success) {
                     this.searchResultList = data.customerList

@@ -20,7 +20,7 @@ module.exports = function (app) {
     app.delete('/api/meal/', Meal.del)
     // customer
     app.get('/api/customer/', Customer.search)
-    app.get('/api/customer/order/', Customer.searchWithMemberInfo)
+    app.get('/api/customer/orderadd/', Customer.searchWithMemberInfo)
     app.post('/api/customer/', Customer.save)
     app.delete('/api/customer/', Customer.del)
     // member

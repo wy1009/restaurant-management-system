@@ -82,7 +82,7 @@ exports.login = function (req, res) {
         if (user.password === password) {
             res.send({
                 success: true,
-                reason: '登录成功'
+                userInfo: user
             })
         } else {
             res.send({

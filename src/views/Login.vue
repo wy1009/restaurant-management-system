@@ -2,10 +2,10 @@
     <div class="login-box">
         <div class="group-inputs">
             <div class="ui input-wrapper">
-                <input type="text" placeholder="用户名" v-model="infoObj.username">
+                <input type="text" placeholder="用户名" v-model="userObj.username">
             </div>
             <div class="ui input-wrapper">
-                <input type="password" placeholder="密码" v-model="infoObj.password">
+                <input type="password" placeholder="密码" v-model="userObj.password">
             </div>
         </div>
         <div class="button-wrapper">
@@ -18,23 +18,25 @@
 export default {
     data () {
         return {
-            infoObj: {}
+            userObj: {},
+            userInfo: {}
         }
     },
     methods: {
         login () {
-            this.$http.post('/api/user/login/', this.infoObj).then(function (res) {
+            this.$http.post('/api/user/login/', this.userObj).then(function (res) {
                 var data = res.data
                 if (data.success) {
-                    this.loginSuccess()
+                    this.userInfo = data.userInfo
+                    this.loginSuccess(this.userInfo)
                 }
             })
         }
     },
     vuex: {
         actions: {
-            loginSuccess ({dispatch, state}) {
-                dispatch('login-success', 1)
+            loginSuccess ({dispatch, state}, userInfo) {
+                dispatch('loginSuccess', userInfo)
             }
         }
     }

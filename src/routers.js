@@ -5,6 +5,7 @@ import Order from './views/Order.vue'
 import Meal from './views/Meal.vue'
 import User from './views/User.vue'
 import Account from './views/Account.vue'
+import Login from './views/Login.vue'
 
 export default function (router) {
 	router.map({
@@ -39,6 +40,10 @@ export default function (router) {
 		'/account/': {
 			name: 'account',
 			component: Account
+		},
+		'/login/': {
+			name: 'login',
+			component: Login
 		}
 	})
 }

@@ -1,12 +1,12 @@
-const state = {
+// const state = {
 
-}
+// }
 
-const mutations = {
+// const mutations = {
 
-}
+// }
 
-export default new Vuex.Store({
-    state,
-    mutations
-})
+// export default new Vuex.Store({
+//     state,
+//     mutations
+// })

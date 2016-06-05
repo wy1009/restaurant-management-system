@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import store from '../vuex/store'
 import Topnav from './Topnav.vue'
 export default {
     components: {
@@ -19,7 +20,8 @@ export default {
         test (a) {
             console.log('a')
         }
-    }
+    },
+    store
 }
 </script>
 

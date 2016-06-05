@@ -3,7 +3,7 @@
         <topnav></topnav>
         <div id="page-wrap">
             <div class="inner-wrap">
-                <router-view @topnav-index="test"></router-view>
+                <router-view></router-view>
             </div>
         </div>
     </div>
@@ -15,11 +15,6 @@ import Topnav from './Topnav.vue'
 export default {
     components: {
         Topnav
-    },
-    methods: {
-        test (a) {
-            console.log('a')
-        }
     },
     store
 }

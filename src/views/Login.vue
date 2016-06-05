@@ -24,8 +24,18 @@ export default {
     methods: {
         login () {
             this.$http.post('/api/user/login/', this.infoObj).then(function (res) {
-
+                var data = res.data
+                if (data.success) {
+                    this.loginSuccess()
+                }
             })
+        }
+    },
+    vuex: {
+        actions: {
+            loginSuccess ({dispatch, state}) {
+                dispatch('login-success', 1)
+            }
         }
     }
 }

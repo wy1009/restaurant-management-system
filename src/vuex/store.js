@@ -8,7 +8,7 @@ export default new Vuex.Store({
         userInfo: {}
     },
     mutations: {
-        loginSuccess (state, userInfo) {
+        LOGINSUCCESS (state, userInfo) {
             state.login = true
             state.userInfo = userInfo
         }

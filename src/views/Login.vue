@@ -1,5 +1,6 @@
 <template>
-    <div class="login-box">
+    <div id="login-box">
+        <h3 class="ui title">登录</h3>
         <div class="group-inputs">
             <div class="ui input-wrapper">
                 <input type="text" placeholder="用户名" v-model="userObj.username">
@@ -42,3 +43,13 @@ export default {
     }
 }
 </script>
+
+<style lang="sass">
+    #login-box {
+        width: 300px;
+        margin: 200px auto;
+        .title {
+            border: 1px #313131 solid;
+        }
+    }
+</style>

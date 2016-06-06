@@ -12,14 +12,14 @@
         <article class="ui list-wrap">
             <h3 class="ui title">
                 {{ nowRole.name }}
-                <span @click="toggleUserDlg">添加员工</span>
+                <span @click="toggleUserDlg" v-if="role == 50">添加员工</span>
             </h3>
             <div class="list">
                 <ul>
                     <li v-for="user in userList">
                         <h4 class="title fl">{{ user.name }}</h4>
                         <div class="operation fr">
-                            <span @click="editUser(user)">编辑</span>
+                            <span @click="editUser(user)" v-if="role == 50">编辑</span>
                         </div>
                         <div class="phone fr">{{ user.phone }}</div>
                     </li>
@@ -32,6 +32,7 @@
 
 <script>
 import DlgUserAddPut from '../components/DlgUserAddPut.vue'
+import { getRole } from '../vuex/getters'
 
 export default {
     data () {
@@ -89,6 +90,11 @@ export default {
     },
     components: {
         DlgUserAddPut
+    },
+    vuex: {
+        getters: {
+            role: getRole
+        }
     }
 }
 </script>

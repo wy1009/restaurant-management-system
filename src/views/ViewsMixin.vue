@@ -5,11 +5,11 @@
                 <li v-for="classInfo in classInfoList" :class="nowClassInfo._id == classInfo._id ? 'active' : ''">
                     <div @click="getItemInfoList(classInfo)">
                         {{ classInfo.name }}
-                        <span v-if="['order-status'].indexOf(classType)" class="fr" @click.stop="delClassInfo(classInfo)">删除</span>
-                        <span v-if="['order-status'].indexOf(classType)" class="fr" @click.stop="editClassInfo(classInfo)">编辑</span>
+                        <span v-if="['order-status'].indexOf(classType) && role" class="fr" @click.stop="delClassInfo(classInfo)">删除</span>
+                        <span v-if="['order-status'].indexOf(classType) && role" class="fr" @click.stop="editClassInfo(classInfo)">编辑</span>
                     </div>
                 </li>
-                <li v-if="['order-status'].indexOf(classType)">
+                <li v-if="['order-status'].indexOf(classType) && role">
                     <a href="javascript:;" @click="toggleClassInfoDlg">+ 添加{{ classCn }}</a>
                 </li>
             </ul>
@@ -17,12 +17,12 @@
         <article class="ui list-wrap">
             <h3 class="ui title">
                 {{ nowClassInfo.name }}
-                <span v-if="['order-status'].indexOf(classType)" @click="toggleItemInfoDlg">添加{{ itemCn }}</span>
+                <span v-if="['order-status'].indexOf(classType) && role" @click="toggleItemInfoDlg">添加{{ itemCn }}</span>
             </h3>
             <div class="list">
                 <ul>
                     <li v-for="itemInfo of itemInfoList">
-                        <div class="operation fr">
+                        <div v-if="role" class="operation fr">
                             <span @click="editItemInfo(itemInfo)">编辑</span>
                             <span @click="delItemInfo(itemInfo)">删除</span>
                         </div>
@@ -50,6 +50,7 @@
 </template>
 
 <script>
+import { getRole } from '../vuex/getters'
 
 export default {
     data () {
@@ -145,6 +146,11 @@ export default {
                     console.log(data.reason)
                 }
             })
+        }
+    },
+    vuex: {
+        getters: {
+            role: getRole
         }
     }
 }

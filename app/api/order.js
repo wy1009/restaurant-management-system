@@ -1,6 +1,5 @@
 var Order = require('../models/order')
 var OrderStatus = require('../models/order-status')
-var _ = require('underscore')
 
 exports.save = function (req, res) {
     var orderObj = req.body

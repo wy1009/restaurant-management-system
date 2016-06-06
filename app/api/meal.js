@@ -77,3 +77,34 @@ exports.del = function (req, res) {
         }
     })
 }
+
+exports.addSales = function (req, res) {
+    var meals = req.body.meals
+    var mealFind = function (index) {
+        Meal.findOne({_id: meals[index].meal}, function (err, meal) {
+            if (err) {
+                res.send({
+                    success: false,
+                    reason: err
+                })
+            }
+            meal.sales += meals[index].count
+            meal.save(function (err) {
+                if (err) {
+                    res.send({
+                        success: false,
+                        reason: err
+                    })
+                }
+                if (index == meals.length - 1) {
+                    res.send({
+                        success: true
+                    })
+                } else {
+                    mealFind(index + 1)
+                }
+            })
+        })
+    }
+    mealFind(0)
+}

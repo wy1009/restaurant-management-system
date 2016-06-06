@@ -176,6 +176,14 @@ export default {
                 this.customer = {}
                 this.orderMealList = {}
             })
+            this.$http.put('/api/meal/sales/', {meals: meals}).then(function (res) {
+                var data = res.data
+                if (data.success) {
+                    this.getMealList(this.nowCategory)
+                } else {
+                    console.log(data.reason)
+                }
+            })
         },
         getMemberList () {
             this.$http.get('/api/member/').then(function (res) {

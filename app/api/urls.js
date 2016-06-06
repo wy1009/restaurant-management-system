@@ -18,6 +18,7 @@ module.exports = function (app) {
     app.get('/api/meal/', Meal.search)
     app.post('/api/meal/', Meal.save)
     app.delete('/api/meal/', Meal.del)
+    app.put('/api/meal/sales/', Meal.addSales)
     // customer
     app.get('/api/customer/', Customer.search)
     app.get('/api/customer/orderadd/', Customer.searchWithMemberInfo)

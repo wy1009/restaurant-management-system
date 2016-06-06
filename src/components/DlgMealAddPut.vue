@@ -15,6 +15,9 @@
                     <div class="ui input-wrapper">
                         <input type="text" placeholder="价格" v-model="infoObj.price">
                     </div>
+                    <div class="ui input-wrapper">
+                        <input type="text" placeholder="描述" v-model="infoObj.description">
+                    </div>
                 </div>
                 <div class="button-wrapper">
                     <button class="ui button" @click="addInfo">确定</button>

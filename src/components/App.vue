@@ -92,6 +92,12 @@ body {
                         font-size: 12px;
                         color: #898989;
                     }
+                    .description {
+                        width: 200px;
+                        font-size: 12px;
+                        color: #898989;
+                        margin-left: 10px;
+                    }
                     .operation {
                         width: 90px;
                         span {

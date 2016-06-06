@@ -17,7 +17,7 @@
                 <ul>
                     <li v-for="order in orderList">
                         <h4 class="title fl">{{ order.customer.name }}</h4>
-                        <div class="operation fr" v-if="role == 50">
+                        <div class="operation fr" v-if="role">
                             <span @click="editOrder(order)">编辑</span>
                             <span @click="delOrder(order)">删除</span>
                         </div>
@@ -32,13 +32,14 @@
                 </ul>
             </div>
         </article>
-        <dlg-order-put v-show="dlgOrderShow" type="order" :info-obj="selectedOrderObj" :order-status-list="orderStatusList" @close-dlg="toggleOrderDlg" @submited="dlgOrderSubmited" transition="expand"></dlg-order-put>
+        <dlg-order-put v-show="dlgOrderShow" type="order" :info-obj="selectedOrderObj" :class-info-list="orderStatusList" @close-dlg="toggleOrderDlg" @submited="dlgOrderSubmited" transition="expand"></dlg-order-put>
     </div>
 </template>
 
 <script>
 import DlgOrderPut from '../components/DlgOrderPut.vue'
 import { getRole } from '../vuex/getters'
+import { dispatchHoldOnObj } from '../vuex/actions'
 
 export default {
     data () {
@@ -115,7 +116,7 @@ export default {
             role: getRole
         },
         actions: {
-            holdOnObj
+            dispatchHoldOnObj
         }
     }
 }

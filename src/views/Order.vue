@@ -3,7 +3,7 @@
         <aside>
             <ul>
                 <li v-for="orderStatus in orderStatusList" :class="orderStatus.name == nowOrderStatus.name ? 'active' : ''">
-                    <div @click="getorderList(orderStatus)">
+                    <div @click="getOrderList(orderStatus)">
                         {{ orderStatus.name }}
                     </div>
                 </li>
@@ -17,21 +17,28 @@
             <div class="list">
                 <ul>
                     <li v-for="order in orderList">
-                        <h4 class="title fl">{{ order.name }}</h4>
-                        <div class="operation fr">
-                            <span @click="editorder(order)" v-if="orderStatus == 50">编辑</span>
+                        <h4 class="title fl">{{ order.customer.name }}</h4>
+                        <div class="operation fr" v-if="orderStatus == 50">
+                            <span @click="editOrder(order)">编辑</span>
+                            <span @click="delOrder(order)">删除</span>
                         </div>
-                        <div class="phone fr">{{ order.phone }}</div>
+                        <div class="price fr">¥{{ order.price }}/份</div>
+                        <div class="meals fr">
+                            <template v-for="meal of order.meals">
+                                {{ meal.meal.name }}{{ meal.count }}份
+                            </template>
+                        </div>
+                        <div class="phone fr">{{ order.customer.phone }}</div>
                     </li>
                 </ul>
             </div>
         </article>
-        <dlg-order-add-put v-show="dlgOrderShow" type="order" :info-obj="selectedOrderObj" :order-status-list="orderStatusList" @close-dlg="toggleOrderDlg" @submited="dlgOrderSubmited" transition="expand"></dlg-order-add-put>
+        <dlg-order-put v-show="dlgOrderShow" type="order" :info-obj="selectedOrderObj" :order-status-list="orderStatusList" @close-dlg="toggleOrderDlg" @submited="dlgOrderSubmited" transition="expand"></dlg-order-put>
     </div>
 </template>
 
 <script>
-import DlgOrderAddPut from '../components/DlgOrderAddPut.vue'
+import DlgOrderPut from '../components/DlgOrderPut.vue'
 
 export default {
     data () {
@@ -44,14 +51,26 @@ export default {
         }
     },
     ready () {
-        this.getOrderList()
+        this.getOrderStatusList()
     },
     methods: {
+        getOrderStatusList () {
+            this.$http.get('/api/order-status/').then(function (res) {
+                var data = res.data
+                if (data.success) {
+                    this.orderStatusList = data.orderStatusList
+                    this.getOrderList(this.orderStatusList[0])
+                } else {
+                    console.log(data.reason)
+                }
+            })
+        },
         getOrderList (orderStatus) {
-            if (orderStatus) {
-                this.nowOrderStatus = orderStatus
+            this.nowOrderStatus = orderStatus
+            var filterCondition = {
+                status: orderStatus._id
             }
-            this.$http.get('/api/order/', this.nowOrderStatus).then(function (res) {
+            this.$http.get('/api/order/', filterCondition).then(function (res) {
                 var data = res.data
                 if (data.success) {
                     this.orderList = data.orderList
@@ -73,6 +92,9 @@ export default {
         editOrder (order) {
             this.selectedOrderObj = order
             this.toggleOrderDlg()
+        },
+        delOrder (order) {
+
         }
     },
     components: {

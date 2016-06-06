@@ -11,7 +11,7 @@ exports.fetch = function (req, res) {
         } else {
             res.send({
                 success: true,
-                classInfoList: orderstatuses
+                orderStatusList: orderstatuses
             })
         }
     })

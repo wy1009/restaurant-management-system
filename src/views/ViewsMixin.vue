@@ -30,15 +30,10 @@
                             <h4 v-if="$key == 'name'" class="title fl">{{ info }}</h4>
                             <div v-if="$key == 'value'" class="{{ $key }} fl">{{ info }}元</div>
                             <h4 v-if="$key == 'earn'" class="title fl">{{ info ? '收入' : '支出' }}</h4>
-                            <div v-if="['_id', 'meta', filterName, '__v', 'name', 'earn', 'price', 'value', 'sales', 'customer', 'meals'].indexOf($key) == -1" class="{{ $key }} fr">{{ info }}</div>
+                            <div v-if="['_id', 'meta', filterName, '__v', 'name', 'earn', 'price', 'value', 'sales', 'customer'].indexOf($key) == -1" class="{{ $key }} fr">{{ info }}</div>
                             <div v-if="$key == 'sales'" class="{{ $key }} fr">已售{{ info }}份</div>
                             <div v-if="$key == 'price'" class="{{ $key }} fr">¥{{ info }}/份</div>
                             <div v-if="$key == 'customer'" class="title fl">{{ info.name }}</div>
-                            <div v-if="$key == 'meals'" class="{{ $key }} fr">
-                                <template v-for="meal of info">
-                                    {{ meal.meal.name }}{{ meal.count }}份
-                                </template>
-                            </div>
                         </template>
                     </li>
                 </ul>

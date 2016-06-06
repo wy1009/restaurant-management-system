@@ -4,7 +4,18 @@ var OrderStatus = require('../models/order-status')
 exports.save = function (req, res) {
     var orderObj = req.body
     if (orderObj._id) {
-
+        Order.update({_id: orderObj._id}, {$set: orderObj}, function (err) {
+            if (err) {
+                res.send({
+                    success: false,
+                    reason: err
+                })
+            } else {
+                res.send({
+                    success: true
+                })
+            }
+        })
     } else {
         var orderStatus = []
         OrderStatus.fetch(function (err, orderstatuses) {

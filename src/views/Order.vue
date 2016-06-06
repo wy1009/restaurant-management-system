@@ -94,7 +94,17 @@ export default {
             this.toggleOrderDlg()
         },
         delOrder (order) {
-
+            var filterCondition = {
+                _id: order._id
+            }
+            this.$http.delete('/api/order/', filterCondition).then(function (res) {
+                var data = res.data
+                if (data.success) {
+                    this.getOrderList(this.nowClassInfo)
+                } else {
+                    console.log(data.reason)
+                }
+            })
         }
     },
     components: {

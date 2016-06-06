@@ -1,5 +1,5 @@
 <script>
-import DlgItemInfoAddPut from '../components/DlgCustomerAddPut.vue'
+import DlgItemInfoAddPut from '../components/DlgOrderPut.vue'
 import ViewsMixin from './ViewsMixin.vue'
 
 export default {
@@ -8,7 +8,6 @@ export default {
         return {
             classType: 'order-status',
             itemType: 'order',
-            filterName: 'status',
             filterName: 'status'
         }
     },

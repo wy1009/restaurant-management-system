@@ -12,13 +12,12 @@
         <article class="ui list-wrap">
             <h3 class="ui title">
                 {{ nowOrderStatus.name }}
-                <span @click="toggleOrderDlg" v-if="orderStatus == 50">添加员工</span>
             </h3>
             <div class="list">
                 <ul>
                     <li v-for="order in orderList">
                         <h4 class="title fl">{{ order.customer.name }}</h4>
-                        <div class="operation fr" v-if="orderStatus == 50">
+                        <div class="operation fr" v-if="role == 50">
                             <span @click="editOrder(order)">编辑</span>
                             <span @click="delOrder(order)">删除</span>
                         </div>
@@ -39,6 +38,7 @@
 
 <script>
 import DlgOrderPut from '../components/DlgOrderPut.vue'
+import { getRole } from '../vuex/getters'
 
 export default {
     data () {
@@ -112,6 +112,10 @@ export default {
     },
     vuex: {
         getters: {
+            role: getRole
+        },
+        actions: {
+            holdOnObj
         }
     }
 }

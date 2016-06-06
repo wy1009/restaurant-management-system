@@ -35,10 +35,14 @@ exports.save = function (req, res) {
                     reason: err
                 })
             } else {
-                res.send({
-                    success: true,
-                    customer: customer
-                })
+                Customer.findOne({_id: customer._id})
+                    .populate('member')
+                    .exec(function (err, customer) {
+                        res.send({
+                            success: true,
+                            customer: customer
+                        })
+                    })
             }
         })
     }

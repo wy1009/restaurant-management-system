@@ -49,7 +49,7 @@ export default {
         width: 300px;
         margin: 200px auto;
         .title {
-            border: 1px #313131 solid;
+            border: 1px #f5f5f5 solid;
         }
     }
 </style>
